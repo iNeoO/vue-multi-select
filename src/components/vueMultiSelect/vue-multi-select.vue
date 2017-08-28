@@ -19,7 +19,7 @@
           </button>
       </div>
     </div>
-    <div id="cssmenu" v-if="group === true">
+    <div id="cssmenu" v-if="groups === true">
       <ul>
         <li v-for="(tab, index) in globalModel" v-show="tab.list.length" v-on:click="selectTab(index)" v-bind:class="{active : idSelectedTab == index}">
           <span class="pointer">{{tab[tabName]}}</span>

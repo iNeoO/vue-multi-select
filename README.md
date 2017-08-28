@@ -27,13 +27,14 @@ When you create a new PR please make it against the develop branch when adding n
 
 | Params        | Type     | Default                          | Description                           |
 | ------------- | -------- | -------------------------------- | ------------------------------------- |
+| btnLabel      | String   | 'multi-select'                   | Css passed to value selected          |
+| cssSelected   | Object   | {'background-color': '#b4b4b4'}  | Css passed to value selected          |
+| groups        | String   | 'multi-select'                   | Name on the button                    |
 | multi         | Boolean  | true                             | Set single or multiple selection      |
+| labelBold     | String   | 'bold'                           | Name Attributes for value to set bold |
 | labelList     | String   | 'list'                           | Name Attributes for list              |
 | labelName     | String   | 'name'                           | Name Attributes for value to display  |
-| tabName       | String   | 'name'                           | Name Attributes for value to display  |
 | labelSelected | String   | 'selected'                       | Name attributes for value selected    |
-| labelBold     | String   | 'bold'                           | Name Attributes for value to set bold |
-| cssSelected   | Object   | {'background-color': '#b4b4b4'}  | Css passed to value selected          |
 | tabName       | String   | 'name'                           | Name Attributes for value to display  |
 
 2. filters to apply to a select many options

@@ -28,9 +28,9 @@ export default {
   },
   data() {
     return {
-      btnLabel: 'multi-select',
+      btnLabel: '',
       multiSelect: null,
-      group: true,
+      groups: null,
       isOpen: false,
       globalModel: [],
       idSelectedTab: 0,
@@ -43,9 +43,11 @@ export default {
   },
   methods: {
     setConfig() {
-      console.log(this.value);
-      this.options.multi = typeof(this.options.multi) !== 'undefined' ?
+      this.multi = typeof(this.options.multi) !== 'undefined' ?
         this.options.multi : true;
+      this.groups = typeof(this.options.groups) !== 'undefined' ?
+        this.options.groups : true;
+      this.btnLabel = !!this.options.btnLabel ? this.options.btnLabel : 'multi-select';
       this.list = !!this.options.labelList ? this.options.labelList : 'list';
       this.labelName = !!this.options.labelName ? this.options.labelName : 'name';
       this.tabName = !!this.options.tabName ? this.options.tabName : 'name';
@@ -74,7 +76,7 @@ export default {
       }
     },
     getBtnLabel() {
-      return !!this.options.multi ? this.btnLabel : `${this.btnLabel} (${this.value.length})`;
+      return !this.multi ? this.btnLabel : `${this.btnLabel} (${this.value.length})`;
     },
     toggleCheckboxes(event) {
       this.multiSelect = event.target;
@@ -86,10 +88,10 @@ export default {
     externalClick(event) {
       if (this.isOpen) {
         let elem = event.target;
-        if (elem.className === 'buttonLabel') {
+        if (!!elem && elem.className === 'buttonLabel') {
           elem = elem.parentNode;
         }
-        if (elem.isSameNode(this.multiSelect)) {
+        if (!!elem && elem.isSameNode(this.multiSelect)) {
           return;
         }
         this.isOpen = false;
@@ -98,10 +100,10 @@ export default {
     /* eslint no-param-reassign: ["error", { "props": false }]*/
     selectOption(option) {
       if (!option[this.labelSelected]) {
-        if (!this.options.multi) {
+        if (!this.multi) {
           this.filters[0].selectAll = true;
           this.deselctAll();
-          this.value = [];
+          this.value.length = 0;
           this.externalClick({path : []});
         }
         this.pushOption(option);

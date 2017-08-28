@@ -497,6 +497,7 @@
 }
 
 .selectList {
+  margin-top: 0.5em;
   list-style: inside disc;
   padding-left: 0px;
 }
