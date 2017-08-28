@@ -24,6 +24,7 @@ When you create a new PR please make it against the develop branch when adding n
 | value         | Array       |
 
 1. options (Contains options to set the multi-select)
+
 | Params        | Type     | Default                          | Description                           |
 | ------------- | -------- | -------------------------------- | ------------------------------------- |
 | multi         | Boolean  | true                             | Set single or multiple selection      |
