@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A multi/single select component made in vue",
   "author": "Valère Pique",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",

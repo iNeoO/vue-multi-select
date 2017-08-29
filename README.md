@@ -1,4 +1,4 @@
-This component gives you a Dropdown with the power of Vuejs components.
+This component gives you a multi/single select with the power of Vuejs components.
 
 ## Demo
 (incoming)
@@ -27,7 +27,7 @@ When you create a new PR please make it against the develop branch when adding n
 
 | Params        | Type     | Default                          | Description                           |
 | ------------- | -------- | -------------------------------- | ------------------------------------- |
-| btnLabel      | String   | 'multi-select'                   | Css passed to value selected          |
+| btnLabel      | String   | 'multi-select'                   | Label on the button	              |
 | cssSelected   | Object   | {'background-color': '#b4b4b4'}  | Css passed to value selected          |
 | groups        | String   | 'multi-select'                   | Name on the button                    |
 | multi         | Boolean  | true                             | Set single or multiple selection      |
@@ -102,3 +102,8 @@ npm run dev
 # build for production with minification
 source build.sh
 ```
+
+## thanks
+
+[Clément Patrice](https://github.com/monsieurp)
+[Guilbert Pierre](https://github.com/guilbep)
