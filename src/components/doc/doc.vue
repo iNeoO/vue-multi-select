@@ -175,8 +175,8 @@
                 </tr>
                 <tr>
                   <td>cssSelected</td>
-                  <td>Object</td>
-                  <td><code>{'background-color': '#b4b4b4'}</code></td>
+                  <td>Function</td>
+                  <td><code>(option) =>  option['selected'] ? {'background-color': '#b4b4b4'} : ''</code></td>
                   <td>Css passed to value selected</td>
                 </tr>
                 <tr class="active">

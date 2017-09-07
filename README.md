@@ -25,17 +25,17 @@ When you create a new PR please make it against the develop branch when adding n
 
 1. options (Contains options to set the multi-select)
 
-| Params        | Type     | Default                          | Description                           |
-| ------------- | -------- | -------------------------------- | ------------------------------------- |
-| btnLabel      | String   | 'multi-select'                   | Label on the button	                  |
-| cssSelected   | Object   | {'background-color': '#b4b4b4'}  | Css passed to value selected          |
-| groups        | String   | 'multi-select'                   | Display or not groups selection       |
-| multi         | Boolean  | true                             | Set single or multiple selection      |
-| labelBold     | String   | 'bold'                           | Name Attributes for value to set bold |
-| labelList     | String   | 'list'                           | Name Attributes for list              |
-| labelName     | String   | 'name'                           | Name Attributes for value to display  |
-| labelSelected | String   | 'selected'                       | Name attributes for value selected    |
-| groupName     | String   | 'name'                           | Name Attributes for groups to display |
+| Params        | Type     | Default                                                                 | Description                           |
+| ------------- | -------- | ----------------------------------------------------------------------- | ------------------------------------- |
+| btnLabel      | String   | 'multi-select'                                                          | Label on the button	                 |
+| cssSelected   | Function | (option) =>  option['selected'] ? {'background-color': '#b4b4b4'} : ''  | Css passed to value selected          |
+| groups        | String   | 'multi-select'                                                          | Display or not groups selection       |
+| multi         | Boolean  | true                                                                    | Set single or multiple selection      |
+| labelBold     | String   | 'bold'                                                                  | Name Attributes for value to set bold |
+| labelList     | String   | 'list'                                                                  | Name Attributes for list              |
+| labelName     | String   | 'name'                                                                  | Name Attributes for value to display  |
+| labelSelected | String   | 'selected'                                                              | Name attributes for value selected    |
+| groupName     | String   | 'name'                                                                  | Name Attributes for groups to display |
 
 2. filters to apply to select many options
 ```javascript
