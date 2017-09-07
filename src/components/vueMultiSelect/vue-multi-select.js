@@ -50,16 +50,17 @@ export default {
       this.btnLabel = !!this.options.btnLabel ? this.options.btnLabel : 'multi-select';
       this.list = !!this.options.labelList ? this.options.labelList : 'list';
       this.labelName = !!this.options.labelName ? this.options.labelName : 'name';
-      this.tabName = !!this.options.tabName ? this.options.tabName : 'name';
+      this.groupName = !!this.options.groupName ? this.options.groupName : 'name';
       this.labelSelected = !!this.options.labelSelected ? this.options.labelSelected : 'selected';
       this.labelBold = !!this.options.labelBold ? this.options.labelBold : 'bold';
       this.options.cssSelected = !!this.options.cssSelected ?
-        this.options.cssSelected : (option) =>  option[this.labelSelected] ? {'background-color': '#b4b4b4'} : '';
+        this.options.cssSelected : (option) => option[this.labelSelected] ? {'background-color': '#b4b4b4'} : '';
       this.filters.unshift({
         nameAll: 'Select all',
         nameNotAll: 'Deselect all',
         func: (elem) => true
       });
+      this.value.length = 0
       this.init();
     },
     init() {
@@ -193,8 +194,11 @@ export default {
     }
   },
   watch: {
-    selectOptions(newVal, oldVal) {
-      this.setConfig();
+    selectOptions: {
+      handler(val){
+        this.setConfig();
+      },
+      deep: true
     }
   },
   directives: {

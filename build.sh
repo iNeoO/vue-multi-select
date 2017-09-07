@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-vue_path="./src/components/vueMultipleSelect/vue-multiple-select"
-vue_dist="./dist/vue-multiple-select"
+vue_path="./src/components/vueMultiSelect/vue-multi-select"
+vue_dist="./dist/vue-multi-select"
 vue_js_file="${vue_path}.js"
 vue_css_file="${vue_path}.css"
 vue_template_file="${vue_path}.vue"

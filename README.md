@@ -27,17 +27,17 @@ When you create a new PR please make it against the develop branch when adding n
 
 | Params        | Type     | Default                          | Description                           |
 | ------------- | -------- | -------------------------------- | ------------------------------------- |
-| btnLabel      | String   | 'multi-select'                   | Label on the button	              |
+| btnLabel      | String   | 'multi-select'                   | Label on the button	                  |
 | cssSelected   | Object   | {'background-color': '#b4b4b4'}  | Css passed to value selected          |
-| groups        | String   | 'multi-select'                   | Name on the button                    |
+| groups        | String   | 'multi-select'                   | Display or not groups selection       |
 | multi         | Boolean  | true                             | Set single or multiple selection      |
 | labelBold     | String   | 'bold'                           | Name Attributes for value to set bold |
 | labelList     | String   | 'list'                           | Name Attributes for list              |
 | labelName     | String   | 'name'                           | Name Attributes for value to display  |
 | labelSelected | String   | 'selected'                       | Name attributes for value selected    |
-| tabName       | String   | 'name'                           | Name Attributes for value to display  |
+| groupName     | String   | 'name'                           | Name Attributes for groups to display |
 
-2. filters to apply to a select many options
+2. filters to apply to select many options
 ```javascript
 // Exemple with Select/Deselect all
 const filtes = [];
@@ -47,7 +47,7 @@ filters.push({
   func: (elem) => true
 });
 
-// Second exemple to select all elements who contails 2
+// Second exemple to select all elements who contain 2
 filters.push({
   nameAll: 'Select all elements with 2',
   nameNotAll: 'Deselect all elements with 2',
@@ -66,7 +66,7 @@ filters.push({
 data = [{
   name: 'choice 1', // Can be changed with tabName in options
   list: [
-    {name: 'choice 1'}, // Mame can be changed with labelName in options
+    {name: 'choice 1'}, // Name can be changed with labelName in options
     {name: 'choice 2'},
     {name: 'choice 3'},
     {name: 'choice 4'},
@@ -75,7 +75,7 @@ data = [{
 }, {
   name: 'choice 10', // Can be changed with tabName in options
   list: [
-    {name: 'choice 11'}, // Mame can be changed with labelName in options
+    {name: 'choice 11'}, // Name can be changed with labelName in options
     {name: 'choice 12'},
     {name: 'choice 13'},
     {name: 'choice 14'},

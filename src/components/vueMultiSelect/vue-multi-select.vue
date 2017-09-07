@@ -9,7 +9,7 @@
   <div class="checkboxLayer" v-bind:class="{'show': isOpen}" v-click-outside="externalClick">
     <div class="helperContainer">
       <div class="line">
-        <button v-if="!!filters === true" type="button" class="helperButton" v-on:click="selectCurrent(button)" v-for="button in filters">
+        <button v-if="!!filters && multi" type="button" class="helperButton" v-on:click="selectCurrent(button)" v-for="button in filters">
             {{button.selectAll ? button.nameNotAll : button.nameAll}}
           </button>
       </div>
@@ -19,16 +19,16 @@
           </button>
       </div>
     </div>
-    <div id="cssmenu" v-if="groups === true">
-      <ul>
-        <li v-for="(tab, index) in globalModel" v-show="tab.list.length" v-on:click="selectTab(index)" v-bind:class="{active : idSelectedTab == index}">
-          <span class="pointer">{{tab[tabName]}}</span>
+    <div v-if="groups === true">
+      <ul class="tab tab-block">
+        <li class="tab-item" v-for="(tab, index) in globalModel" v-show="tab[list].length" v-on:click="selectTab(index)" v-bind:class="{active : idSelectedTab == index}">
+          <span class="pointer">{{tab[groupName]}}</span>
         </li>
       </ul>
     </div>
     <div class="checkBoxContainer">
       <ul class="selectList" v-for="(tab, index) in globalModel" v-show="idSelectedTab == index">
-        <li v-for="option in tab.list" class="selectItem" v-if="option.visible" v-on:click="selectOption(option)" :style="options.cssSelected(option)">
+        <li v-for="option in tab[list]" class="selectItem" v-if="option.visible" v-on:click="selectOption(option)" :style="options.cssSelected(option)">
           <span :style="{'font-weight': !!option[labelBold] ? 'bold' : 'normal'}">{{option[labelName]}}</span>
         </li>
       </ul>

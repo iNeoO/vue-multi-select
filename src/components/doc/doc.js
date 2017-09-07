@@ -8,38 +8,140 @@ export default {
   name: 'doc',
   data() {
     return {
-      tuturu: [],
-      options: {},
-      data: [{
-        name: 'name',
-        _id: 41,
-        list: [
-          { name: 'test1' },
-          { name: 'test2' },
-          { name: 'test3' },
-          { name: 'test31' },
-          { name: 'test32' },
-          { name: 'test33' },
-          { name: 'test34' },
-          { name: 'test35' },
-        ],
-      }, {
-        name: 'coucou',
-        _id: 41,
-        list: [
-          { name: 'test4' },
-          { name: 'test5' },
-          { name: 'test6' },
-          { name: 'test61' },
-          { name: 'test62' },
-          { name: 'test63' },
-          { name: 'test64' },
-          { name: 'test65' },
-        ],
-      }],
+      string: 'string',
+      example1: {
+        selectOptions: [{
+          name: 'first group',
+          list: [
+            {name: '0'},
+            {name: '2'},
+            {name: '3'},
+            {name: '8'},
+            {name: '9'},
+            {name: '11'},
+            {name: '13'},
+            {name: '14'},
+            {name: '15'},
+            {name: '18'},
+          ]
+        }, {
+          name: 'second group',
+          list: [
+            {name: '21'},
+            {name: '22'},
+            {name: '24'},
+            {name: '27'},
+            {name: '28'},
+            {name: '29'},
+            {name: '31'},
+            {name: '33'},
+            {name: '35'},
+            {name: '39'},
+          ]
+        }],
+        filters: [{
+          nameAll: 'select <= 10',
+          nameNotAll: 'Deselect <= 10',
+          func: (elem) => {
+            if (elem.name <= 10) {
+              return true;
+            }
+            return false;
+          }
+        },{
+          nameAll: 'Select contains 2',
+          nameNotAll: 'Deselect contains 2',
+          func: (elem) => {
+            if (elem.name.indexOf('2') !== -1) {
+              return true;
+            }
+            return false;
+          }
+        }],
+        options: {
+          btnLabel: 'A simple vue multi select'
+        },
+        values: [],
+        isActive: 'code'
+      },
+      example2: {
+        selectOptions: [{
+          list: [
+            {name: '0'},
+            {name: '2'},
+            {name: '3'},
+            {name: '8'},
+            {name: '9'},
+            {name: '11'},
+            {name: '13'},
+            {name: '14'},
+            {name: '15'},
+            {name: '18'},
+          ]
+        }],
+        options: {
+          multi: false,
+          groups: false,
+          btnLabel: 'A simple vue single select'
+        },
+        values: [],
+        isActive: 'code'
+      },
+      example3: {
+        selectOptions: [{
+          title: 'part one',
+          elements: [
+            {label: '0'},
+            {label: '2'},
+            {label: '3'},
+            {label: '8'},
+            {label: '9'},
+            {label: '11'},
+            {label: '13'},
+            {label: '14'},
+            {label: '15'},
+            {label: '18'},
+          ]
+        },{
+          title: 'part two',
+          elements: [
+            {label: '23'},
+            {label: '25'},
+            {label: '31'},
+            {label: '42'},
+            {label: '56'},
+            {label: '76'},
+            {label: '82'},
+            {label: '42'},
+            {label: '13'},
+            {label: '21'},
+          ]
+        }],
+        options: {
+          labelName: 'label',
+          labelList: 'elements',
+          groupName: 'title',
+          btnLabel: 'A simple vue multi select',
+          cssSelected: (option) =>  option['selected'] ? {'background-color': '#5764c6'} : ''
+        },
+        values: [],
+        isActive: 'code'
+      }
     };
   },
   components: { multiSelect },
   methods: {
-  }
+    setActive: function(example, label) {
+      example.isActive = label;
+    },
+    randomize: function(example) {
+      const list = example.options.labelList || 'list';
+      const name = example.options.labelName || 'name';
+      for(var i = 0; i < example.selectOptions.length; i++) {
+        for(var j = 0; j < example.selectOptions[i][list].length; j++) {
+          example.selectOptions[i][list][j][name] = Math.floor(Math.random() * 100) + 1;
+        }
+      }
+    }
+  },
 };
