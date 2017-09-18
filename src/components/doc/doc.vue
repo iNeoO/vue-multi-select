@@ -95,7 +95,7 @@
         <div id="installation" class="container">
           <h3 class="s-title"><a href="#installation" class="anchor" aria-hidden="true">#</a>Installation</h3>
           <div class="docs-note">
-            <p>Clone the repo <a href="https://github.com/IneoO/vue-multi-select">github</a></p>
+            <p>Clone the repo <a href="https://github.com/IneoO/vue-multi-select">github</a> or <code>npm install vue-multi-select --save</code></p>
             <p>Include the file in your app import multiSelect from</p>
             <p>
               <code>

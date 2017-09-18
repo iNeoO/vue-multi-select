@@ -7,7 +7,7 @@ This component gives you a multi/single select with the power of Vuejs component
 - required: Vuejs >= 2.3.3
 
 ## Install
-1. Clone the repo
+1. Clone the repo or `npm install vue-multi-select --save`
 2. Include the file in your app
   `import multiSelect from './node_modules/vueMultiSelect/dist/vue-multi-select.vue';`
 
