@@ -1,7 +1,7 @@
 This component gives you a multi/single select with the power of Vuejs components.
 
-## Demo
-(incoming)
+## Demo and doc site
+[vue-multi-select](http://vue-multi-select.tuturu.io)
 
 ## Dependencies
 - required: Vuejs >= 2.3.3
