@@ -168,6 +168,7 @@ export default {
         }
       }
       option.selectAll = !option.selectAll;
+      this.filter();
     },
     filter() {
       for (let i = 0; i < this.filters.length; i += 1) {
