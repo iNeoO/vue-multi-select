@@ -40,7 +40,7 @@ When you create a new PR please make it against the develop branch when adding n
 2. filters to apply to select many options
 ```javascript
 // Exemple with Select/Deselect all
-const filtes = [];
+const filters = [];
 filters.push({
   nameAll: 'Select all', // label when want to select all elements who answer yes to the function
   nameNotAll: 'Deselect all', //label when want to deselect all elements who answer yes to the function

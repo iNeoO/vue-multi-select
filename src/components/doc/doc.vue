@@ -233,7 +233,7 @@
             <p><code>nameNotAll</code> Name displayed when all elements don't respect the condition</p>
             <p><code>func</code> The function (must return true or false) who permit to test if the element respect a condition</p>
             <pre class="code" data-lang="javascript" style="color: #667189"><code>
-<span style="color: #e06870; font-weight: bold">const</span> filtes = [];
+<span style="color: #e06870; font-weight: bold">const</span> filters = [];
 filters.push({
   nameAll: <span style="color: #5764c6">&#39;Select all&#39;</span>, <span style="color: #acb3c2; font-style: italic">// label when want to select all elements who answer yes to the function</span>
   nameNotAll: <span style="color: #5764c6">&#39;Deselect all&#39;</span>, <span style="color: #acb3c2; font-style: italic">//label when want to deselect all elements who answer yes to the function</span>
