@@ -105,5 +105,6 @@ source build.sh
 
 ## thanks
 
-[Clément Patrice](https://github.com/monsieurp)
-[Guilbert Pierre](https://github.com/guilbep)
+[Patrice Clément](https://github.com/monsieurp)
+
+[Pierre Guilbert](https://github.com/guilbep)
