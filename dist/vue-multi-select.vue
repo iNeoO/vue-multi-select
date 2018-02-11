@@ -44,64 +44,58 @@ export default {
   props: {
     options: {
       type: Object,
-      default: () => {
-        return {};
-      }
+      default: (() => {}),
     },
     filters: {
       type: Array,
-      default: () => {
-        return [];
-      }
+      default: (() => []),
     },
     selectOptions: {
       type: Array,
-      default: () => {
-        return [];
-      }
+      default: (() => []),
     },
-    value: {
-      type: Array,
-      default: () => {
-        return [];
-      }
-    }
+    eventName: {
+      type: String,
+      default: 'selectionChanged',
+    },
   },
   data() {
     return {
       btnLabel: '',
+      value: [],
       multiSelect: null,
       groups: null,
       isOpen: false,
       globalModel: [],
       idSelectedTab: 0,
       searchInput: '',
-      optionsAllHide: false
+      optionsAllHide: false,
     };
   },
   created() {
-    this.setConfig()
+    this.setConfig();
   },
   methods: {
     setConfig() {
-      this.multi = typeof(this.options.multi) !== 'undefined' ?
+      console.log(this.eventName);
+      this.multi = typeof (this.options.multi) !== 'undefined' ?
         this.options.multi : true;
-      this.groups = typeof(this.options.groups) !== 'undefined' ?
+      this.groups = typeof (this.options.groups) !== 'undefined' ?
         this.options.groups : true;
-      this.btnLabel = !!this.options.btnLabel ? this.options.btnLabel : 'multi-select';
-      this.list = !!this.options.labelList ? this.options.labelList : 'list';
-      this.labelName = !!this.options.labelName ? this.options.labelName : 'name';
-      this.groupName = !!this.options.groupName ? this.options.groupName : 'name';
-      this.labelSelected = !!this.options.labelSelected ? this.options.labelSelected : 'selected';
-      this.labelBold = !!this.options.labelBold ? this.options.labelBold : 'bold';
-      this.options.cssSelected = !!this.options.cssSelected ?
-        this.options.cssSelected : (option) => option[this.labelSelected] ? {'background-color': '#b4b4b4'} : '';
+      this.btnLabel = this.options.btnLabel ? this.options.btnLabel : 'multi-select';
+      this.list = this.options.labelList ? this.options.labelList : 'list';
+      this.labelName = this.options.labelName ? this.options.labelName : 'name';
+      this.groupName = this.options.groupName ? this.options.groupName : 'name';
+      this.labelSelected = this.options.labelSelected ? this.options.labelSelected : 'selected';
+      this.labelBold = this.options.labelBold ? this.options.labelBold : 'bold';
+      this.options.cssSelected = this.options.cssSelected ?
+        this.options.cssSelected : (option) => option[this.labelSelected] ? { 'background-color': '#b4b4b4' } : '';
       this.filters.unshift({
         nameAll: 'Select all',
         nameNotAll: 'Deselect all',
-        func: (elem) => true
+        func: () => true,
       });
-      this.value.length = 0
+      this.value.length = 0;
       this.init();
     },
     init() {
@@ -116,6 +110,7 @@ export default {
           }
         }
       }
+      this.$emit(this.eventName, this.value);
     },
     getBtnLabel() {
       return !this.multi ? this.btnLabel : `${this.btnLabel} (${this.value.length})`;
@@ -139,14 +134,15 @@ export default {
         this.isOpen = false;
       }
     },
-    /* eslint no-param-reassign: ["error", { "props": false }]*/
+    /* eslint no-param-reassign: ["error", { "props": false }] */
     selectOption(option) {
       if (!option[this.labelSelected]) {
         if (!this.multi) {
           this.filters[0].selectAll = true;
           this.deselctAll();
           this.value.length = 0;
-          this.externalClick({path : []});
+          this.$emit(this.eventName, this.value);
+          this.externalClick({ path: [] });
         }
         this.pushOption(option);
       } else {
@@ -160,11 +156,13 @@ export default {
       delete opt[this.labelSelected];
       delete opt.visible;
       this.value.push(opt);
+      this.$emit(this.eventName, this.value);
     },
     popOption(opt) {
       for (let i = 0; i < this.value.length; i += 1) {
         if (this.value[i][this.labelName] === opt[this.labelName]) {
           this.value.splice(i, 1);
+          this.$emit(this.eventName, this.value);
           return;
         }
       }
@@ -233,15 +231,15 @@ export default {
           this.globalModel[i][this.list][j][this.labelSelected] = false;
         }
       }
-    }
+    },
   },
   watch: {
     selectOptions: {
-      handler(val){
+      handler() {
         this.setConfig();
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   directives: {
     'click-outside': {
@@ -260,7 +258,7 @@ export default {
         el.vueClickOutside = null;
       },
     },
-  }
+  },
 };
 </script>
 
