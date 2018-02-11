@@ -48,7 +48,7 @@
                     <a href="#selectOptions">selectOptions</a>
                   </li>
                   <li class="menu-item">
-                    <a href="#value">value</a>
+                    <a href="#eventName">eventName</a>
                   </li>
                 </ul>
               </div>
@@ -144,9 +144,9 @@
                   <td>Variables who contains values for the select</td>
                 </tr>
                 <tr>
-                  <td>value</td>
-                  <td>Array</td>
-                  <td>Values selected from the multi-select</td>
+                  <td>eventName</td>
+                  <td>String</td>
+                  <td>eventName Name for the event triggered by the vue-multi-select default is selectionChanged</td>
                 </tr>
               </tbody>
             </table>
@@ -284,10 +284,17 @@ filters.push({
             </code></pre>
           </div>
         </div>
-        <div id="value" class="container">
-          <h3 class="s-title"><a href="#value" class="anchor" aria-hidden="true">#</a>Value</h3>
+        <div id="eventName" class="container">
+          <h3 class="s-title"><a href="#eventName" class="anchor" aria-hidden="true">#</a>eventName</h3>
           <div class="docs-note">
-            <p>values selected. Each value selected is push in this Array.</p>
+            <p>Variable containing the name of the event who will be launch when vue-multi-select value change</p>
+            <p>Example of function to get data</p>
+            <pre class="code" data-lang="javascript" style="color: #667189"><code>
+<span style="color: #e06870; font-weight: bold">const</span> event = (values) => {
+  this.values = values;
+}
+</code></pre>
+            <p>Each value selected is push in this Array.</p>
             <p>When a value is unselect, he is splice fron the Array</p>
             <pre class="code" data-lang="javascript" style="color: #667189"><code>
 [ {name: <span style="color: #5764c6">&#39;choice 1&#39;</span>}, {name: <span style="color: #5764c6">&#39;choice 11&#39;</span>}] <span style="color: #acb3c2; font-style: italic">// In the case we selected choice 1 and choice 11</span>
@@ -301,7 +308,7 @@ filters.push({
             <p>When a value is unselect, he is splice fron the Array</p>
             <div class="columns">
               <div class="column col-4">
-                <multi-select :value="example1.values" :options="example1.options" :filters="example1.filters" :selectOptions="example1.selectOptions"></multi-select>
+                <multi-select @selectionChanged="updateValues1" :options="example1.options" :filters="example1.filters" :selectOptions="example1.selectOptions"></multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
                 <button class="btn btn-primary" v-on:click="randomize(example1)">Reset Data</button>
@@ -371,6 +378,10 @@ filters.push({
   <span style="color: #e06870; font-weight: bold">const</span> options = {
     btnLabel: <span style="color: #5764c6">&#39;A simple vue multi select&#39;</span>
   }
+
+  <span style="color: #e06870; font-weight: bold">const</span> event = (values) => {
+    this.values = values;
+  }
               </code></pre>
             </div>
             <div v-if="example1.isActive === 'values'">
@@ -385,7 +396,7 @@ filters.push({
           <div class="docs-note">
             <div class="columns">
               <div class="column col-4">
-                <multi-select :value="example2.values" :options="example2.options" :filters="example2.filters" :selectOptions="example2.selectOptions"></multi-select>
+                <multi-select @selectionChanged="updateValues2" :options="example2.options" :filters="example2.filters" :selectOptions="example2.selectOptions"></multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
                 <button class="btn btn-primary" v-on:click="randomize(example2)">Reset Data</button>
@@ -422,6 +433,10 @@ filters.push({
     multi: <span style="color: #e06870">&#39;false&#39;</span>
     btnLabel: <span style="color: #5764c6">&#39;A simple vue multi select&#39;</span>
   }
+
+  <span style="color: #e06870; font-weight: bold">const</span> event = (values) => {
+    this.values = values;
+  }
               </code></pre>
             </div>
             <div v-if="example2.isActive === 'values'">
@@ -437,7 +452,7 @@ filters.push({
             <p>if the <code>labelSelected</code> and <code>cssLabel</code> are changed don't forget to update <code>option['selected']</code> in <code>cssLabel</code> with the labelSelected value</p>
             <div class="columns">
               <div class="column col-4">
-                <multi-select :value="example3.values" :options="example3.options" :filters="example3.filters" :selectOptions="example3.selectOptions"></multi-select>
+                <multi-select @selectionChanged="updateValues3" :options="example3.options" :filters="example3.filters" :selectOptions="example3.selectOptions"></multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
                 <button class="btn btn-primary" v-on:click="randomize(example3)">Reset Data</button>
@@ -490,11 +505,15 @@ filters.push({
     btnLabel: <span style="color: #5764c6">&#39;A simple vue multi select&#39;</span>,
     cssSelected: (option) =&gt;  option[<span style="color: #5764c6">&#39;selected&#39;</span>] ? {<span style="color: #5764c6">&#39;background-color&#39;</span>: <span style="color: #5764c6">&#39;#5764c6&#39;</span>} : <span style="color: #5764c6">&#39;&#39;</span>
   }
+
+  <span style="color: #e06870; font-weight: bold">const</span> event = (values) => {
+    this.values = values;
+  }
               </code></pre>
             </div>
             <div v-if="example3.isActive === 'values'">
               <pre class="code" data-lang="javascript" style="color: #667189"><code>
-{{example2.values}}
+{{example3.values}}
               </code></pre>
             </div>
           </div>
