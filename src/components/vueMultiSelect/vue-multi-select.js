@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default {
   name: 'multi-select',
   props: {
@@ -36,7 +38,6 @@ export default {
   },
   methods: {
     setConfig() {
-      console.log(this.eventName);
       this.multi = typeof (this.options.multi) !== 'undefined' ?
         this.options.multi : true;
       this.groups = typeof (this.options.groups) !== 'undefined' ?
@@ -58,7 +59,7 @@ export default {
       this.init();
     },
     init() {
-      this.globalModel = JSON.parse(JSON.stringify(this.selectOptions));
+      this.globalModel = _.cloneDeep(this.selectOptions);
       for (let i = 0; i < this.globalModel.length; i += 1) {
         for (let j = 0; j < this.globalModel[i][this.list].length; j += 1) {
           this.$set(this.globalModel[i][this.list][j], this.labelSelected,
