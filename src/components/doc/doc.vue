@@ -107,7 +107,10 @@
         <div id="whatsnew" class="container">
           <h3 class="s-title"><a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new</h3>
           <div class="docs-note">
-            <p>First release !!</p>
+            <h3>2.0.1</h3>
+            <p>Big update on the doc. She is now more complete</p>
+            <h3>2.0.0</h3>
+            <p>Use of events to be more respectfull of vuejs data binding</p>
           </div>
         </div>
         <div id="general" class="container">
@@ -323,66 +326,87 @@ filters.push({
               </li>
             </ul>
             <div v-if="example1.isActive === 'code'">
-              <pre class="code" data-lang="javascript" style="color: #667189"><code>
+              <pre class="code" data-lang="javascript" style="color: #667189"><code><span style="color: #5764c6">&lt;template&gt;
+  &lt;div&gt;
+    &lt;multi-select</span>
+      @selectionChanged</span>=<span style="color: #e06870">&quot;updateValues&quot;</span>
+      :options=<span style="color: #e06870">&quot;options&quot;</span>
+      :filters=<span style="color: #e06870">&quot;filters&quot;</span>
+      :selectOptions=<span style="color: #e06870">&quot;values&quot;</span><span style="color: #5764c6"> /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</span>
 
-  <span style="color: #e06870; font-weight: bold">const</span> selectOption = [{
-    name: <span style="color: #5764c6">&#39;first group&#39;</span>,
-    list: [
-      {name: <span style="color: #5764c6">&#39;0&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;2&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;3&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;8&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;9&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;11&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;13&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;14&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;15&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;18&#39;</span>},
-    ]
-  }, {
-    name: <span style="color: #5764c6">&#39;second group&#39;</span>,
-    list: [
-      {name: <span style="color: #5764c6">&#39;21&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;22&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;24&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;27&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;28&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;29&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;31&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;33&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;35&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;39&#39;</span>},
-    ]
-  }];
+<span style="color: #5764c6">&lt;script&gt;
+import</span> multiSelect from <span style="color: #e06870">&#39;./node_modules/vueMultiSelect/dist/vue-multi-select.vue&#39;</span>;
 
-  <span style="color: #e06870; font-weight: bold">const</span> filters = [{
-    nameAll: <span style="color: #5764c6">&#39;select &lt;= 10&#39;</span>,
-    nameNotAll: <span style="color: #5764c6">&#39;Deselect &lt;= 10&#39;</span>,
-    func: (elem) =&gt; {
-      <span style="color: #e06870; font-weight: bold">if</span> (elem.name &lt;= <span style="color: #5764c6">10</span>) {
-        <span style="color: #e06870; font-weight: bold">return</span> <span style="color: #e06870; font-weight: bold">true</span>;
-      }
-      <span style="color: #e06870; font-weight: bold">return</span> <span style="color: #e06870; font-weight: bold">false</span>;
+<span style="color: #5764c6">export</span> <span style="color: #5764c6">default</span> {
+  data() {
+    name: <span style="color: #e06870">&#39;first group&#39;</span>,
+    values: [],
+    data: [{
+      name: <span style="color: #e06870">&#39;first group&#39;</span>,
+      list: [
+        { name: <span style="color: #e06870">&#39;0&#39;</span> },
+        { name: <span style="color: #e06870">&#39;2&#39;</span> },
+        { name: <span style="color: #e06870">&#39;3&#39;</span> },
+        { name: <span style="color: #e06870">&#39;8&#39;</span> },
+        { name: <span style="color: #e06870">&#39;9&#39;</span> },
+        { name: <span style="color: #e06870">&#39;11&#39;</span> },
+        { name: <span style="color: #e06870">&#39;13&#39;</span> },
+        { name: <span style="color: #e06870">&#39;14&#39;</span> },
+        { name: <span style="color: #e06870">&#39;15&#39;</span> },
+        { name: <span style="color: #e06870">&#39;18&#39;</span> },
+      ],
+    }, {
+      name: <span style="color: #e06870">&#39;second group&#39;</span>,
+      list: [
+        { name: <span style="color: #e06870">&#39;21&#39;</span> },
+        { name: <span style="color: #e06870">&#39;22&#39;</span> },
+        { name: <span style="color: #e06870">&#39;24&#39;</span> },
+        { name: <span style="color: #e06870">&#39;27&#39;</span> },
+        { name: <span style="color: #e06870">&#39;28&#39;</span> },
+        { name: <span style="color: #e06870">&#39;29&#39;</span> },
+        { name: <span style="color: #e06870">&#39;31&#39;</span> },
+        { name: <span style="color: #e06870">&#39;33&#39;</span> },
+        { name: <span style="color: #e06870">&#39;35&#39;</span> },
+        { name: <span style="color: #e06870">&#39;39&#39;</span> },
+      ],
+    }],
+    filters: [{
+      nameAll: <span style="color: #e06870">&#39;select &lt;= 10&#39;</span>,
+      nameNotAll: <span style="color: #e06870">&#39;Deselect &lt;= 10&#39;</span>,
+      func: (elem) =&gt; {
+        <span style="color: #5764c6">if</span> (elem.name &lt;= 10) {
+          <span style="color: #5764c6">return</span> <span style="color: #5764c6">true</span>;
+        }
+        <span style="color: #5764c6">return</span> <span style="color: #5764c6">false</span>;
+      },
+    }, {
+      nameAll: <span style="color: #e06870">&#39;Select contains 2&#39;</span>,
+      nameNotAll: <span style="color: #e06870">&#39;Deselect contains 2&#39;</span>,
+      func: (elem) =&gt; {
+        <span style="color: #5764c6">if</span> (elem.name.indexOf(<span style="color: #e06870">&#39;2&#39;</span>) !== -1) {
+          <span style="color: #5764c6">return</span> <span style="color: #5764c6">true</span>;
+        }
+        <span style="color: #5764c6">return</span> <span style="color: #5764c6">false</span>;
+      },
+    }],
+    options: {
+      btnLabel: <span style="color: #e06870">&#39;A simple vue multi select&#39;</span>,
     }
-  },{
-    nameAll: <span style="color: #5764c6">&#39;Select contains 2&#39;</span>,
-    nameNotAll: <span style="color: #5764c6">&#39;Deselect contains 2&#39;</span>,
-    func: (elem) =&gt; {
-      <span style="color: #e06870; font-weight: bold">if</span> (elem.name.indexOf(<span style="color: #5764c6">&#39;2&#39;</span>) !== -<span style="color: #5764c6">1</span>) {
-        <span style="color: #e06870; font-weight: bold">return</span> <span style="color: #e06870; font-weight: bold">true</span>;
-      }
-      <span style="color: #e06870; font-weight: bold">return</span> <span style="color: #e06870; font-weight: bold">false</span>;
+  },
+  methods: {
+    updateValues(values) {
+      <span style="color: #5764c6">this</span>.values = values;
     }
-  }];
-
-  <span style="color: #e06870; font-weight: bold">const</span> options = {
-    btnLabel: <span style="color: #5764c6">&#39;A simple vue multi select&#39;</span>
+  },
+  components: {
+    multiSelect,
   }
+}
+<span style="color: #5764c6">&lt;/script&gt;</span>
+</code></pre>
 
-  <span style="color: #e06870; font-weight: bold">const</span> event = (values) => {
-    this.values = values;
-  }
-              </code></pre>
             </div>
             <div v-if="example1.isActive === 'values'">
               <pre class="code" data-lang="javascript" style="color: #667189"><code>
@@ -411,33 +435,70 @@ filters.push({
               </li>
             </ul>
             <div v-if="example2.isActive === 'code'">
-              <pre class="code" data-lang="javascript" style="color: #667189"><code>
+              <pre class="code" data-lang="javascript" style="color: #667189"><code><span style="color: #5764c6">&lt;template&gt;
+  &lt;div&gt;
+    &lt;multi-select</span>
+      @selectionChanged</span>=<span style="color: #e06870">&quot;updateValues&quot;</span>
+      :options=<span style="color: #e06870">&quot;options&quot;</span>
+      :selectOptions=<span style="color: #e06870">&quot;values&quot;</span><span style="color: #5764c6"> /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</span>
 
-  <span style="color: #e06870; font-weight: bold">const</span> selectOption = [{
-    list: [
-      {name: <span style="color: #5764c6">&#39;0&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;2&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;3&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;8&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;9&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;11&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;13&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;14&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;15&#39;</span>},
-      {name: <span style="color: #5764c6">&#39;18&#39;</span>},
-    ]
-  }];
+<span style="color: #5764c6">&lt;script&gt;
+import</span> multiSelect from <span style="color: #e06870">&#39;./node_modules/vueMultiSelect/dist/vue-multi-select.vue&#39;</span>;
 
-  <span style="color: #e06870; font-weight: bold">const</span> options = {
-    groups: <span style="color: #e06870">&#39;false&#39;</span>
-    multi: <span style="color: #e06870">&#39;false&#39;</span>
-    btnLabel: <span style="color: #5764c6">&#39;A simple vue multi select&#39;</span>
+<span style="color: #5764c6">export</span> <span style="color: #5764c6">default</span> {
+  data() {
+    name: <span style="color: #e06870">&#39;first group&#39;</span>,
+    values: [],
+    data: [{
+      name: <span style="color: #e06870">&#39;first group&#39;</span>,
+      list: [
+        { name: <span style="color: #e06870">&#39;0&#39;</span> },
+        { name: <span style="color: #e06870">&#39;2&#39;</span> },
+        { name: <span style="color: #e06870">&#39;3&#39;</span> },
+        { name: <span style="color: #e06870">&#39;8&#39;</span> },
+        { name: <span style="color: #e06870">&#39;9&#39;</span> },
+        { name: <span style="color: #e06870">&#39;11&#39;</span> },
+        { name: <span style="color: #e06870">&#39;13&#39;</span> },
+        { name: <span style="color: #e06870">&#39;14&#39;</span> },
+        { name: <span style="color: #e06870">&#39;15&#39;</span> },
+        { name: <span style="color: #e06870">&#39;18&#39;</span> },
+      ],
+    }, {
+      name: <span style="color: #e06870">&#39;second group&#39;</span>,
+      list: [
+        { name: <span style="color: #e06870">&#39;21&#39;</span> },
+        { name: <span style="color: #e06870">&#39;22&#39;</span> },
+        { name: <span style="color: #e06870">&#39;24&#39;</span> },
+        { name: <span style="color: #e06870">&#39;27&#39;</span> },
+        { name: <span style="color: #e06870">&#39;28&#39;</span> },
+        { name: <span style="color: #e06870">&#39;29&#39;</span> },
+        { name: <span style="color: #e06870">&#39;31&#39;</span> },
+        { name: <span style="color: #e06870">&#39;33&#39;</span> },
+        { name: <span style="color: #e06870">&#39;35&#39;</span> },
+        { name: <span style="color: #e06870">&#39;39&#39;</span> },
+      ],
+    }],
+    options: {
+      groups: <span style="color: #e06870">&#39;false&#39;</span>,
+      multi: <span style="color: #e06870">&#39;false&#39;</span>,
+      btnLabel: <span style="color: #e06870">&#39;A simple vue multi select&#39;</span>,
+
+    }
+  },
+  methods: {
+    updateValues(values) {
+      <span style="color: #5764c6">this</span>.values = values;
+    }
+  },
+  components: {
+    multiSelect,
   }
+}
+<span style="color: #5764c6">&lt;/script&gt;</span>
+</code></pre>
 
-  <span style="color: #e06870; font-weight: bold">const</span> event = (values) => {
-    this.values = values;
-  }
-              </code></pre>
             </div>
             <div v-if="example2.isActive === 'values'">
               <pre class="code" data-lang="javascript" style="color: #667189"><code>
@@ -467,48 +528,69 @@ filters.push({
               </li>
             </ul>
             <div v-if="example3.isActive === 'code'">
-              <pre class="code" data-lang="javascript" style="color: #667189"><code>
-<span style="color: #e06870; font-weight: bold">const</span> selectOption = [{
-    title: <span style="color: #5764c6">&#39;part one&#39;</span>,
+              <pre class="code" data-lang="javascript" style="color: #667189"><code><span style="color: #5764c6">&lt;template&gt;
+  &lt;div&gt;
+    &lt;multi-select</span>
+      @selectionChanged</span>=<span style="color: #e06870">&quot;updateValues&quot;</span>
+      :options=<span style="color: #e06870">&quot;options&quot;</span>
+      :selectOptions=<span style="color: #e06870">&quot;values&quot;</span><span style="color: #5764c6"> /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</span>
+
+<span style="color: #5764c6">&lt;script&gt;</span>
+<span style="color: #5764c6">import</span> multiSelect from <span style="color: #e06870">&#39;./node_modules/vueMultiSelect/dist/vue-multi-select.vue&#39;</span>;
+
+<span style="color: #5764c6">export</span> <span style="color: #5764c6">default</span> {
+  data() {
+    name: <span style="color: #e06870">&#39;first group&#39;</span>,
+    values: [],
+    data: [{
+    title: <span style="color: #e06870">&#39;part one&#39;</span>,
     elements: [
-      {label: <span style="color: #5764c6">&#39;0&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;2&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;3&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;8&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;9&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;11&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;13&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;14&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;15&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;18&#39;</span>},
+      {label: <span style="color: #e06870">&#39;0&#39;</span>},
+      {label: <span style="color: #e06870">&#39;2&#39;</span>},
+      {label: <span style="color: #e06870">&#39;3&#39;</span>},
+      {label: <span style="color: #e06870">&#39;8&#39;</span>},
+      {label: <span style="color: #e06870">&#39;9&#39;</span>},
+      {label: <span style="color: #e06870">&#39;11&#39;</span>},
+      {label: <span style="color: #e06870">&#39;13&#39;</span>},
+      {label: <span style="color: #e06870">&#39;14&#39;</span>},
+      {label: <span style="color: #e06870">&#39;15&#39;</span>},
+      {label: <span style="color: #e06870">&#39;18&#39;</span>},
     ]
   },{
-    title: <span style="color: #5764c6">&#39;part two&#39;</span>,
+    title: <span style="color: #e06870">&#39;part two&#39;</span>,
     elements: [
-      {label: <span style="color: #5764c6">&#39;23&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;25&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;31&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;42&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;56&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;76&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;82&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;42&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;13&#39;</span>},
-      {label: <span style="color: #5764c6">&#39;21&#39;</span>},
+      {label: <span style="color: #e06870">&#39;23&#39;</span>},
+      {label: <span style="color: #e06870">&#39;25&#39;</span>},
+      {label: <span style="color: #e06870">&#39;31&#39;</span>},
+      {label: <span style="color: #e06870">&#39;42&#39;</span>},
+      {label: <span style="color: #e06870">&#39;56&#39;</span>},
+      {label: <span style="color: #e06870">&#39;76&#39;</span>},
+      {label: <span style="color: #e06870">&#39;82&#39;</span>},
+      {label: <span style="color: #e06870">&#39;42&#39;</span>},
+      {label: <span style="color: #e06870">&#39;13&#39;</span>},
+      {label: <span style="color: #e06870">&#39;21&#39;</span>},
     ]
   }];
-
-  options = {
-    labelName: <span style="color: #5764c6">&#39;label&#39;</span>,
-    labelList: <span style="color: #5764c6">&#39;elements&#39;</span>,
-    groupName: <span style="color: #5764c6">&#39;title&#39;</span>,
-    btnLabel: <span style="color: #5764c6">&#39;A simple vue multi select&#39;</span>,
-    cssSelected: (option) =&gt;  option[<span style="color: #5764c6">&#39;selected&#39;</span>] ? {<span style="color: #5764c6">&#39;background-color&#39;</span>: <span style="color: #5764c6">&#39;#5764c6&#39;</span>} : <span style="color: #5764c6">&#39;&#39;</span>
+    options: {
+      labelName: <span style="color: #e06870">&#39;label&#39;</span>,
+      labelList: <span style="color: #e06870">&#39;elements&#39;</span>,
+      groupName: <span style="color: #e06870">&#39;title&#39;</span>,
+      btnLabel: <span style="color: #e06870">&#39;A simple vue multi select&#39;</span>,
+      cssSelected: (option) =&gt;  option[<span style="color: #e06870">&#39;selected&#39;</span>] ? {<span style="color: #e06870">&#39;background-color&#39;</span>: <span style="color: #e06870">&#39;#5764c6&#39;</span>} : <span style="color: #e06870">&#39;&#39;</span>
+    }
+  },
+  methods: {
+    updateValues(values) {
+      <span style="color: #5764c6">this</span>.values = values;
+    }
+  },
+  components: {
+    multiSelect,
   }
-
-  <span style="color: #e06870; font-weight: bold">const</span> event = (values) => {
-    this.values = values;
-  }
+}
+<span style="color: #5764c6">&lt;/script&gt;</span>
               </code></pre>
             </div>
             <div v-if="example3.isActive === 'values'">

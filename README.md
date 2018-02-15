@@ -23,7 +23,7 @@ When you create a new PR please make it against the develop branch when adding n
 | selectOptions | Array       |
 | value         | Array       |
 
-1. options (Contains options to set the multi-select)
+### 1. options (Contains options to set the multi-select)
 
 | Params        | Type     | Default                                                                 | Description                           |
 | ------------- | -------- | ----------------------------------------------------------------------- | ------------------------------------- |
@@ -37,7 +37,7 @@ When you create a new PR please make it against the develop branch when adding n
 | labelSelected | String   | 'selected'                                                              | Name attributes for value selected    |
 | groupName     | String   | 'name'                                                                  | Name Attributes for groups to display |
 
-2. filters to apply to select many options
+### 2. filters to apply to select many options
 ```javascript
 // Exemple with Select/Deselect all
 const filters = [];
@@ -60,7 +60,7 @@ filters.push({
 });
 ```
 
-3. elements to select/deselect
+### 3. elements to select/deselect
 ``` javascript
 
 data = [{
@@ -85,9 +85,92 @@ data = [{
 
 ```
 
-4. values selected
+### 4. values selected
 ``` javascript
 [ {name: 'choice 1'}, {name: 'choice 11'}] // In the case we selected choice 1 and choice 11
+```
+
+### 5. Examples
+```html
+<template>
+  <div>
+    <multi-select
+      @selectionChanged="updateValues"
+      :options="options"
+      :filters="filters"
+      :selectOptions="values" />
+  </div>
+</template>
+
+<script>
+import multiSelect from './node_modules/vueMultiSelect/dist/vue-multi-select.vue';
+
+export default {
+  data() {
+    name: 'first group',
+    values: [],
+    data: [{
+      name: 'first group',
+      list: [
+        { name: '0' },
+        { name: '2' },
+        { name: '3' },
+        { name: '8' },
+        { name: '9' },
+        { name: '11' },
+        { name: '13' },
+        { name: '14' },
+        { name: '15' },
+        { name: '18' },
+      ],
+    }, {
+      name: 'second group',
+      list: [
+        { name: '21' },
+        { name: '22' },
+        { name: '24' },
+        { name: '27' },
+        { name: '28' },
+        { name: '29' },
+        { name: '31' },
+        { name: '33' },
+        { name: '35' },
+        { name: '39' },
+      ],
+    }],
+    filters: [{
+      nameAll: 'select <= 10',
+      nameNotAll: 'Deselect <= 10',
+      func: (elem) => {
+        if (elem.name <= 10) {
+          return true;
+        }
+        return false;
+      },
+    }, {
+      nameAll: 'Select contains 2',
+      nameNotAll: 'Deselect contains 2',
+      func: (elem) => {
+        if (elem.name.indexOf('2') !== -1) {
+          return true;
+        }
+        return false;
+      },
+    }],
+    options: {
+      btnLabel: 'A simple vue multi select',
+    }
+  },
+  methods: {
+    updateValues(values) {
+      this.values = values;
+    }
+  },
+  components: {
+    multiSelect,
+  }
+}
+</script>
 ```
 
 ## Build Setup
