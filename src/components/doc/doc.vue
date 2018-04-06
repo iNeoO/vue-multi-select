@@ -468,7 +468,7 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
     }
   },
   components: {
-    multiSelect,
+    vueMultiSelect,
   }
 }
 <span class="blue">&lt;/script&gt;</span>
@@ -579,7 +579,7 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
     }
   },
   components: {
-    multiSelect,
+    vueMultiSelect,
   }
 }
 <span class="blue">&lt;/script&gt;</span>
@@ -697,7 +697,7 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
     }
   },
   components: {
-    multiSelect,
+    vueMultiSelect,
   }
 }
 <span class="blue">&lt;/script&gt;</span>

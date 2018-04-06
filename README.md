@@ -180,8 +180,6 @@ export default {
 ## Build Setup
 
 ``` bash
-- `prepublishOnly`: Npm prepublish hook so you can run `npm publish` and both your library and docs are built first.
-
 - `npm run dev`: Shortcut to run both dev:lib and dev:docs in parallel using.
 
 - `npm run dev:lib`: Runs webpack watch mode on your library so file changes are built and re-written to disk automatically.
