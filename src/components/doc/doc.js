@@ -1,7 +1,3 @@
-import spectre from 'Spectre/dist/spectre.min.css';
-import icons from 'Spectre/dist/spectre-icons.min.css';
-import exp from 'Spectre/dist/spectre-exp.min.css';
-
 import multiSelect from '../vueMultiSelect/vue-multi-select.vue';
 
 export default {
@@ -122,7 +118,7 @@ export default {
           labelList: 'elements',
           groupName: 'title',
           btnLabel: 'A simple vue multi select',
-          cssSelected: (option) => option.selected ? { 'background-color': '#5764c6' } : '',
+          cssSelected: option => (option.selected ? { 'background-color': '#5764c6' } : ''),
         },
         values: [],
         isActive: 'code',
@@ -131,8 +127,8 @@ export default {
   },
   components: { multiSelect },
   methods: {
-    setActive(example, label) {
-      example.isActive = label;
+    setActive(e, label) {
+      e.isActive = label;
     },
     updateValues1(values) {
       this.example1.values = values;
@@ -143,12 +139,12 @@ export default {
     updateValues3(values) {
       this.example3.values = values;
     },
-    randomize(example) {
-      const list = example.options.labelList || 'list';
-      const name = example.options.labelName || 'name';
-      for (let i = 0; i < example.selectOptions.length; i += 1) {
-        for (let j = 0; j < example.selectOptions[i][list].length; j += 1) {
-          example.selectOptions[i][list][j][name] = Math.floor(Math.random() * 100) + 1;
+    randomize(e) {
+      const list = e.options.labelList || 'list';
+      const name = e.options.labelName || 'name';
+      for (let i = 0; i < e.selectOptions.length; i += 1) {
+        for (let j = 0; j < e.selectOptions[i][list].length; j += 1) {
+          e.selectOptions[i][list][j][name] = Math.floor(Math.random() * 100) + 1;
         }
       }
     },

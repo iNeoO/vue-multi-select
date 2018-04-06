@@ -1,5 +1,19 @@
 /* ! vertical layout */
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  -webkit-box-shadow: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eee;
+  border-radius: 10px;
+}
+
 .select .vertical {
   float: none;
 }
@@ -14,10 +28,10 @@
 /* ! create a "row" */
 
 .select .line {
-  padding: 2px 0px 4px 0px;
+  box-sizing: content-box;
   max-height: 30px;
   overflow: hidden;
-  box-sizing: content-box;
+  padding: 2px 0 4px 0;
   position: relative;
 }
 
@@ -40,21 +54,21 @@
 /* the select button */
 
 .select>button {
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  cursor: pointer;
   border: 1px solid #c6c6c6;
-  padding: 1px 8px 1px 8px;
-  font-size: 14px;
-  min-height: 31px !important;
   border-radius: 4px;
   color: #555;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  min-height: 31px !important;
+  padding: 1px 8px 1px 8px;
+  position: relative;
+  text-align: center;
+  user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
-  user-select: none;
   white-space: normal;
   background-color: #fff;
   /*background-image: linear-gradient(#fff, #f7f7f7);      */
@@ -146,6 +160,13 @@
   margin-right: 4px;
 }
 
+.right {
+  float: right;
+}
+
+.margin-right-10 {
+  margin-right: 10px
+}
 
 /* clear button */
 
@@ -214,7 +235,7 @@
 
 .select .checkBoxContainer {
   display: block;
-  padding: 5px 0px 0 5px;
+  padding-top: 5px;
   overflow: hidden;
   max-height: 300px;
   min-height: 80px;
@@ -222,6 +243,9 @@
 
 }
 
+.margin-left-20 {
+  margin-left: 20px;
+}
 
 /* ! to show / hide the checkbox layer above */
 
@@ -302,7 +326,7 @@
 .select .selectItem:hover,
 .select .selectGroup:hover {
   cursor: pointer;
-  border: 2px solid black;
+  background-color: #f5f7fa;
 }
 
 
@@ -421,7 +445,7 @@
 }
 
 .selectList {
-  margin-top: 0.5em;
+  margin: 0;
   list-style: inside disc;
   padding-left: 0px;
 }

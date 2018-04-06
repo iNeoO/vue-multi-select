@@ -49,7 +49,11 @@ export default {
       this.labelSelected = this.options.labelSelected ? this.options.labelSelected : 'selected';
       this.labelBold = this.options.labelBold ? this.options.labelBold : 'bold';
       this.options.cssSelected = this.options.cssSelected ?
-        this.options.cssSelected : (option) => option[this.labelSelected] ? { 'background-color': '#b4b4b4' } : '';
+        this.options.cssSelected : option => (option[this.labelSelected] ?
+          {
+            'font-weight': 'bold',
+            color: '#5755d9',
+          } : '');
       this.filters.unshift({
         nameAll: 'Select all',
         nameNotAll: 'Deselect all',
@@ -136,7 +140,7 @@ export default {
       for (let i = 0; i < this.globalModel[this.idSelectedTab][this.list].length;
         i += 1) {
         if (this.globalModel[this.idSelectedTab][this.list][i][this.labelName].indexOf(
-            this.searchInput) !== -1) {
+          this.searchInput) !== -1) {
           allHide = false;
           this.globalModel[this.idSelectedTab][this.list][i].visible = true;
         } else {
@@ -176,7 +180,7 @@ export default {
           j += 1) {
           if (this.globalModel[this.idSelectedTab][this.list][j].visible &&
             this.filters[i].func(
-            this.globalModel[this.idSelectedTab][this.list][j]) &&
+              this.globalModel[this.idSelectedTab][this.list][j]) &&
             !this.globalModel[this.idSelectedTab][this.list][j][this.labelSelected]) {
             allSelected = false;
             break;

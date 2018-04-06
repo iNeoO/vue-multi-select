@@ -165,3 +165,28 @@
 .hand {
   cursor: pointer;
 }
+
+.red {
+  color: #e06870;
+}
+
+.blue {
+  color: #5764c6;
+}
+
+.grey {
+  color: #667189;
+}
+
+.light-grey {
+  color: #acb3c2;
+  font-style: italic;
+}
+
+.wrap {
+  white-space: nowrap;
+}
+
+.bold {
+  font-weight: bold;
+}

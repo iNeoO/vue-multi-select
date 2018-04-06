@@ -1,7 +1,8 @@
 This component gives you a multi/single select with the power of Vuejs components.
 
 ## Demo and doc site
-[vue-multi-select](http://vue-multi-select.tuturu.io)
+[vue-multi-select](https://vue-multi-select.tuturu.io)
+[https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
 ## Dependencies
 - required: Vuejs >= 2.3.3
@@ -9,7 +10,8 @@ This component gives you a multi/single select with the power of Vuejs component
 ## Install
 1. Clone the repo or `npm install vue-multi-select --save`
 2. Include the file in your app
-  `import multiSelect from './node_modules/vueMultiSelect/dist/vue-multi-select.vue';`
+  `import vueMultiSelect from 'vue-multi-select';`
+  `import '~vue-multi-select/dist/lib/vueMultiSelect.css'`
 
 ## Contributing
 Issues and PR's are much appreciated.
@@ -28,10 +30,9 @@ When you create a new PR please make it against the develop branch when adding n
 | Params        | Type     | Default                                                                 | Description                           |
 | ------------- | -------- | ----------------------------------------------------------------------- | ------------------------------------- |
 | btnLabel      | String   | 'multi-select'                                                          | Label on the button	                 |
-| cssSelected   | Function | (option) =>  option['selected'] ? {'background-color': '#b4b4b4'} : ''  | Css passed to value selected          |
+| cssSelected   | Function | (option) =>  option['selected'] ? {  'font-weight': 'bold',color: '#5755d9',} : ''  | Css passed to value                          |
 | groups        | String   | 'multi-select'                                                          | Display or not groups selection       |
 | multi         | Boolean  | true                                                                    | Set single or multiple selection      |
-| labelBold     | String   | 'bold'                                                                  | Name Attributes for value to set bold |
 | labelList     | String   | 'list'                                                                  | Name Attributes for list              |
 | labelName     | String   | 'name'                                                                  | Name Attributes for value to display  |
 | labelSelected | String   | 'selected'                                                              | Name attributes for value selected    |
@@ -103,7 +104,8 @@ data = [{
 </template>
 
 <script>
-import multiSelect from './node_modules/vueMultiSelect/dist/vue-multi-select.vue';
+import vueMultiSelect from 'vue-multi-select';
+import '~vue-multi-select/dist/lib/vueMultiSelect.css';
 
 export default {
   data() {
@@ -176,14 +178,19 @@ export default {
 ## Build Setup
 
 ``` bash
-# install dependencies
-npm install
+- `prepublishOnly`: Npm prepublish hook so you can run `npm publish` and both your library and docs are built first.
 
-# serve with hot reload at localhost:3002
-npm run dev
+- `npm run dev`: Shortcut to run both dev:lib and dev:docs in parallel using.
 
-# build for production with minification
-source build.sh
+- `npm run dev:lib`: Runs webpack watch mode on your library so file changes are built and re-written to disk automatically.
+
+- `npm run dev:docs`: Runs both the development server for your docs/demo site.
+
+- `npm run build`: Shortcut to run both build:lib and build:docs.
+
+- `npm run build:lib`: Production ready build of your library as an ES6 module (via UMD), ready to import into another project via npm.
+
+- `npm run build:docs`: Production ready build of your docs site for your library. Put this build online so you can demo your library to the world and provide documentation.
 ```
 
 ## thanks
