@@ -1,6 +1,6 @@
 {
   "name": "vue-multi-select",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "A multi/single select component made in vue",
   "author": "Valère Pique <valere@1000mercis.com>",
   "keywords": [
@@ -15,7 +15,6 @@
   "private": false,
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "npm run build",
     "dev": "npm-run-all --parallel dev:lib dev:docs",
     "dev:lib": "webpack --config build/webpack.lib.conf.js --watch --progress --hide-modules",
     "dev:docs": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
