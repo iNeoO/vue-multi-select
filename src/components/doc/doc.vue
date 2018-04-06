@@ -123,7 +123,7 @@
             <p>
               <code>
                 import vueMultiSelect from 'vue-multi-select';<br>
-                import '~vue-multi-select/dist/lib/vueMultiSelect.css';
+                import 'vue-multi-select/dist/lib/vue-multi-select.min.css';
               </code>
             </p>
           </div>
@@ -394,70 +394,72 @@ filters.push({
       @selectionChanged=<span class="red">&quot;updateValues&quot;</span>
       :options=<span class="red">&quot;options&quot;</span>
       :filters=<span class="red">&quot;filters&quot;</span>
-      :selectOptions=<span class="red">&quot;values&quot;</span><span class="blue"> /&gt;
+      :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
   &lt;/div&gt;
 &lt;/template&gt;</span>
 
 <span class="blue">&lt;script&gt;
 import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
 <span class="blue">import</span><span class="red wrap">
-&#39;~vue-multi-select/dist/lib/vue-multi-select.css&#39;</span>;
+&#39;vue-multi-select/dist/lib/vue-multi-select.min.css&#39;</span>;
 
 <span class="blue">export</span> <span class="blue">default</span> {
   data() {
-    name: <span class="red">&#39;first group&#39;</span>,
-    values: [],
-    data: [{
+    return {
       name: <span class="red">&#39;first group&#39;</span>,
-      list: [
-        { name: <span class="red">&#39;0&#39;</span> },
-        { name: <span class="red">&#39;2&#39;</span> },
-        { name: <span class="red">&#39;3&#39;</span> },
-        { name: <span class="red">&#39;8&#39;</span> },
-        { name: <span class="red">&#39;9&#39;</span> },
-        { name: <span class="red">&#39;11&#39;</span> },
-        { name: <span class="red">&#39;13&#39;</span> },
-        { name: <span class="red">&#39;14&#39;</span> },
-        { name: <span class="red">&#39;15&#39;</span> },
-        { name: <span class="red">&#39;18&#39;</span> },
-      ],
-    }, {
-      name: <span class="red">&#39;second group&#39;</span>,
-      list: [
-        { name: <span class="red">&#39;21&#39;</span> },
-        { name: <span class="red">&#39;22&#39;</span> },
-        { name: <span class="red">&#39;24&#39;</span> },
-        { name: <span class="red">&#39;27&#39;</span> },
-        { name: <span class="red">&#39;28&#39;</span> },
-        { name: <span class="red">&#39;29&#39;</span> },
-        { name: <span class="red">&#39;31&#39;</span> },
-        { name: <span class="red">&#39;33&#39;</span> },
-        { name: <span class="red">&#39;35&#39;</span> },
-        { name: <span class="red">&#39;39&#39;</span> },
-      ],
-    }],
-    filters: [{
-      nameAll: <span class="red">&#39;select &lt;= 10&#39;</span>,
-      nameNotAll: <span class="red">&#39;Deselect &lt;= 10&#39;</span>,
-      func: (elem) =&gt; {
-        <span class="blue">if</span> (elem.name &lt;= 10) {
-          <span class="blue">return</span> <span class="blue">true</span>;
-        }
-        <span class="blue">return</span> <span class="blue">false</span>;
-      },
-    }, {
-      nameAll: <span class="red">&#39;Select contains 2&#39;</span>,
-      nameNotAll: <span class="red">&#39;Deselect contains 2&#39;</span>,
-      func: (elem) =&gt; {
-        <span class="wrap"><span class="blue">if</span>
-        (elem.name.indexOf(<span class="red">&#39;2&#39;</span>) !== -1) {</span>
-          <span class="blue">return</span> <span class="blue">true</span>;
-        }
-        <span class="blue">return</span> <span class="blue">false</span>;
-      },
-    }],
-    options: {
-      btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
+      values: [],
+      data: [{
+        name: <span class="red">&#39;first group&#39;</span>,
+        list: [
+          { name: <span class="red">&#39;0&#39;</span> },
+          { name: <span class="red">&#39;2&#39;</span> },
+          { name: <span class="red">&#39;3&#39;</span> },
+          { name: <span class="red">&#39;8&#39;</span> },
+          { name: <span class="red">&#39;9&#39;</span> },
+          { name: <span class="red">&#39;11&#39;</span> },
+          { name: <span class="red">&#39;13&#39;</span> },
+          { name: <span class="red">&#39;14&#39;</span> },
+          { name: <span class="red">&#39;15&#39;</span> },
+          { name: <span class="red">&#39;18&#39;</span> },
+        ],
+      }, {
+        name: <span class="red">&#39;second group&#39;</span>,
+        list: [
+          { name: <span class="red">&#39;21&#39;</span> },
+          { name: <span class="red">&#39;22&#39;</span> },
+          { name: <span class="red">&#39;24&#39;</span> },
+          { name: <span class="red">&#39;27&#39;</span> },
+          { name: <span class="red">&#39;28&#39;</span> },
+          { name: <span class="red">&#39;29&#39;</span> },
+          { name: <span class="red">&#39;31&#39;</span> },
+          { name: <span class="red">&#39;33&#39;</span> },
+          { name: <span class="red">&#39;35&#39;</span> },
+          { name: <span class="red">&#39;39&#39;</span> },
+        ],
+      }],
+      filters: [{
+        nameAll: <span class="red">&#39;select &lt;= 10&#39;</span>,
+        nameNotAll: <span class="red">&#39;Deselect &lt;= 10&#39;</span>,
+        func: (elem) =&gt; {
+          <span class="blue">if</span> (elem.name &lt;= 10) {
+            <span class="blue">return</span> <span class="blue">true</span>;
+          }
+          <span class="blue">return</span> <span class="blue">false</span>;
+        },
+      }, {
+        nameAll: <span class="red">&#39;Select contains 2&#39;</span>,
+        nameNotAll: <span class="red">&#39;Deselect contains 2&#39;</span>,
+        func: (elem) =&gt; {
+          <span class="wrap"><span class="blue">if</span>
+          (elem.name.indexOf(<span class="red">&#39;2&#39;</span>) !== -1) {</span>
+            <span class="blue">return</span> <span class="blue">true</span>;
+          }
+          <span class="blue">return</span> <span class="blue">false</span>;
+        },
+      }],
+      options: {
+        btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
+      }
     }
   },
   methods: {
@@ -521,53 +523,54 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
     &lt;multi-select</span>
       @selectionChanged<span class="red">&quot;updateValues&quot;</span>
       :options=<span class="red">&quot;options&quot;</span>
-      :selectOptions=<span class="red">&quot;values&quot;</span><span class="blue"> /&gt;
+      :selectOptions=<span class="red">&quot;dataf&quot;</span><span class="blue"> /&gt;
   &lt;/div&gt;
 &lt;/template&gt;</span>
 
 <span class="blue">&lt;script&gt;
 import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
 <span class="blue">import</span><span class="red wrap">
-&#39;~vue-multi-select/dist/lib/vueMultiSelect.css&#39;</span>;
+&#39;vue-multi-select/dist/lib/vue-multi-select.min.css&#39;</span>;
 
 <span class="blue">export</span> <span class="blue">default</span> {
   data() {
-    name: <span class="red">&#39;first group&#39;</span>,
-    values: [],
-    data: [{
+    return {
       name: <span class="red">&#39;first group&#39;</span>,
-      list: [
-        { name: <span class="red">&#39;0&#39;</span> },
-        { name: <span class="red">&#39;2&#39;</span> },
-        { name: <span class="red">&#39;3&#39;</span> },
-        { name: <span class="red">&#39;8&#39;</span> },
-        { name: <span class="red">&#39;9&#39;</span> },
-        { name: <span class="red">&#39;11&#39;</span> },
-        { name: <span class="red">&#39;13&#39;</span> },
-        { name: <span class="red">&#39;14&#39;</span> },
-        { name: <span class="red">&#39;15&#39;</span> },
-        { name: <span class="red">&#39;18&#39;</span> },
-      ],
-    }, {
-      name: <span class="red">&#39;second group&#39;</span>,
-      list: [
-        { name: <span class="red">&#39;21&#39;</span> },
-        { name: <span class="red">&#39;22&#39;</span> },
-        { name: <span class="red">&#39;24&#39;</span> },
-        { name: <span class="red">&#39;27&#39;</span> },
-        { name: <span class="red">&#39;28&#39;</span> },
-        { name: <span class="red">&#39;29&#39;</span> },
-        { name: <span class="red">&#39;31&#39;</span> },
-        { name: <span class="red">&#39;33&#39;</span> },
-        { name: <span class="red">&#39;35&#39;</span> },
-        { name: <span class="red">&#39;39&#39;</span> },
-      ],
-    }],
-    options: {
-      groups: <span class="red">&#39;false&#39;</span>,
-      multi: <span class="red">&#39;false&#39;</span>,
-      btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
-
+      values: [],
+      data: [{
+        name: <span class="red">&#39;first group&#39;</span>,
+        list: [
+          { name: <span class="red">&#39;0&#39;</span> },
+          { name: <span class="red">&#39;2&#39;</span> },
+          { name: <span class="red">&#39;3&#39;</span> },
+          { name: <span class="red">&#39;8&#39;</span> },
+          { name: <span class="red">&#39;9&#39;</span> },
+          { name: <span class="red">&#39;11&#39;</span> },
+          { name: <span class="red">&#39;13&#39;</span> },
+          { name: <span class="red">&#39;14&#39;</span> },
+          { name: <span class="red">&#39;15&#39;</span> },
+          { name: <span class="red">&#39;18&#39;</span> },
+        ],
+      }, {
+        name: <span class="red">&#39;second group&#39;</span>,
+        list: [
+          { name: <span class="red">&#39;21&#39;</span> },
+          { name: <span class="red">&#39;22&#39;</span> },
+          { name: <span class="red">&#39;24&#39;</span> },
+          { name: <span class="red">&#39;27&#39;</span> },
+          { name: <span class="red">&#39;28&#39;</span> },
+          { name: <span class="red">&#39;29&#39;</span> },
+          { name: <span class="red">&#39;31&#39;</span> },
+          { name: <span class="red">&#39;33&#39;</span> },
+          { name: <span class="red">&#39;35&#39;</span> },
+          { name: <span class="red">&#39;39&#39;</span> },
+        ],
+      }],
+      options: {
+        groups: <span class="red">&#39;false&#39;</span>,
+        multi: <span class="red">&#39;false&#39;</span>,
+        btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
+      }
     }
   },
   methods: {
@@ -632,58 +635,60 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
     &lt;multi-select</span>
       @selectionChanged=<span class="red">&quot;updateValues&quot;</span>
       :options=<span class="red">&quot;options&quot;</span>
-      :selectOptions=<span class="red">&quot;values&quot;</span><span class="blue"> /&gt;
+      :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
   &lt;/div&gt;
 &lt;/template&gt;</span>
 
 <span class="blue">&lt;script&gt;
 import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
 <span class="blue">import</span><span class="red wrap">
-&#39;~vue-multi-select/dist/lib/vueMultiSelect.css&#39;</span>;
+&#39;vue-multi-select/dist/lib/vue-multi-select.min.css&#39;</span>;
 
 <span class="blue">export</span> <span class="blue">default</span> {
   data() {
-    name: <span class="red">&#39;first group&#39;</span>,
-    values: [],
-    data: [{
-    title: <span class="red">&#39;part one&#39;</span>,
-    elements: [
-      {label: <span class="red">&#39;0&#39;</span>},
-      {label: <span class="red">&#39;2&#39;</span>},
-      {label: <span class="red">&#39;3&#39;</span>},
-      {label: <span class="red">&#39;8&#39;</span>},
-      {label: <span class="red">&#39;9&#39;</span>},
-      {label: <span class="red">&#39;11&#39;</span>},
-      {label: <span class="red">&#39;13&#39;</span>},
-      {label: <span class="red">&#39;14&#39;</span>},
-      {label: <span class="red">&#39;15&#39;</span>},
-      {label: <span class="red">&#39;18&#39;</span>},
-    ]
-  },{
-    title: <span class="red">&#39;part two&#39;</span>,
-    elements: [
-      {label: <span class="red">&#39;23&#39;</span>},
-      {label: <span class="red">&#39;25&#39;</span>},
-      {label: <span class="red">&#39;31&#39;</span>},
-      {label: <span class="red">&#39;42&#39;</span>},
-      {label: <span class="red">&#39;56&#39;</span>},
-      {label: <span class="red">&#39;76&#39;</span>},
-      {label: <span class="red">&#39;82&#39;</span>},
-      {label: <span class="red">&#39;42&#39;</span>},
-      {label: <span class="red">&#39;13&#39;</span>},
-      {label: <span class="red">&#39;21&#39;</span>},
-    ]
-  }];
-    options: {
-      labelName: <span class="red">&#39;label&#39;</span>,
-      labelList: <span class="red">&#39;elements&#39;</span>,
-      groupName: <span class="red">&#39;title&#39;</span>,
-      btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
-      <span class="wrap">cssSelected: (option) =&gt;
-        option[<span class="red">&#39;selected&#39;</span>] ?
-        {<span class="red">&#39;background-color&#39;</span>:
-        <span class="red">&#39;#5764c6&#39;</span>} :
-        <span class="red">&#39;&#39;</span></span>
+    return {
+      name: <span class="red">&#39;first group&#39;</span>,
+      values: [],
+      data: [{
+      title: <span class="red">&#39;part one&#39;</span>,
+      elements: [
+        {label: <span class="red">&#39;0&#39;</span>},
+        {label: <span class="red">&#39;2&#39;</span>},
+        {label: <span class="red">&#39;3&#39;</span>},
+        {label: <span class="red">&#39;8&#39;</span>},
+        {label: <span class="red">&#39;9&#39;</span>},
+        {label: <span class="red">&#39;11&#39;</span>},
+        {label: <span class="red">&#39;13&#39;</span>},
+        {label: <span class="red">&#39;14&#39;</span>},
+        {label: <span class="red">&#39;15&#39;</span>},
+        {label: <span class="red">&#39;18&#39;</span>},
+      ]
+    },{
+      title: <span class="red">&#39;part two&#39;</span>,
+      elements: [
+        {label: <span class="red">&#39;23&#39;</span>},
+        {label: <span class="red">&#39;25&#39;</span>},
+        {label: <span class="red">&#39;31&#39;</span>},
+        {label: <span class="red">&#39;42&#39;</span>},
+        {label: <span class="red">&#39;56&#39;</span>},
+        {label: <span class="red">&#39;76&#39;</span>},
+        {label: <span class="red">&#39;82&#39;</span>},
+        {label: <span class="red">&#39;42&#39;</span>},
+        {label: <span class="red">&#39;13&#39;</span>},
+        {label: <span class="red">&#39;21&#39;</span>},
+      ]
+    }];
+      options: {
+        labelName: <span class="red">&#39;label&#39;</span>,
+        labelList: <span class="red">&#39;elements&#39;</span>,
+        groupName: <span class="red">&#39;title&#39;</span>,
+        btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
+        <span class="wrap">cssSelected: (option) =&gt;
+          option[<span class="red">&#39;selected&#39;</span>] ?
+          {<span class="red">&#39;background-color&#39;</span>:
+          <span class="red">&#39;#5764c6&#39;</span>} :
+          <span class="red">&#39;&#39;</span></span>
+      }
     }
   },
   methods: {

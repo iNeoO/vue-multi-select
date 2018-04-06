@@ -1,5 +1,5 @@
 <template>
-<div class="select" style="display:inline;">
+<div class="select" style="display:inline-bloack;text-align:left">
   <button type="button" class="btn-select" @click="toggleCheckboxes">
       <div class="buttonLabel">
           {{getBtnLabel()}}
