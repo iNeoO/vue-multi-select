@@ -31,8 +31,8 @@ When you create a new PR please make it against the develop branch when adding n
 | ------------- | -------- | ----------------------------------------------------------------------- | ------------------------------------- |
 | btnLabel      | String   | 'multi-select'                                                          | Label on the button	                 |
 | cssSelected   | Function | (option) =>  option['selected'] ? {  'font-weight': 'bold',color: '#5755d9',} : ''  | Css passed to value                          |
-| groups        | String   | 'multi-select'                                                          | Display or not groups selection       |
-| multi         | Boolean  | true                                                                    | Set single or multiple selection      |
+| groups        | Boolean  | false                                                          | Display or not groups selection       |
+| multi         | Boolean  | false                                                                    | Set single or multiple selection      |
 | labelList     | String   | 'list'                                                                  | Name Attributes for list              |
 | labelName     | String   | 'name'                                                                  | Name Attributes for value to display  |
 | labelSelected | String   | 'selected'                                                              | Name attributes for value selected    |
@@ -63,6 +63,17 @@ filters.push({
 
 ### 3. elements to select/deselect
 ``` javascript
+
+// when groups not set or false
+data = [
+  {name: 'choice 1'}, // Name can be changed with labelName in options
+  {name: 'choice 2'},
+  {name: 'choice 3'},
+  {name: 'choice 4'},
+  {name: 'choice 5'},
+]
+
+// when groups set tu true
 
 data = [{
   name: 'choice 1', // Can be changed with tabName in options
@@ -161,6 +172,8 @@ export default {
         },
       }],
       options: {
+        multi: true,
+        groups: true,
         btnLabel: 'A simple vue multi select',
       },
     };

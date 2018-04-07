@@ -133,6 +133,9 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.1.0</h3>
+            <p>Set groups and multi in options to false as Default
+            It's now possible to only have an array to selects elems when groups is set to false</p>
             <h3>3.0.0</h3>
             <p>Big update about way to build and dev the component</p>
             <h3>2.0.1</h3>
@@ -219,13 +222,13 @@
                 <tr class="active">
                   <td>groups</td>
                   <td>Boolean</td>
-                  <td><code>true</code></td>
+                  <td><code>false</code></td>
                   <td>Display or not groups selection</td>
                 </tr>
                 <tr>
                   <td>multi</td>
                   <td>Boolean</td>
-                  <td><code>true</code></td>
+                  <td><code>false</code></td>
                   <td>Set single or multiple selection</td>
                 </tr>
                 <tr>
@@ -300,6 +303,10 @@ filters.push({
             <a href="#selectOptions" class="anchor" aria-hidden="true">#</a>selectOptions</h3>
           <div class="docs-note">
             <p>elements to select/deselect</p>
+            <h3>if options.groups set to default/false</h3>
+            <p>just use an Array</p>
+            <p><code>[{name: 1},{name: 2}, ...]</code></p>
+            <h3>If options.groups set to true</h3>
             <p><code>data.name</code> group name displayed, can be changed with tabName</p>
             <p><code>data.list</code> Name of the attributes for the array of
               elements, can be changed with listName</p>
@@ -458,6 +465,8 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
         },
       }],
       options: {
+        multi: <span class="red">true</span>,
+        groups: <span class="red">true</span>,
         btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
       }
     }
@@ -567,8 +576,6 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
         ],
       }],
       options: {
-        groups: <span class="red">&#39;false&#39;</span>,
-        multi: <span class="red">&#39;false&#39;</span>,
         btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
       }
     }
@@ -679,6 +686,8 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
       ]
     }];
       options: {
+        multi: <span class="red">true</span>,
+        groups: <span class="red">false</span>,
         labelName: <span class="red">&#39;label&#39;</span>,
         labelList: <span class="red">&#39;elements&#39;</span>,
         groupName: <span class="red">&#39;title&#39;</span>,

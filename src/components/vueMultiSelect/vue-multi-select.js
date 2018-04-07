@@ -39,9 +39,9 @@ export default {
   methods: {
     setConfig() {
       this.multi = typeof (this.options.multi) !== 'undefined' ?
-        this.options.multi : true;
+        this.options.multi : false;
       this.groups = typeof (this.options.groups) !== 'undefined' ?
-        this.options.groups : true;
+        this.options.groups : false;
       this.btnLabel = this.options.btnLabel ? this.options.btnLabel : 'multi-select';
       this.list = this.options.labelList ? this.options.labelList : 'list';
       this.labelName = this.options.labelName ? this.options.labelName : 'name';
@@ -63,7 +63,15 @@ export default {
       this.init();
     },
     init() {
-      this.globalModel = _.cloneDeep(this.selectOptions);
+      if (!this.groups) {
+        const list = {};
+        list[this.list] = _.cloneDeep(this.selectOptions);
+        this.globalModel = [
+          list,
+        ];
+      } else {
+        this.globalModel = _.cloneDeep(this.selectOptions);
+      }
       for (let i = 0; i < this.globalModel.length; i += 1) {
         for (let j = 0; j < this.globalModel[i][this.list].length; j += 1) {
           this.$set(this.globalModel[i][this.list][j], this.labelSelected,
