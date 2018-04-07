@@ -6,6 +6,7 @@ This component gives you a multi/single select with the power of Vuejs component
 
 ## Dependencies
 - required: Vuejs >= 2.3.3
+- required: lodash >= 4.17.5,
 
 ## Install
 1. Clone the repo or `npm install vue-multi-select --save`
