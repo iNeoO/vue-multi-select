@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export default {
   name: 'multi-select',
   props: {
@@ -65,12 +63,12 @@ export default {
     init() {
       if (!this.groups) {
         const list = {};
-        list[this.list] = _.cloneDeep(this.selectOptions);
+        list[this.list] = this.cloneArray(this.selectOptions);
         this.globalModel = [
           list,
         ];
       } else {
-        this.globalModel = _.cloneDeep(this.selectOptions);
+        this.globalModel = this.cloneData(this.selectOptions);
       }
       for (let i = 0; i < this.globalModel.length; i += 1) {
         for (let j = 0; j < this.globalModel[i][this.list].length; j += 1) {
@@ -203,6 +201,37 @@ export default {
           this.globalModel[i][this.list][j][this.labelSelected] = false;
         }
       }
+    },
+    cloneArray(array) {
+      const clone = [];
+      for (let i = 0; i < array.length; i += 1) {
+        if (!Array.isArray(array[i]) &&
+          typeof array[i] === 'object') {
+          clone[i] = Object.assign({}, array[i]);
+        } else {
+          clone[i] = array[i];
+        }
+      }
+      return clone;
+    },
+    cloneData(data) {
+      const clone = [];
+      for (let i = 0; i < data.length; i += 1) {
+        clone[i] = {};
+        const keys = Object.keys(data[i]);
+        for (let j = 0; j < keys.length; j += 1) {
+          if (!Array.isArray(data[i][keys[j]]) &&
+          typeof data[i][keys[j]] === 'object') {
+            clone[i][keys[j]] = Object.assign({}, data[i][keys[j]]);
+          } if (Array.isArray(data[i][keys[j]]) &&
+          typeof data[i][keys[j]] === 'object') {
+            clone[i][keys[j]] = this.cloneArray(data[i][keys[j]]);
+          } else {
+            clone[i][keys[j]] = data[i][keys[j]];
+          }
+        }
+      }
+      return clone;
     },
   },
   watch: {

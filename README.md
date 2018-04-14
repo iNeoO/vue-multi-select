@@ -5,14 +5,13 @@ This component gives you a multi/single select with the power of Vuejs component
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
 ## Dependencies
-- required: Vuejs >= 2.3.3
-- required: lodash >= 4.17.5,
+- required: Vuejs >= 2.X.X
 
 ## Install
 1. Clone the repo or `npm install vue-multi-select --save`
 2. Include the file in your app
   `import vueMultiSelect from 'vue-multi-select';`
-  `import '~vue-multi-select/dist/lib/vueMultiSelect.css'`
+  `import 'vue-multi-select/dist/lib/vueMultiSelect.css'`
 
 ## Contributing
 Issues and PR's are much appreciated.

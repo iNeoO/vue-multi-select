@@ -116,8 +116,7 @@
             <a href="#installation" class="anchor" aria-hidden="true">#</a>Installation
           </h3>
           <h4>Dependencies</h4>
-          <p>- required: Vuejs >= 2.3.3</p>
-          <p>- required: lodash >= 4.17.5,</p>
+          <p>- required: Vuejs >= 2.X.X</p>
           <h4>Install</h4>
           <div class="docs-note">
             <p>Clone the repo

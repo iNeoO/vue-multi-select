@@ -24,8 +24,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "lodash": "^4.17.5",
-    "vue": "^2.3.3"
+    "vue": "^2.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
