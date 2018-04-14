@@ -122,7 +122,7 @@ export default {
       this.filter();
     },
     pushOption(option) {
-      const opt = JSON.parse(JSON.stringify(option));
+      const opt = Object.assign({}, option);
       delete opt[this.labelSelected];
       delete opt.visible;
       this.value.push(opt);

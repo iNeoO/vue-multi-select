@@ -2,10 +2,11 @@ This component gives you a multi/single select with the power of Vuejs component
 
 ## Demo and doc site
 [vue-multi-select](https://vue-multi-select.tuturu.io)
+
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
 ## Dependencies
-- required: Vuejs >= 2.X.X
+- required: Vuejs >= 2.x
 
 ## Install
 1. Clone the repo or `npm install vue-multi-select --save`
@@ -73,7 +74,7 @@ data = [
   {name: 'choice 5'},
 ]
 
-// when groups set tu true
+// when groups set to true
 
 data = [{
   name: 'choice 1', // Can be changed with tabName in options
