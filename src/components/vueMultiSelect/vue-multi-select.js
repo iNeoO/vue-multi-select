@@ -67,7 +67,15 @@ export default {
         this.globalModel = [
           list,
         ];
+        if (typeof this.selectOptions[0] === 'string' ||
+          typeof this.selectOptions[0] === 'number') {
+          this.simpleArray = true;
+        }
       } else {
+        if (typeof this.selectOptions[0][this.list][0] === 'string' ||
+        typeof this.selectOptions[0][this.list][0] === 'number') {
+          this.simpleArray = true;
+        }
         this.globalModel = this.cloneData(this.selectOptions);
       }
       for (let i = 0; i < this.globalModel.length; i += 1) {
@@ -76,7 +84,12 @@ export default {
             !!this.globalModel[i][this.list][j][this.labelSelected]);
           this.$set(this.globalModel[i][this.list][j], 'visible', true);
           if (this.globalModel[i][this.list][j][this.labelSelected]) {
-            this.value.push(this.globalModel[i][this.list][j]);
+            if (this.simpleArray) {
+              this.value.push(this.globalModel[i][
+                this.list][j][this.labelName]);
+            } else {
+              this.value.push(this.globalModel[i][this.list][j]);
+            }
           }
         }
       }
@@ -122,15 +135,20 @@ export default {
       this.filter();
     },
     pushOption(option) {
-      const opt = Object.assign({}, option);
-      delete opt[this.labelSelected];
-      delete opt.visible;
-      this.value.push(opt);
+      if (this.simpleArray) {
+        this.value.push(option[this.labelName]);
+      } else {
+        const opt = Object.assign({}, option);
+        delete opt[this.labelSelected];
+        delete opt.visible;
+        this.value.push(opt);
+      }
       this.$emit(this.eventName, this.value);
     },
     popOption(opt) {
       for (let i = 0; i < this.value.length; i += 1) {
-        if (this.value[i][this.labelName] === opt[this.labelName]) {
+        if (this.value[i][this.labelName] === opt[this.labelName] ||
+          (this.simpleArray && this.value[i] === opt[this.labelName])) {
           this.value.splice(i, 1);
           this.$emit(this.eventName, this.value);
           return;
@@ -208,8 +226,11 @@ export default {
         if (!Array.isArray(array[i]) &&
           typeof array[i] === 'object') {
           clone[i] = Object.assign({}, array[i]);
-        } else {
-          clone[i] = array[i];
+        } else if (typeof array[i] === 'string' ||
+          typeof array[i] === 'number') {
+          const obj = {};
+          obj[this.labelName] = array[i];
+          clone[i] = obj;
         }
       }
       return clone;

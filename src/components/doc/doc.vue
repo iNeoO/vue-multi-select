@@ -79,6 +79,9 @@
                   <li class="menu-item">
                     <a href="#custom_multi_select">A custom multi select</a>
                   </li>
+                  <li class="menu-item">
+                    <a href="#a_multiselect_array">A multi select with array</a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -105,7 +108,7 @@
           </h3>
           <div class="docs-note">
             <p><strong>Vue multi select</strong> is a lightweight,
-              multi/single select fast and fully customisable.</p>
+              multi/single select fast and fully custom.</p>
             <p>Vue multi select provides basic things like groups, research,
               buttons to select/deselect all many customisation to adapt the best way
               to your application.</p>
@@ -116,7 +119,7 @@
             <a href="#installation" class="anchor" aria-hidden="true">#</a>Installation
           </h3>
           <h4>Dependencies</h4>
-          <p>- required: Vuejs >= 2.X.X</p>
+          <p>- required: Vuejs >= 2.x</p>
           <h4>Install</h4>
           <div class="docs-note">
             <p>Clone the repo
@@ -125,7 +128,7 @@
             <p>Include the file in your app import multiSelect from</p>
             <p>
               <code>
-                import vueMultiSelect from 'vue-multi-select';<br>
+                import multiSelect from 'vue-multi-select';<br>
                 import 'vue-multi-select/dist/lib/vue-multi-select.min.css';
               </code>
             </p>
@@ -136,6 +139,9 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.2.0</h3>
+            <p>Set possible to have an array of string or numbers (see a multiple select with array) </p>
+            <p>Remove dependencies lodash for clone object</p>
             <h3>3.1.0</h3>
             <p>Set groups and multi in options to false as Default
             It's now possible to only have an array to selects elems when groups is set to false</p>
@@ -307,19 +313,22 @@ filters.push({
           <div class="docs-note">
             <p>elements to select/deselect</p>
             <h3>if options.groups set to default/false</h3>
-            <p>just use an Array</p>
+            <p>just use an Array of objects</p>
             <p><code>[{name: 1},{name: 2}, ...]</code></p>
+            <p>or of strings</p>
+            <p><code>['Germany', 'England', ...]</code></p>
             <h3>If options.groups set to true</h3>
             <p><code>data.name</code> group name displayed, can be changed with tabName</p>
             <p><code>data.list</code> Name of the attributes for the array of
               elements, can be changed with listName</p>
+              <p>it can'be an array of string or an array of objects<p>
             <p><code>data.list[x].name</code> Name of the attributes to display one elements,
               can be changed with labelName</p>
             <pre class="code grey" data-lang="javascript"><code>
 <span class="red bold">const </span> data = [{
   <span class="wrap">name: <span class="blue">&#39;choice 1&#39;</span>, <span class="light-grey">
     // Can be changed with tabName in options</span></span>
-  list: [
+  list: <span class="light-grey">[ // Can be changed with listName in options</span>
     <span class="wrap">{name: <span class="blue">&#39;choice 1&#39;</span>},
     <span class="light-grey">// Mame can be changed with labelName in options</span></span>
     {name: <span class="blue">&#39;choice 2&#39;</span>},
@@ -409,7 +418,7 @@ filters.push({
 &lt;/template&gt;</span>
 
 <span class="blue">&lt;script&gt;
-import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
+import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
 <span class="blue">import</span><span class="red wrap">
 &#39;vue-multi-select/dist/lib/vue-multi-select.min.css&#39;</span>;
 
@@ -480,7 +489,7 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
     }
   },
   components: {
-    vueMultiSelect,
+    multiSelect,
   }
 }
 <span class="blue">&lt;/script&gt;</span>
@@ -540,7 +549,7 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
 &lt;/template&gt;</span>
 
 <span class="blue">&lt;script&gt;
-import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
+import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
 <span class="blue">import</span><span class="red wrap">
 &#39;vue-multi-select/dist/lib/vue-multi-select.min.css&#39;</span>;
 
@@ -589,7 +598,7 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
     }
   },
   components: {
-    vueMultiSelect,
+    multiSelect,
   }
 }
 <span class="blue">&lt;/script&gt;</span>
@@ -650,7 +659,7 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
 &lt;/template&gt;</span>
 
 <span class="blue">&lt;script&gt;
-import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
+import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
 <span class="blue">import</span><span class="red wrap">
 &#39;vue-multi-select/dist/lib/vue-multi-select.min.css&#39;</span>;
 
@@ -690,7 +699,7 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
     }];
       options: {
         multi: <span class="red">true</span>,
-        groups: <span class="red">false</span>,
+        groups: <span class="red">true</span>,
         labelName: <span class="red">&#39;label&#39;</span>,
         labelList: <span class="red">&#39;elements&#39;</span>,
         groupName: <span class="red">&#39;title&#39;</span>,
@@ -709,7 +718,7 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
     }
   },
   components: {
-    vueMultiSelect,
+    multiSelect,
   }
 }
 <span class="blue">&lt;/script&gt;</span>
@@ -718,6 +727,120 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
             <div v-if="example3.isActive === 'values'">
               <pre class="code grey" data-lang="javascript"><code>
 {{example3.values}}
+              </code></pre>
+            </div>
+          </div>
+        </div>
+        <div id="a_multiselect_array" class="container">
+          <h3 class="s-title">
+            <a href="#a_multiselect_array" class="anchor" aria-hidden="true">#</a>
+            A multi select with array
+          </h3>
+          <div class="docs-note">
+            <p>list of data can be an array</p>
+            <div class="columns">
+              <div class="column col-4">
+                <multi-select @selectionChanged="updateValues4"
+                  :options="example4.options"
+                  :filters="example4.filters"
+                  :selectOptions="example4.selectOptions"></multi-select>
+              </div>
+              <div class="column col-4 col-ml-auto">
+                <button class="btn btn-primary" @click="randomize(example4)">Reset Data</button>
+              </div>
+            </div>
+            <ul class="tab tab-block">
+              <li class="tab-item">
+                <a :class="{ active: example4.isActive === 'code' }"
+                  class="hand"
+                  @click="setActive(example4,'code')">Code</a>
+              </li>
+              <li class="tab-item">
+                <a :class="{ active: example4.isActive === 'values' }"
+                  class="hand"
+                  @click="setActive(example4,'values')" >Values Selected</a>
+              </li>
+            </ul>
+            <div v-if="example4.isActive === 'code'">
+              <pre class="code grey"
+                data-lang="javascript">
+                <code><span class="blue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;multi-select</span>
+      @selectionChanged=<span class="red">&quot;updateValues&quot;</span>
+      :options=<span class="red">&quot;options&quot;</span>
+      :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</span>
+
+<span class="blue">&lt;script&gt;
+import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
+<span class="blue">import</span><span class="red wrap">
+&#39;vue-multi-select/dist/lib/vue-multi-select.min.css&#39;</span>;
+
+<span class="blue">export</span> <span class="blue">default</span> {
+  data() {
+    return {
+      name: <span class="red">&#39;first group&#39;</span>,
+      values: [],
+      data: [{
+      title: <span class="red">&#39;part one&#39;</span>,
+      elements: [
+        <span class="red">&#39;0&#39;</span>,
+        <span class="red">&#39;2&#39;</span>,
+        <span class="red">&#39;3&#39;</span>,
+        <span class="red">&#39;8&#39;</span>,
+        <span class="red">&#39;9&#39;</span>,
+        <span class="red">&#39;11&#39;</span>,
+        <span class="red">&#39;13&#39;</span>,
+        <span class="red">&#39;14&#39;</span>,
+        <span class="red">&#39;15&#39;</span>,
+        <span class="red">&#39;18&#39;</span>,
+      ]
+    },{
+      title: <span class="red">&#39;part two&#39;</span>,
+      elements: [
+        <span class="red">&#39;23&#39;</span>,
+        <span class="red">&#39;25&#39;</span>,
+        <span class="red">&#39;31&#39;</span>,
+        <span class="red">&#39;42&#39;</span>,
+        <span class="red">&#39;56&#39;</span>,
+        <span class="red">&#39;76&#39;</span>,
+        <span class="red">&#39;82&#39;</span>,
+        <span class="red">&#39;42&#39;</span>,
+        <span class="red">&#39;13&#39;</span>,
+        <span class="red">&#39;21&#39;</span>,
+      ]
+    }];
+      options: {
+        multi: <span class="red">true</span>,
+        groups: <span class="red">true</span>,
+        labelList: <span class="red">&#39;elements&#39;</span>,
+        groupName: <span class="red">&#39;title&#39;</span>,
+        btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
+        <span class="wrap">cssSelected: (option) =&gt;
+          option[<span class="red">&#39;selected&#39;</span>] ?
+          {<span class="red">&#39;background-color&#39;</span>:
+          <span class="red">&#39;#5764c6&#39;</span>} :
+          <span class="red">&#39;&#39;</span></span>
+      }
+    }
+  },
+  methods: {
+    updateValues(values) {
+      <span class="blue">this</span>.values = values;
+    }
+  },
+  components: {
+    multiSelect,
+  }
+}
+<span class="blue">&lt;/script&gt;</span>
+              </code></pre>
+            </div>
+            <div v-if="example4.isActive === 'values'">
+              <pre class="code grey" data-lang="javascript"><code>
+{{example4.values}}
               </code></pre>
             </div>
           </div>

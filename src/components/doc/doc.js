@@ -123,6 +123,47 @@ export default {
         values: [],
         isActive: 'code',
       },
+      example4: {
+        selectOptions: [{
+          title: 'part one',
+          elements: [
+            '0',
+            '2',
+            '3',
+            '8',
+            '9',
+            '11',
+            '13',
+            '14',
+            '15',
+            '18',
+          ],
+        }, {
+          title: 'part two',
+          elements: [
+            '23',
+            '25',
+            '31',
+            '42',
+            '56',
+            '76',
+            '82',
+            '42',
+            '13',
+            '21',
+          ],
+        }],
+        options: {
+          multi: true,
+          groups: true,
+          labelList: 'elements',
+          groupName: 'title',
+          btnLabel: 'A simple vue multi select',
+          cssSelected: option => (option.selected ? { 'background-color': '#5764c6' } : ''),
+        },
+        values: [],
+        isActive: 'code',
+      },
     };
   },
   components: { multiSelect },
@@ -138,6 +179,9 @@ export default {
     },
     updateValues3(values) {
       this.example3.values = values;
+    },
+    updateValues4(values) {
+      this.example4.values = values;
     },
     randomize(e) {
       const list = e.options.labelList || 'list';
