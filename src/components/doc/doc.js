@@ -1,4 +1,5 @@
-import multiSelect from '../vueMultiSelect/vue-multi-select.vue';
+import multiSelect from '../../../dist/lib/vue-multi-select.min';
+import '../../../dist/lib/vue-multi-select.min.css';
 
 export default {
   name: 'doc',

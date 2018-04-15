@@ -74,6 +74,17 @@ data = [
   {name: 'choice 5'},
 ]
 
+// or just an array
+// it's also possible when to have an array of strings
+// in list when groups is set to true.
+data = [
+  'choice 1',
+  'choice 2',
+  'choice 3',
+  'choice 4',
+  'choice 5',
+]
+
 // when groups set to true
 
 data = [{
@@ -95,7 +106,6 @@ data = [{
     {name: 'choice 15'},
   ]
 }]
-
 ```
 
 ### 4. values selected
