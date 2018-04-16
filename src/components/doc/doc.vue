@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.2.1</h3>
+            <p>Fix error with event trigerred multiple times when clicking on button select-all/...</p>
             <h3>3.2.0</h3>
             <p>Set possible to have an array of string or numbers (see a multiple select with array) </p>
             <p>Remove dependencies lodash for clone object</p>

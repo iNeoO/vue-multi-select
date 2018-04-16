@@ -128,8 +128,10 @@ export default {
           this.externalClick({ path: [] });
         }
         this.pushOption(option);
+        this.$emit(this.eventName, this.value);
       } else {
         this.popOption(option);
+        this.$emit(this.eventName, this.value);
       }
       option[this.labelSelected] = !option[this.labelSelected];
       this.filter();
@@ -143,14 +145,12 @@ export default {
         delete opt.visible;
         this.value.push(opt);
       }
-      this.$emit(this.eventName, this.value);
     },
     popOption(opt) {
       for (let i = 0; i < this.value.length; i += 1) {
         if (this.value[i][this.labelName] === opt[this.labelName] ||
           (this.simpleArray && this.value[i] === opt[this.labelName])) {
           this.value.splice(i, 1);
-          this.$emit(this.eventName, this.value);
           return;
         }
       }
@@ -194,6 +194,7 @@ export default {
           }
         }
       }
+      this.$emit(this.eventName, this.value);
       option.selectAll = !option.selectAll;
       this.filter();
     },
