@@ -175,6 +175,12 @@
 
 /* clear button */
 
+@-moz-document url-prefix() {
+  .select .clearButton {
+    height: 24px!important;
+  }
+}
+
 .select .clearButton {
   box-sizing: inherit;
   position: absolute;
@@ -192,7 +198,6 @@
   right: 0px;
   top: 2px;
 }
-
 
 /* filter */
 
