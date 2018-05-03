@@ -46,10 +46,10 @@
         :key="index">
         <li v-for="(option, indexOptions) in tab[list]"
           :key="indexOptions"
-          class="selectItem"
+          :class="[option[labelDisabled] ? 'disabled' : '', 'selectItem']"
           v-if="option.visible"
           @click="selectOption(option)"
-          :style="options.cssSelected(option)">
+          :style="cssSelected(option)">
           <span class="right margin-right-10"
             v-if="option[labelSelected]">✓</span>
           <span class="margin-left-20">
