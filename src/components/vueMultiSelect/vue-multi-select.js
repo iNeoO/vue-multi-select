@@ -40,18 +40,18 @@ export default {
         this.options.multi : false;
       this.groups = typeof (this.options.groups) !== 'undefined' ?
         this.options.groups : false;
-      this.btnLabel = this.options.btnLabel ? this.options.btnLabel : 'multi-select';
-      this.list = this.options.labelList ? this.options.labelList : 'list';
-      this.labelName = this.options.labelName ? this.options.labelName : 'name';
-      this.groupName = this.options.groupName ? this.options.groupName : 'name';
-      this.labelSelected = this.options.labelSelected ? this.options.labelSelected : 'selected';
-      this.labelBold = this.options.labelBold ? this.options.labelBold : 'bold';
-      this.options.cssSelected = this.options.cssSelected ?
-        this.options.cssSelected : option => (option[this.labelSelected] ?
+      this.btnLabel = this.options.btnLabel || 'multi-select';
+      this.list = this.options.labelList || 'list';
+      this.labelName = this.options.labelName || 'name';
+      this.groupName = this.options.groupName || 'name';
+      this.labelSelected = this.options.labelSelected || 'selected';
+      this.labelDisabled = this.options.labelDisabled || 'disabled';
+      this.cssSelected = this.options.cssSelected || (
+        option => (option[this.labelSelected] ?
           {
             'font-weight': 'bold',
             color: '#5755d9',
-          } : '');
+          } : ''));
       this.filters.unshift({
         nameAll: 'Select all',
         nameNotAll: 'Deselect all',
