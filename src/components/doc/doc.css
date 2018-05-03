@@ -162,6 +162,11 @@
     margin-right: .5rem;
 }
 
+.classSelected {
+  font-weight: bold;
+  color: #5755d9;
+}
+
 .hand {
   cursor: pointer;
 }

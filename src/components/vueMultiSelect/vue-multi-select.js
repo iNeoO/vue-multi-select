@@ -40,18 +40,18 @@ export default {
         this.options.multi : false;
       this.groups = typeof (this.options.groups) !== 'undefined' ?
         this.options.groups : false;
-      this.btnLabel = this.options.btnLabel ? this.options.btnLabel : 'multi-select';
-      this.list = this.options.labelList ? this.options.labelList : 'list';
-      this.labelName = this.options.labelName ? this.options.labelName : 'name';
-      this.groupName = this.options.groupName ? this.options.groupName : 'name';
-      this.labelSelected = this.options.labelSelected ? this.options.labelSelected : 'selected';
-      this.labelBold = this.options.labelBold ? this.options.labelBold : 'bold';
-      this.options.cssSelected = this.options.cssSelected ?
-        this.options.cssSelected : option => (option[this.labelSelected] ?
+      this.btnLabel = this.options.btnLabel || 'multi-select';
+      this.list = this.options.labelList || 'list';
+      this.labelName = this.options.labelName || 'name';
+      this.groupName = this.options.groupName || 'name';
+      this.labelSelected = this.options.labelSelected || 'selected';
+      this.labelDisabled = this.options.labelDisabled || 'disabled';
+      this.cssSelected = this.options.cssSelected || (
+        option => (option[this.labelSelected] ?
           {
             'font-weight': 'bold',
             color: '#5755d9',
-          } : '');
+          } : ''));
       this.filters.unshift({
         nameAll: 'Select all',
         nameNotAll: 'Deselect all',
@@ -119,6 +119,9 @@ export default {
     },
     /* eslint no-param-reassign: ["error", { "props": false }] */
     selectOption(option) {
+      if (option[this.labelDisabled]) {
+        return;
+      }
       if (!option[this.labelSelected]) {
         if (!this.multi) {
           this.filters[0].selectAll = true;
@@ -182,6 +185,7 @@ export default {
       for (let i = 0; i < this.globalModel[this.idSelectedTab][this.list].length;
         i += 1) {
         if (this.globalModel[this.idSelectedTab][this.list][i].visible &&
+          !this.globalModel[this.idSelectedTab][this.list][i][this.labelDisabled] &&
           option.func(this.globalModel[this.idSelectedTab][this.list][i])) {
           if (!option.selectAll) {
             if (!this.globalModel[this.idSelectedTab][this.list][i][this.labelSelected]) {
@@ -206,7 +210,8 @@ export default {
           if (this.globalModel[this.idSelectedTab][this.list][j].visible &&
             this.filters[i].func(
               this.globalModel[this.idSelectedTab][this.list][j]) &&
-            !this.globalModel[this.idSelectedTab][this.list][j][this.labelSelected]) {
+              !this.globalModel[this.idSelectedTab][this.list][j][this.labelDisabled] &&
+              !this.globalModel[this.idSelectedTab][this.list][j][this.labelSelected]) {
             allSelected = false;
             break;
           }
@@ -217,7 +222,9 @@ export default {
     deselctAll() {
       for (let i = 0; i < this.globalModel.length; i += 1) {
         for (let j = 0; j < this.globalModel[i][this.list].length; j += 1) {
-          this.globalModel[i][this.list][j][this.labelSelected] = false;
+          if (!this.globalModel[i][this.list][j][this.labelDisabled]) {
+            this.globalModel[i][this.list][j][this.labelSelected] = false;
+          }
         }
       }
     },

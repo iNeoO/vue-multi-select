@@ -139,6 +139,10 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.3.0</h3>
+            <p>Add the possibility to disable some select options</p>
+            <h3>3.2.2</h3>
+            <p>Fix styles errors in firefox</p>
             <h3>3.2.1</h3>
             <p>Fix error with event trigerred multiple times when clicking on button select-all/...</p>
             <h3>3.2.0</h3>
@@ -259,6 +263,12 @@
                   <td>String</td>
                   <td><code>'selected'</code></td>
                   <td>Name Attributes for value to display</td>
+                </tr>
+                <tr>
+                  <td>labelDisabled</td>
+                  <td>String</td>
+                  <td><code>'disabled'</code></td>
+                  <td>Name Attributes for value to disable</td>
                 </tr>
                 <tr>
                   <td>groupName</td>
@@ -544,7 +554,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 <code><span class="blue">&lt;template&gt;
   &lt;div&gt;
     &lt;multi-select</span>
-      @selectionChanged<span class="red">&quot;updateValues&quot;</span>
+      @selectionChanged=<span class="red">&quot;updateValues&quot;</span>
       :options=<span class="red">&quot;options&quot;</span>
       :selectOptions=<span class="red">&quot;dataf&quot;</span><span class="blue"> /&gt;
   &lt;/div&gt;
@@ -625,6 +635,8 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
               are changed don't forget to update
               <code>option['selected']</code> in
               <code>cssLabel</code> with the labelSelected value</p>
+              <p>It's possible to disable some value with attributes <code>disabled</code> to true
+                (it's possible to change the key with <code>options.labelDisabled</code>)</p>
             <div class="columns">
               <div class="column col-4">
                 <multi-select @selectionChanged="updateValues3"
@@ -673,7 +685,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
       data: [{
       title: <span class="red">&#39;part one&#39;</span>,
       elements: [
-        {label: <span class="red">&#39;0&#39;</span>},
+        {label: <span class="red">&#39;0&#39;</span>, disabled: <span class="red">true</span>},
         {label: <span class="red">&#39;2&#39;</span>},
         {label: <span class="red">&#39;3&#39;</span>},
         {label: <span class="red">&#39;8&#39;</span>},

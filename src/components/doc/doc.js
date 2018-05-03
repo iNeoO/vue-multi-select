@@ -86,7 +86,7 @@ export default {
         selectOptions: [{
           title: 'part one',
           elements: [
-            { label: '0' },
+            { label: '0', disabled: true },
             { label: '2' },
             { label: '3' },
             { label: '8' },
