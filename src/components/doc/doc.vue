@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.3.2</h3>
+            <p>Fix scroll-y issue (thx to <a target="_blank" href="https://github.com/davidkassa">davidkassa</a>)</p>
             <h3>3.3.1</h3>
             <p>Fix button filter when init vue-multi-select with all selected</p>
             <h3>3.3.0</h3>
