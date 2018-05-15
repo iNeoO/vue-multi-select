@@ -249,7 +249,7 @@
   overflow: hidden;
   max-height: 300px;
   min-height: 80px;
-  overflow-y: scroll;
+  overflow-y: auto;
 
 }
 
