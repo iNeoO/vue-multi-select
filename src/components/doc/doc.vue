@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.3.1</h3>
+            <p>Fix button filter when init vue-multi-select with all selected</p>
             <h3>3.3.0</h3>
             <p>Add the possibility to disable some select options</p>
             <h3>3.2.2</h3>

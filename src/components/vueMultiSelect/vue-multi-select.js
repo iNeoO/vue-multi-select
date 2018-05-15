@@ -93,6 +93,7 @@ export default {
           }
         }
       }
+      this.filter();
       this.$emit(this.eventName, this.value);
     },
     getBtnLabel() {
