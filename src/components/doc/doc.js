@@ -83,14 +83,15 @@ export default {
         isActive: 'code',
       },
       example3: {
+        reloadInit: false,
         selectOptions: [{
           title: 'part one',
           elements: [
             { label: '0', disabled: true },
-            { label: '2' },
-            { label: '3' },
-            { label: '8' },
-            { label: '9' },
+            { label: '2', selected: true },
+            { label: '3', selected: true },
+            { label: '8', selected: true },
+            { label: '9', selected: true },
             { label: '11' },
             { label: '13' },
             { label: '14' },

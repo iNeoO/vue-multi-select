@@ -17,6 +17,10 @@ export default {
       type: String,
       default: 'selectionChanged',
     },
+    reloadInit: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -57,10 +61,10 @@ export default {
         nameNotAll: 'Deselect all',
         func: () => true,
       });
-      this.value.length = 0;
       this.init();
     },
     init() {
+      this.value.length = 0;
       if (!this.groups) {
         const list = {};
         list[this.list] = this.cloneArray(this.selectOptions);
@@ -77,7 +81,11 @@ export default {
           this.simpleArray = true;
         }
         this.globalModel = this.cloneData(this.selectOptions);
+        this.initValues();
       }
+    },
+    initValues() {
+      this.value.length = 0;
       for (let i = 0; i < this.globalModel.length; i += 1) {
         for (let j = 0; j < this.globalModel[i][this.list].length; j += 1) {
           this.$set(this.globalModel[i][this.list][j], this.labelSelected,
@@ -270,6 +278,15 @@ export default {
         this.setConfig();
       },
       deep: true,
+    },
+    reloadInit: {
+      handler(value) {
+        if (value) {
+          this.initValues();
+          console.log('toto');
+          this.$emit('vueMultiSelectInited');
+        }
+      },
     },
   },
   directives: {

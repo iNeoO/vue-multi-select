@@ -646,10 +646,12 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 <multi-select @selectionChanged="updateValues3"
                   :options="example3.options"
                   :filters="example3.filters"
-                  :selectOptions="example3.selectOptions"></multi-select>
+                  :reload-init="example3.reloadInit"
+                  :selectOptions="example3.selectOptions"
+                  @vueMultiSelectInited="example3.reloadInit = false"></multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
-                <button class="btn btn-primary" @click="randomize(example3)">Reset Data</button>
+                <button class="btn btn-primary" @click="example3.reloadInit = true">Manual relaod for init without updating data</button>
               </div>
             </div>
             <ul class="tab tab-block">
@@ -740,11 +742,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
   }
 }
 <span class="blue">&lt;/script&gt;</span>
-              </code></pre>
-            </div>
-            <div v-if="example3.isActive === 'values'">
-              <pre class="code grey" data-lang="javascript"><code>
-{{example3.values}}
               </code></pre>
             </div>
           </div>
