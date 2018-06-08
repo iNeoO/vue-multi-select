@@ -88,10 +88,10 @@ export default {
           title: 'part one',
           elements: [
             { label: '0', disabled: true },
-            { label: '2', selected: true },
-            { label: '3', selected: true },
-            { label: '8', selected: true },
-            { label: '9', selected: true },
+            { label: '2' },
+            { label: '3' },
+            { label: '8' },
+            { label: '9' },
             { label: '11' },
             { label: '13' },
             { label: '14' },
@@ -122,10 +122,14 @@ export default {
           btnLabel: 'A simple vue multi select',
           cssSelected: option => (option.selected ? { 'background-color': '#5764c6' } : ''),
         },
-        values: [],
+        values: [
+          { label: '2' },
+          { label: '3' },
+        ],
         isActive: 'code',
       },
       example4: {
+        reloadInit: false,
         selectOptions: [{
           title: 'part one',
           elements: [
@@ -163,7 +167,7 @@ export default {
           btnLabel: 'A simple vue multi select',
           cssSelected: option => (option.selected ? { 'background-color': '#5764c6' } : ''),
         },
-        values: [],
+        values: ['0', '2'],
         isActive: 'code',
       },
     };
@@ -173,24 +177,23 @@ export default {
     setActive(e, label) {
       e.isActive = label;
     },
-    updateValues1(values) {
-      this.example1.values = values;
+    reloadFunction3() {
+      this.example3.values = [
+        { label: '2' },
+        { label: '3' },
+      ];
+      this.example3.reloadInit = true;
     },
-    updateValues2(values) {
-      this.example2.values = values;
-    },
-    updateValues3(values) {
-      this.example3.values = values;
-    },
-    updateValues4(values) {
-      this.example4.values = values;
+    reloadFunction4() {
+      this.example4.values = ['0', '2'];
+      this.example4.reloadInit = true;
     },
     randomize(e) {
       const list = e.options.labelList || 'list';
       const name = e.options.labelName || 'name';
       for (let i = 0; i < e.selectOptions.length; i += 1) {
         for (let j = 0; j < e.selectOptions[i][list].length; j += 1) {
-          e.selectOptions[i][list][j][name] = Math.floor(Math.random() * 100) + 1;
+          e.selectOptions[i][list][j][name] = String(Math.floor(Math.random() * 100) + 1);
         }
       }
     },

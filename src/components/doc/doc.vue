@@ -139,6 +139,10 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.4.0</h3>
+            <p><b>selectionChanged is now deprecated</b>, if you want to trigger event when value change use a watch</p>
+            <p>Set possible to use v-model to directly get the value (instead of use a function to update the value)</p>
+            <p>It's now possible to trigger an init if you want to manualy update the v-model</p>
             <h3>3.3.2</h3>
             <p>Fix scroll-y issue (thx to <a target="_blank" href="https://github.com/davidkassa">davidkassa</a>)</p>
             <h3>3.3.1</h3>
@@ -202,7 +206,22 @@
                   <td>eventName</td>
                   <td>String</td>
                   <td>eventName Name for the event triggered by
-                    the vue-multi-select default is selectionChanged</td>
+                    the vue-multi-select default is selectionChanged (deprecated, use v-model or a watch)</td>
+                </tr>
+                <tr class="active">
+                  <td>v-model</td>
+                  <td>Array</td>
+                  <td>Variables who contains values selected</td>
+                </tr>
+                <tr>
+                  <td>reloadInit</td>
+                  <td>Boolean</td>
+                  <td>Variable used to trigger a manual init of vue-multi-select (when you manualy update v-model) </td>
+                </tr>
+                <tr>
+                  <td>vueMultiSelectInited (event)</td>
+                  <td>Event</td>
+                  <td>Event triggered when v-model have been manualy updated</td>
                 </tr>
               </tbody>
             </table>
@@ -402,7 +421,7 @@ filters.push({
             <p>When a value is unselect, he is splice fron the Array</p>
             <div class="columns">
               <div class="column col-4">
-                <multi-select @selectionChanged="updateValues1"
+                <multi-select v-model="example1.values"
                   :options="example1.options"
                   :filters="example1.filters"
                   :selectOptions="example1.selectOptions"></multi-select>
@@ -426,7 +445,7 @@ filters.push({
               data-lang="javascript"><code><span class="blue">&lt;template&gt;
   &lt;div&gt;
     &lt;multi-select</span>
-      @selectionChanged=<span class="red">&quot;updateValues&quot;</span>
+      v-model=<span class="red">&quot;values&quot;</span>
       :options=<span class="red">&quot;options&quot;</span>
       :filters=<span class="red">&quot;filters&quot;</span>
       :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
@@ -496,18 +515,15 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         multi: <span class="red">true</span>,
         groups: <span class="red">true</span>,
         btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
-      }
-    }
+      },
+    };
   },
   methods: {
-    updateValues(values) {
-      <span class="blue">this</span>.values = values;
-    }
   },
   components: {
     multiSelect,
-  }
-}
+  },
+};
 <span class="blue">&lt;/script&gt;</span>
 </code></pre>
 
@@ -528,7 +544,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
             <div class="columns">
               <div class="column col-4">
                 <multi-select
-                  @selectionChanged="updateValues2"
+                  v-model="example2.values"
                   :options="example2.options"
                   :filters="example2.filters"
                   :selectOptions="example2.selectOptions">
@@ -558,9 +574,9 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 <code><span class="blue">&lt;template&gt;
   &lt;div&gt;
     &lt;multi-select</span>
-      @selectionChanged=<span class="red">&quot;updateValues&quot;</span>
+      v-model=<span class="red">&quot;values&quot;</span>
       :options=<span class="red">&quot;options&quot;</span>
-      :selectOptions=<span class="red">&quot;dataf&quot;</span><span class="blue"> /&gt;
+      :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
   &lt;/div&gt;
 &lt;/template&gt;</span>
 
@@ -574,49 +590,29 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     return {
       name: <span class="red">&#39;first group&#39;</span>,
       values: [],
-      data: [{
-        name: <span class="red">&#39;first group&#39;</span>,
-        list: [
-          { name: <span class="red">&#39;0&#39;</span> },
-          { name: <span class="red">&#39;2&#39;</span> },
-          { name: <span class="red">&#39;3&#39;</span> },
-          { name: <span class="red">&#39;8&#39;</span> },
-          { name: <span class="red">&#39;9&#39;</span> },
-          { name: <span class="red">&#39;11&#39;</span> },
-          { name: <span class="red">&#39;13&#39;</span> },
-          { name: <span class="red">&#39;14&#39;</span> },
-          { name: <span class="red">&#39;15&#39;</span> },
-          { name: <span class="red">&#39;18&#39;</span> },
-        ],
-      }, {
-        name: <span class="red">&#39;second group&#39;</span>,
-        list: [
-          { name: <span class="red">&#39;21&#39;</span> },
-          { name: <span class="red">&#39;22&#39;</span> },
-          { name: <span class="red">&#39;24&#39;</span> },
-          { name: <span class="red">&#39;27&#39;</span> },
-          { name: <span class="red">&#39;28&#39;</span> },
-          { name: <span class="red">&#39;29&#39;</span> },
-          { name: <span class="red">&#39;31&#39;</span> },
-          { name: <span class="red">&#39;33&#39;</span> },
-          { name: <span class="red">&#39;35&#39;</span> },
-          { name: <span class="red">&#39;39&#39;</span> },
-        ],
-      }],
+      data: [
+        { name: <span class="red">&#39;0&#39;</span> },
+        { name: <span class="red">&#39;2&#39;</span> },
+        { name: <span class="red">&#39;3&#39;</span> },
+        { name: <span class="red">&#39;8&#39;</span> },
+        { name: <span class="red">&#39;9&#39;</span> },
+        { name: <span class="red">&#39;11&#39;</span> },
+        { name: <span class="red">&#39;13&#39;</span> },
+        { name: <span class="red">&#39;14&#39;</span> },
+        { name: <span class="red">&#39;15&#39;</span> },
+        { name: <span class="red">&#39;18&#39;</span> },
+      ],
       options: {
         btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
-      }
-    }
+      },
+    };
   },
   methods: {
-    updateValues(values) {
-      <span class="blue">this</span>.values = values;
-    }
   },
   components: {
     multiSelect,
-  }
-}
+  },
+};
 <span class="blue">&lt;/script&gt;</span>
 </code></pre>
 
@@ -643,15 +639,16 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 (it's possible to change the key with <code>options.labelDisabled</code>)</p>
             <div class="columns">
               <div class="column col-4">
-                <multi-select @selectionChanged="updateValues3"
+                <multi-select
+                  v-model="example3.values"
                   :options="example3.options"
                   :filters="example3.filters"
-                  :reload-init="example3.reloadInit"
+                  :reloadInit="example3.reloadInit"
                   :selectOptions="example3.selectOptions"
                   @vueMultiSelectInited="example3.reloadInit = false"></multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
-                <button class="btn btn-primary" @click="example3.reloadInit = true">Manual relaod for init without updating data</button>
+                <button class="btn btn-primary" @click="reloadFunction3">Manual reload for init without updating data</button>
               </div>
             </div>
             <ul class="tab tab-block">
@@ -672,9 +669,16 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 <code><span class="blue">&lt;template&gt;
   &lt;div&gt;
     &lt;multi-select</span>
-      @selectionChanged=<span class="red">&quot;updateValues&quot;</span>
+      v-model=<span class="red">&quot;values&quot;</span>
       :options=<span class="red">&quot;options&quot;</span>
-      :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
+      :filters=<span class="red">&quot;filters&quot;</span>
+      :reloadInit=<span class="red">&quot;reloadInit&quot;</span>
+      :selectOptions=<span class="red">&quot;data&quot;</span>
+      @vueMultiSelectInited=<span class="red">&quot;reloadInit = false&quot;</span><span class="blue"> /&gt; </span>
+      <span class="blue">&lt;button</span>
+        @click=<span class="red">&quot;reloadFunction&quot;</span><span class="blue">&gt;</span>
+        Manual reload for init without updating data
+      <span class="blue">&lt;/button&gt;
   &lt;/div&gt;
 &lt;/template&gt;</span>
 
@@ -687,36 +691,40 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
   data() {
     return {
       name: <span class="red">&#39;first group&#39;</span>,
-      values: [],
+      values: [
+        { label: <span class="red">&#39;2&#39;</span> },
+        { label: <span class="red">&#39;3&#39;</span> },
+      ],
+      reloadInit: <span class="red">false</span>,
       data: [{
-      title: <span class="red">&#39;part one&#39;</span>,
-      elements: [
-        {label: <span class="red">&#39;0&#39;</span>, disabled: <span class="red">true</span>},
-        {label: <span class="red">&#39;2&#39;</span>},
-        {label: <span class="red">&#39;3&#39;</span>},
-        {label: <span class="red">&#39;8&#39;</span>},
-        {label: <span class="red">&#39;9&#39;</span>},
-        {label: <span class="red">&#39;11&#39;</span>},
-        {label: <span class="red">&#39;13&#39;</span>},
-        {label: <span class="red">&#39;14&#39;</span>},
-        {label: <span class="red">&#39;15&#39;</span>},
-        {label: <span class="red">&#39;18&#39;</span>},
-      ]
-    },{
-      title: <span class="red">&#39;part two&#39;</span>,
-      elements: [
-        {label: <span class="red">&#39;23&#39;</span>},
-        {label: <span class="red">&#39;25&#39;</span>},
-        {label: <span class="red">&#39;31&#39;</span>},
-        {label: <span class="red">&#39;42&#39;</span>},
-        {label: <span class="red">&#39;56&#39;</span>},
-        {label: <span class="red">&#39;76&#39;</span>},
-        {label: <span class="red">&#39;82&#39;</span>},
-        {label: <span class="red">&#39;42&#39;</span>},
-        {label: <span class="red">&#39;13&#39;</span>},
-        {label: <span class="red">&#39;21&#39;</span>},
-      ]
-    }];
+        title: <span class="red">&#39;part one&#39;</span>,
+        elements: [
+          { label: <span class="red">&#39;0&#39;</span>, disabled: <span class="red">true</span> },
+          { label: <span class="red">&#39;2&#39;</span> },
+          { label: <span class="red">&#39;3&#39;</span> },
+          { label: <span class="red">&#39;8&#39;</span> },
+          { label: <span class="red">&#39;9&#39;</span> },
+          { label: <span class="red">&#39;11&#39;</span> },
+          { label: <span class="red">&#39;13&#39;</span> },
+          { label: <span class="red">&#39;14&#39;</span> },
+          { label: <span class="red">&#39;15&#39;</span> },
+          { label: <span class="red">&#39;18&#39;</span> },
+        ],
+      }, {
+        title: <span class="red">&#39;part two&#39;</span>,
+        elements: [
+          { label: <span class="red">&#39;23&#39;</span> },
+          { label: <span class="red">&#39;25&#39;</span> },
+          { label: <span class="red">&#39;31&#39;</span> },
+          { label: <span class="red">&#39;42&#39;</span> },
+          { label: <span class="red">&#39;56&#39;</span> },
+          { label: <span class="red">&#39;76&#39;</span> },
+          { label: <span class="red">&#39;82&#39;</span> },
+          { label: <span class="red">&#39;42&#39;</span> },
+          { label: <span class="red">&#39;13&#39;</span> },
+          { label: <span class="red">&#39;21&#39;</span> },
+        ],
+      }],
       options: {
         multi: <span class="red">true</span>,
         groups: <span class="red">true</span>,
@@ -724,24 +732,33 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         labelList: <span class="red">&#39;elements&#39;</span>,
         groupName: <span class="red">&#39;title&#39;</span>,
         btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
-        <span class="wrap">cssSelected: (option) =&gt;
-          option[<span class="red">&#39;selected&#39;</span>] ?
-          {<span class="red">&#39;background-color&#39;</span>:
-          <span class="red">&#39;#5764c6&#39;</span>} :
-          <span class="red">&#39;&#39;</span></span>
-      }
-    }
+        <span class="wrap">cssSelected: option =&gt;
+          (<span class="red">option.selected</span> ?
+          { <span class="red">&#39;background-color&#39;</span>:
+          <span class="red">&#39;#5764c6&#39;</span> } :
+          <span class="red">&#39;&#39;</span></span>),
+      },
+    };
   },
   methods: {
-    updateValues(values) {
-      <span class="blue">this</span>.values = values;
-    }
+    reloadFunction() {
+      <span class="blue">this</span>.values = [
+        { label: <span class="red">&#39;2&#39;</span> },
+        { label: <span class="red">&#39;3&#39;</span> },
+      ];
+      <span class="blue">this</span>.reloadInit = <span class="red">true</span>;
+    },
   },
   components: {
     multiSelect,
-  }
-}
+  },
+};
 <span class="blue">&lt;/script&gt;</span>
+              </code></pre>
+            </div>
+            <div v-if="example3.isActive === 'values'">
+              <pre class="code grey" data-lang="javascript"><code>
+{{example3.values}}
               </code></pre>
             </div>
           </div>
@@ -755,13 +772,15 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
             <p>list of data can be an array</p>
             <div class="columns">
               <div class="column col-4">
-                <multi-select @selectionChanged="updateValues4"
+                <multi-select v-model="example4.values"
                   :options="example4.options"
                   :filters="example4.filters"
-                  :selectOptions="example4.selectOptions"></multi-select>
+                  :reloadInit="example4.reloadInit"
+                  :selectOptions="example4.selectOptions"
+                  @vueMultiSelectInited="example4.reloadInit = false"></multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
-                <button class="btn btn-primary" @click="randomize(example4)">Reset Data</button>
+                <button class="btn btn-primary" @click="reloadFunction4">Manual relaod for init without updating data</button>
               </div>
             </div>
             <ul class="tab tab-block">
@@ -782,9 +801,16 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 <code><span class="blue">&lt;template&gt;
   &lt;div&gt;
     &lt;multi-select</span>
-      @selectionChanged=<span class="red">&quot;updateValues&quot;</span>
-      :options=<span class="red">&quot;options&quot;</span>
-      :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
+    v-model=<span class="red">&quot;values&quot;</span>
+    :options=<span class="red">&quot;options&quot;</span>
+    :filters=<span class="red">&quot;filters&quot;</span>
+    :reloadInit=<span class="red">&quot;reloadInit&quot;</span>
+    :selectOptions=<span class="red">&quot;data&quot;</span>
+    @vueMultiSelectInited=<span class="red">&quot;reloadInit = false&quot;</span><span class="blue"> /&gt; </span>
+    <span class="blue">&lt;button</span>
+      @click=<span class="red">&quot;reloadFunction&quot;</span><span class="blue">&gt;</span>
+      Manual reload for init without updating data
+    <span class="blue">&lt;/button&gt;
   &lt;/div&gt;
 &lt;/template&gt;</span>
 
@@ -797,59 +823,67 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
   data() {
     return {
       name: <span class="red">&#39;first group&#39;</span>,
-      values: [],
-      data: [{
-      title: <span class="red">&#39;part one&#39;</span>,
-      elements: [
+      values: [
         <span class="red">&#39;0&#39;</span>,
         <span class="red">&#39;2&#39;</span>,
-        <span class="red">&#39;3&#39;</span>,
-        <span class="red">&#39;8&#39;</span>,
-        <span class="red">&#39;9&#39;</span>,
-        <span class="red">&#39;11&#39;</span>,
-        <span class="red">&#39;13&#39;</span>,
-        <span class="red">&#39;14&#39;</span>,
-        <span class="red">&#39;15&#39;</span>,
-        <span class="red">&#39;18&#39;</span>,
-      ]
-    },{
-      title: <span class="red">&#39;part two&#39;</span>,
-      elements: [
-        <span class="red">&#39;23&#39;</span>,
-        <span class="red">&#39;25&#39;</span>,
-        <span class="red">&#39;31&#39;</span>,
-        <span class="red">&#39;42&#39;</span>,
-        <span class="red">&#39;56&#39;</span>,
-        <span class="red">&#39;76&#39;</span>,
-        <span class="red">&#39;82&#39;</span>,
-        <span class="red">&#39;42&#39;</span>,
-        <span class="red">&#39;13&#39;</span>,
-        <span class="red">&#39;21&#39;</span>,
-      ]
-    }];
+      ],
+      reloadInit: <span class="red">false</span>,
+      data: [{
+        title: <span class="red">&#39;part one&#39;</span>,
+        elements: [
+          <span class="red">&#39;0&#39;</span>,
+          <span class="red">&#39;2&#39;</span>,
+          <span class="red">&#39;3&#39;</span>,
+          <span class="red">&#39;8&#39;</span>,
+          <span class="red">&#39;9&#39;</span>,
+          <span class="red">&#39;11&#39;</span>,
+          <span class="red">&#39;13&#39;</span>,
+          <span class="red">&#39;14&#39;</span>,
+          <span class="red">&#39;15&#39;</span>,
+          <span class="red">&#39;18&#39;</span>,
+        ],
+      }, {
+        title: <span class="red">&#39;part two&#39;</span>,
+        elements: [
+          <span class="red">&#39;23&#39;</span>,
+          <span class="red">&#39;25&#39;</span>,
+          <span class="red">&#39;31&#39;</span>,
+          <span class="red">&#39;42&#39;</span>,
+          <span class="red">&#39;56&#39;</span>,
+          <span class="red">&#39;76&#39;</span>,
+          <span class="red">&#39;82&#39;</span>,
+          <span class="red">&#39;42&#39;</span>,
+          <span class="red">&#39;13&#39;</span>,
+          <span class="red">&#39;21&#39;</span>,
+        ],
+      }],
       options: {
         multi: <span class="red">true</span>,
         groups: <span class="red">true</span>,
         labelList: <span class="red">&#39;elements&#39;</span>,
         groupName: <span class="red">&#39;title&#39;</span>,
         btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
-        <span class="wrap">cssSelected: (option) =&gt;
-          option[<span class="red">&#39;selected&#39;</span>] ?
-          {<span class="red">&#39;background-color&#39;</span>:
-          <span class="red">&#39;#5764c6&#39;</span>} :
-          <span class="red">&#39;&#39;</span></span>
-      }
-    }
+        <span class="wrap">cssSelected: option =&gt;
+          (<span class="red">option.selected</span> ?
+          { <span class="red">&#39;background-color&#39;</span>:
+          <span class="red">&#39;#5764c6&#39;</span> } :
+          <span class="red">&#39;&#39;</span></span>),
+      },
+    };
   },
   methods: {
-    updateValues(values) {
-      <span class="blue">this</span>.values = values;
-    }
+    reloadFunction() {
+      <span class="blue">this</span>.values = [
+        <span class="red">&#39;2&#39;</span>,
+        <span class="red">&#39;3&#39;</span>,
+      ];
+      <span class="blue">this</span>.reloadInit = <span class="red">true</span>;
+    },
   },
   components: {
     multiSelect,
-  }
-}
+  },
+};
 <span class="blue">&lt;/script&gt;</span>
               </code></pre>
             </div>

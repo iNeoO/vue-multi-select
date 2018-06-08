@@ -24,7 +24,10 @@ When you create a new PR please make it against the develop branch when adding n
 | options       | Object      |
 | filters       | Array       |
 | selectOptions | Array       |
-| value         | Array       |
+| v-model       | Array       |
+| reloadInit    | Boolean     |
+| @vueMultiSelectInited | Event triggered when v-model have been manualy updated |
+| @selectionChanged | Event trigerred when v-model change (deprecated) |
 
 ### 1. options (Contains options to set the multi-select)
 
@@ -119,7 +122,7 @@ data = [{
 <template>
   <div>
     <vueMultiSelect
-      @selectionChanged="updateValues"
+      v-model="values"
       :options="options"
       :filters="filters"
       :selectOptions="data" />
@@ -191,9 +194,6 @@ export default {
     };
   },
   methods: {
-    updateValues(values) {
-      this.values = values;
-    },
   },
   components: {
     vueMultiSelect,
