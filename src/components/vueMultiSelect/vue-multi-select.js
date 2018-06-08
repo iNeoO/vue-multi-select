@@ -21,11 +21,15 @@ export default {
       type: Boolean,
       default: false,
     },
+    value: {
+      type: Array,
+      default: (() => []),
+    },
   },
   data() {
     return {
       btnLabel: '',
-      value: [],
+      valueSelected: [],
       multiSelect: null,
       groups: null,
       isOpen: false,
@@ -64,7 +68,6 @@ export default {
       this.init();
     },
     init() {
-      this.value.length = 0;
       if (!this.groups) {
         const list = {};
         list[this.list] = this.cloneArray(this.selectOptions);
@@ -81,31 +84,44 @@ export default {
           this.simpleArray = true;
         }
         this.globalModel = this.cloneData(this.selectOptions);
-        this.initValues();
       }
+      this.initValues();
     },
     initValues() {
-      this.value.length = 0;
+      this.valueSelected.length = 0;
       for (let i = 0; i < this.globalModel.length; i += 1) {
         for (let j = 0; j < this.globalModel[i][this.list].length; j += 1) {
-          this.$set(this.globalModel[i][this.list][j], this.labelSelected,
-            !!this.globalModel[i][this.list][j][this.labelSelected]);
-          this.$set(this.globalModel[i][this.list][j], 'visible', true);
-          if (this.globalModel[i][this.list][j][this.labelSelected]) {
-            if (this.simpleArray) {
-              this.value.push(this.globalModel[i][
+          if (typeof this.globalModel[i][this.list][j][this.labelSelected] ===
+            'boolean') {
+            this.globalModel[i][this.list][j][this.labelSelected] = false;
+          } else {
+            this.$set(this.globalModel[i][this.list][j], this.labelSelected, false);
+            this.$set(this.globalModel[i][this.list][j], 'visible', true);
+          }
+          for (let k = 0; k < this.value.length; k += 1) {
+            if (this.simpleArray &&
+              this.globalModel[i][this.list][j][this.labelName] === this.value[k]) {
+              this.globalModel[i][this.list][j][this.labelSelected] = true;
+              this.valueSelected.push(this.globalModel[i][
                 this.list][j][this.labelName]);
-            } else {
-              this.value.push(this.globalModel[i][this.list][j]);
+            } else if (!this.simpleArray &&
+              this.globalModel[i][this.list][j][this.labelName] ===
+              this.value[k][this.labelName]) {
+              this.globalModel[i][this.list][j][this.labelSelected] = true;
+              const opt = Object.assign({}, this.globalModel[i][this.list][j]);
+              delete opt[this.labelSelected];
+              delete opt.visible;
+              this.valueSelected.push(opt);
             }
           }
         }
       }
       this.filter();
-      this.$emit(this.eventName, this.value);
+      this.$emit('input', this.valueSelected.slice(0));
+      this.$emit(this.eventName, this.valueSelected.slice(0));
     },
     getBtnLabel() {
-      return !this.multi ? this.btnLabel : `${this.btnLabel} (${this.value.length})`;
+      return !this.multi ? this.btnLabel : `${this.btnLabel} (${this.valueSelected.length})`;
     },
     toggleCheckboxes(event) {
       this.multiSelect = event.target;
@@ -135,34 +151,37 @@ export default {
         if (!this.multi) {
           this.filters[0].selectAll = true;
           this.deselctAll();
-          this.value.length = 0;
-          this.$emit(this.eventName, this.value);
+          this.valueSelected.length = 0;
+          this.$emit('input', this.valueSelected.slice(0));
+          this.$emit(this.eventName, this.valueSelected.slice(0));
           this.externalClick({ path: [] });
         }
         this.pushOption(option);
-        this.$emit(this.eventName, this.value);
+        this.$emit('input', this.valueSelected.slice(0));
+        this.$emit(this.eventName, this.valueSelected.slice(0));
       } else {
         this.popOption(option);
-        this.$emit(this.eventName, this.value);
+        this.$emit('input', this.valueSelected.slice(0));
+        this.$emit(this.eventName, this.valueSelected.slice(0));
       }
       option[this.labelSelected] = !option[this.labelSelected];
       this.filter();
     },
     pushOption(option) {
       if (this.simpleArray) {
-        this.value.push(option[this.labelName]);
+        this.valueSelected.push(option[this.labelName]);
       } else {
         const opt = Object.assign({}, option);
         delete opt[this.labelSelected];
         delete opt.visible;
-        this.value.push(opt);
+        this.valueSelected.push(opt);
       }
     },
     popOption(opt) {
-      for (let i = 0; i < this.value.length; i += 1) {
-        if (this.value[i][this.labelName] === opt[this.labelName] ||
-          (this.simpleArray && this.value[i] === opt[this.labelName])) {
-          this.value.splice(i, 1);
+      for (let i = 0; i < this.valueSelected.length; i += 1) {
+        if (this.valueSelected[i][this.labelName] === opt[this.labelName] ||
+          (this.simpleArray && this.valueSelected[i] === opt[this.labelName])) {
+          this.valueSelected.splice(i, 1);
           return;
         }
       }
@@ -207,7 +226,8 @@ export default {
           }
         }
       }
-      this.$emit(this.eventName, this.value);
+      this.$emit('input', this.valueSelected.slice(0));
+      this.$emit(this.eventName, this.valueSelected.slice(0));
       option.selectAll = !option.selectAll;
       this.filter();
     },
@@ -283,7 +303,6 @@ export default {
       handler(value) {
         if (value) {
           this.initValues();
-          console.log('toto');
           this.$emit('vueMultiSelectInited');
         }
       },

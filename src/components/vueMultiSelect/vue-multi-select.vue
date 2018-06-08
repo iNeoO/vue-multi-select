@@ -57,7 +57,7 @@
           </span>
         </li>
       </ul>
-      <div v-if="!value  || optionsAllHide" class="empty-tab">No data</div>
+      <div v-if="!valueSelected  || optionsAllHide" class="empty-tab">No data</div>
     </div>
   </div>
 </div>
