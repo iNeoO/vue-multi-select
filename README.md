@@ -33,10 +33,10 @@ When you create a new PR please make it against the develop branch when adding n
 ### 1. options (Contains options to set the multi-select)
 
 | Params        | Type     | Default                                                                 | Description                           |
-| ------------- | -------- | ----------------------------------------------------------------------- | ------------------------------------- |               |
-| cssSelected   | Function | (option) =>  option['selected'] ? {  'font-weight': 'bold',color: '#5755d9',} : ''  | Css passed to value                          |
-| groups        | Boolean  | false                                                          | Display or not groups selection       |
-| multi         | Boolean  | false                                                                    | Set single or multiple selection      |
+| ------------- | -------- | ----------------------------------------------------------------------- | ------------------------------------- |
+| cssSelected   | Function | (option) =>  option['selected'] ? {  'font-weight': 'bold',color: '#5755d9',} : ''  | Css passed to value       |
+| groups        | Boolean  | false                                                                   | Display or not groups selection       |
+| multi         | Boolean  | false                                                                   | Set single or multiple selection      |
 | labelList     | String   | 'list'                                                                  | Name Attributes for list              |
 | labelName     | String   | 'name'                                                                  | Name Attributes for value to display  |
 | labelSelected | String   | 'selected'                                                              | Name attributes for value selected    |
