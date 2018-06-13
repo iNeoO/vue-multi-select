@@ -120,9 +120,6 @@ export default {
       this.$emit('input', this.valueSelected.slice(0));
       this.$emit(this.eventName, this.valueSelected.slice(0));
     },
-    getBtnLabel() {
-      return !this.multi ? this.btnLabel : `${this.btnLabel} (${this.valueSelected.length})`;
-    },
     toggleCheckboxes(event) {
       this.multiSelect = event.target;
       if (this.multiSelect.className === 'buttonLabel') {
@@ -290,6 +287,16 @@ export default {
         }
       }
       return clone;
+    },
+  },
+  computed: {
+    getBtnLabel() {
+      if (this.multi) {
+        return `${this.btnLabel} (${this.valueSelected.length})`;
+      } else if (this.valueSelected.length) {
+        return this.valueSelected[this.valueSelected.length - 1][this.labelName];
+      }
+      return this.btnLabel;
     },
   },
   watch: {
