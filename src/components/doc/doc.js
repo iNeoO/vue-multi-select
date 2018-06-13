@@ -5,6 +5,7 @@ export default {
   name: 'doc',
   data() {
     return {
+      btnLabel: 'A simple vue multi select',
       string: 'string',
       example1: {
         selectOptions: [{
@@ -58,7 +59,6 @@ export default {
         options: {
           multi: true,
           groups: true,
-          btnLabel: 'A simple vue multi select',
         },
         values: [],
         isActive: 'code',
@@ -76,13 +76,12 @@ export default {
           { name: '15' },
           { name: '18' },
         ],
-        options: {
-          btnLabel: 'A simple vue single select',
-        },
+        btnLabel: 'A simple vue multi select',
         values: [],
         isActive: 'code',
       },
       example3: {
+        btnLabel: 'A simple vue multi select',
         reloadInit: false,
         selectOptions: [{
           title: 'part one',
@@ -119,7 +118,6 @@ export default {
           labelName: 'label',
           labelList: 'elements',
           groupName: 'title',
-          btnLabel: 'A simple vue multi select',
           cssSelected: option => (option.selected ? { 'background-color': '#5764c6' } : ''),
         },
         values: [
@@ -129,6 +127,7 @@ export default {
         isActive: 'code',
       },
       example4: {
+        btnLabel: 'A simple vue multi select',
         reloadInit: false,
         selectOptions: [{
           title: 'part one',
@@ -164,7 +163,6 @@ export default {
           groups: true,
           labelList: 'elements',
           groupName: 'title',
-          btnLabel: 'A simple vue multi select',
           cssSelected: option => (option.selected ? { 'background-color': '#5764c6' } : ''),
         },
         values: ['0', '2'],

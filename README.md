@@ -26,14 +26,14 @@ When you create a new PR please make it against the develop branch when adding n
 | selectOptions | Array       |
 | v-model       | Array       |
 | reloadInit    | Boolean     |
+| btnLabel      | String      |	  
 | @vueMultiSelectInited | Event triggered when v-model have been manualy updated |
 | @selectionChanged | Event trigerred when v-model change (deprecated) |
 
 ### 1. options (Contains options to set the multi-select)
 
 | Params        | Type     | Default                                                                 | Description                           |
-| ------------- | -------- | ----------------------------------------------------------------------- | ------------------------------------- |
-| btnLabel      | String   | 'multi-select'                                                          | Label on the button	                 |
+| ------------- | -------- | ----------------------------------------------------------------------- | ------------------------------------- |               |
 | cssSelected   | Function | (option) =>  option['selected'] ? {  'font-weight': 'bold',color: '#5755d9',} : ''  | Css passed to value                          |
 | groups        | Boolean  | false                                                          | Display or not groups selection       |
 | multi         | Boolean  | false                                                                    | Set single or multiple selection      |
@@ -121,21 +121,23 @@ data = [{
 ```html
 <template>
   <div>
-    <vueMultiSelect
+    <multi-select
       v-model="values"
       :options="options"
       :filters="filters"
+      :btnLabel="btnLabel"
       :selectOptions="data" />
   </div>
 </template>
 
 <script>
-import vueMultiSelect from 'vue-multi-select';
+import multiSelect from 'vue-multi-select';
 import 'vue-multi-select/dist/lib/vue-multi-select.min.css';
 
 export default {
   data() {
     return {
+      btnLabel: 'A simple vue multi select',
       name: 'first group',
       values: [],
       data: [{
@@ -189,14 +191,13 @@ export default {
       options: {
         multi: true,
         groups: true,
-        btnLabel: 'A simple vue multi select',
       },
     };
   },
   methods: {
   },
   components: {
-    vueMultiSelect,
+    multiSelect,
   },
 };
 </script>

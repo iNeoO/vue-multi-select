@@ -2,7 +2,7 @@
 <div class="select">
   <button type="button" class="btn-select" @click="toggleCheckboxes">
       <div class="buttonLabel">
-          {{getBtnLabel()}}
+          {{getBtnLabel}}
           <span class="caret"></span>
       </div>
     </button>

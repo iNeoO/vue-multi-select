@@ -139,6 +139,9 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.5.0</h3>
+            <p>Set buttonLabel as prop, to be able to dynamically change it</p>
+            <p>When single select, display the value selected</p>
             <h3>3.4.0</h3>
             <p><b>selectionChanged is now deprecated</b>, if you want to trigger event when value change use a watch</p>
             <p>Set possible to use v-model to directly get the value (instead of use a function to update the value)</p>
@@ -424,6 +427,7 @@ filters.push({
                 <multi-select v-model="example1.values"
                   :options="example1.options"
                   :filters="example1.filters"
+                  :btnLabel="example1.btnLabel"
                   :selectOptions="example1.selectOptions"></multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
@@ -448,6 +452,7 @@ filters.push({
       v-model=<span class="red">&quot;values&quot;</span>
       :options=<span class="red">&quot;options&quot;</span>
       :filters=<span class="red">&quot;filters&quot;</span>
+      :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
       :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
   &lt;/div&gt;
 &lt;/template&gt;</span>
@@ -460,6 +465,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
 <span class="blue">export</span> <span class="blue">default</span> {
   data() {
     return {
+      btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
       name: <span class="red">&#39;first group&#39;</span>,
       values: [],
       data: [{
@@ -514,7 +520,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
       options: {
         multi: <span class="red">true</span>,
         groups: <span class="red">true</span>,
-        btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
       },
     };
   },
@@ -547,6 +552,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                   v-model="example2.values"
                   :options="example2.options"
                   :filters="example2.filters"
+                  :btnLabel="example2.btnLabel"
                   :selectOptions="example2.selectOptions">
                 </multi-select>
               </div>
@@ -576,6 +582,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     &lt;multi-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
       :options=<span class="red">&quot;options&quot;</span>
+      :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
       :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
   &lt;/div&gt;
 &lt;/template&gt;</span>
@@ -602,9 +609,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         { name: <span class="red">&#39;15&#39;</span> },
         { name: <span class="red">&#39;18&#39;</span> },
       ],
-      options: {
-        btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
-      },
+      btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
     };
   },
   methods: {
@@ -645,6 +650,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                   :filters="example3.filters"
                   :reloadInit="example3.reloadInit"
                   :selectOptions="example3.selectOptions"
+                  :btnLabel="example3.btnLabel"
                   @vueMultiSelectInited="example3.reloadInit = false"></multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
@@ -674,6 +680,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
       :filters=<span class="red">&quot;filters&quot;</span>
       :reloadInit=<span class="red">&quot;reloadInit&quot;</span>
       :selectOptions=<span class="red">&quot;data&quot;</span>
+      :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
       @vueMultiSelectInited=<span class="red">&quot;reloadInit = false&quot;</span><span class="blue"> /&gt; </span>
       <span class="blue">&lt;button</span>
         @click=<span class="red">&quot;reloadFunction&quot;</span><span class="blue">&gt;</span>
@@ -690,6 +697,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
 <span class="blue">export</span> <span class="blue">default</span> {
   data() {
     return {
+      btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
       name: <span class="red">&#39;first group&#39;</span>,
       values: [
         { label: <span class="red">&#39;2&#39;</span> },
@@ -731,7 +739,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         labelName: <span class="red">&#39;label&#39;</span>,
         labelList: <span class="red">&#39;elements&#39;</span>,
         groupName: <span class="red">&#39;title&#39;</span>,
-        btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
         <span class="wrap">cssSelected: option =&gt;
           (<span class="red">option.selected</span> ?
           { <span class="red">&#39;background-color&#39;</span>:
@@ -777,6 +784,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                   :filters="example4.filters"
                   :reloadInit="example4.reloadInit"
                   :selectOptions="example4.selectOptions"
+                  :btnLabel="example4.btnLabel"
                   @vueMultiSelectInited="example4.reloadInit = false"></multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
@@ -806,6 +814,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     :filters=<span class="red">&quot;filters&quot;</span>
     :reloadInit=<span class="red">&quot;reloadInit&quot;</span>
     :selectOptions=<span class="red">&quot;data&quot;</span>
+    :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
     @vueMultiSelectInited=<span class="red">&quot;reloadInit = false&quot;</span><span class="blue"> /&gt; </span>
     <span class="blue">&lt;button</span>
       @click=<span class="red">&quot;reloadFunction&quot;</span><span class="blue">&gt;</span>
@@ -822,6 +831,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
 <span class="blue">export</span> <span class="blue">default</span> {
   data() {
     return {
+      btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
       name: <span class="red">&#39;first group&#39;</span>,
       values: [
         <span class="red">&#39;0&#39;</span>,
@@ -862,7 +872,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         groups: <span class="red">true</span>,
         labelList: <span class="red">&#39;elements&#39;</span>,
         groupName: <span class="red">&#39;title&#39;</span>,
-        btnLabel: <span class="red">&#39;A simple vue multi select&#39;</span>,
         <span class="wrap">cssSelected: option =&gt;
           (<span class="red">option.selected</span> ?
           { <span class="red">&#39;background-color&#39;</span>:

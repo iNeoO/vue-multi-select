@@ -3,15 +3,15 @@ export default {
   props: {
     options: {
       type: Object,
-      default: (() => {}),
+      default: () => ({}),
     },
     filters: {
       type: Array,
-      default: (() => []),
+      default: () => [],
     },
     selectOptions: {
       type: Array,
-      default: (() => []),
+      default: () => [],
     },
     eventName: {
       type: String,
@@ -23,12 +23,15 @@ export default {
     },
     value: {
       type: Array,
-      default: (() => []),
+      default: () => ([]),
+    },
+    btnLabel: {
+      type: String,
+      default: 'multi-select',
     },
   },
   data() {
     return {
-      btnLabel: '',
       valueSelected: [],
       multiSelect: null,
       groups: null,
@@ -48,7 +51,6 @@ export default {
         this.options.multi : false;
       this.groups = typeof (this.options.groups) !== 'undefined' ?
         this.options.groups : false;
-      this.btnLabel = this.options.btnLabel || 'multi-select';
       this.list = this.options.labelList || 'list';
       this.labelName = this.options.labelName || 'name';
       this.groupName = this.options.groupName || 'name';
@@ -119,9 +121,6 @@ export default {
       this.filter();
       this.$emit('input', this.valueSelected.slice(0));
       this.$emit(this.eventName, this.valueSelected.slice(0));
-    },
-    getBtnLabel() {
-      return !this.multi ? this.btnLabel : `${this.btnLabel} (${this.valueSelected.length})`;
     },
     toggleCheckboxes(event) {
       this.multiSelect = event.target;
@@ -290,6 +289,16 @@ export default {
         }
       }
       return clone;
+    },
+  },
+  computed: {
+    getBtnLabel() {
+      if (this.multi) {
+        return `${this.btnLabel} (${this.valueSelected.length})`;
+      } else if (this.valueSelected.length) {
+        return this.valueSelected[this.valueSelected.length - 1][this.labelName];
+      }
+      return this.btnLabel;
     },
   },
   watch: {
