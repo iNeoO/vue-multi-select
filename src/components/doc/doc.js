@@ -5,9 +5,9 @@ export default {
   name: 'doc',
   data() {
     return {
-      btnLabel: 'A simple vue multi select',
       string: 'string',
       example1: {
+        btnLabel: 'A simple vue multi select',
         selectOptions: [{
           name: 'first group',
           list: [
