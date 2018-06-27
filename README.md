@@ -26,7 +26,9 @@ When you create a new PR please make it against the develop branch when adding n
 | selectOptions | Array       |
 | v-model       | Array       |
 | reloadInit    | Boolean     |
-| btnLabel      | String      |	  
+| btnLabel      | String      |
+| search        | Boolean     |	  
+| searchPlaceholder | String  |	  	  
 | @vueMultiSelectInited | Event triggered when v-model have been manualy updated |
 | @selectionChanged | Event trigerred when v-model change (deprecated) |
 
@@ -126,6 +128,8 @@ data = [{
       :options="options"
       :filters="filters"
       :btnLabel="btnLabel"
+      search
+      :searchPlaceholder="Search"
       :selectOptions="data" />
   </div>
 </template>
@@ -137,6 +141,7 @@ import 'vue-multi-select/dist/lib/vue-multi-select.min.css';
 export default {
   data() {
     return {
+      search: 'Search things',
       btnLabel: 'A simple vue multi select',
       name: 'first group',
       values: [],

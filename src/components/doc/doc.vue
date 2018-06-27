@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.6.0</h3>
+            <p>Set possible to hide search bar and edit placeholder of search</p>
             <h3>3.5.0</h3>
             <p>Set buttonLabel as prop, to be able to dynamically change it</p>
             <p>When single select, display the value selected</p>
@@ -187,6 +189,7 @@
                   <th>Params</th>
                   <th>Type</th>
                   <th>Description</th>
+                  <th>Default</th>
                 </tr>
               </thead>
               <tbody>
@@ -194,37 +197,50 @@
                   <td>options</td>
                   <td>Object</td>
                   <td>Permit to params most the options of the multi Select</td>
+                  <td><code>{}</code></td>
                 </tr>
                 <tr>
                   <td>filters</td>
                   <td>Array</td>
                   <td>Permit to add some filters in the multiSelect's input</td>
+                  <td><code>[]</code></td>
                 </tr>
                 <tr class="active">
                   <td>selectOptions</td>
                   <td>Array</td>
                   <td>Variables who contains values for the select</td>
+                  <td><code>[]</code></td>
                 </tr>
                 <tr>
                   <td>eventName</td>
                   <td>String</td>
                   <td>eventName Name for the event triggered by
                     the vue-multi-select default is selectionChanged (deprecated, use v-model or a watch)</td>
+                  <td><code>'selectionChanged'</code></td>
                 </tr>
                 <tr class="active">
                   <td>v-model</td>
                   <td>Array</td>
                   <td>Variables who contains values selected</td>
+                  <td><code>-</code></td>
                 </tr>
                 <tr>
-                  <td>reloadInit</td>
+                  <td>search</td>
                   <td>Boolean</td>
-                  <td>Variable used to trigger a manual init of vue-multi-select (when you manualy update v-model) </td>
+                  <td>hide/show search bar</td>
+                  <td><code>False</code></td>
+                </tr>
+                <tr  class="active">
+                  <td>searchPlaceholder</td>
+                  <td>String</td>
+                  <td>Change placeholder of searchBar</td>
+                  <td><code>'Search...'</code></td>
                 </tr>
                 <tr>
                   <td>vueMultiSelectInited (event)</td>
                   <td>Event</td>
                   <td>Event triggered when v-model have been manualy updated</td>
+                  <td><code>-</code></td>
                 </tr>
               </tbody>
             </table>
@@ -428,6 +444,7 @@ filters.push({
                   :options="example1.options"
                   :filters="example1.filters"
                   :btnLabel="example1.btnLabel"
+                  search
                   :selectOptions="example1.selectOptions"></multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
@@ -450,6 +467,7 @@ filters.push({
   &lt;div&gt;
     &lt;multi-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
+      search
       :options=<span class="red">&quot;options&quot;</span>
       :filters=<span class="red">&quot;filters&quot;</span>
       :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
@@ -550,6 +568,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
               <div class="column col-4">
                 <multi-select
                   v-model="example2.values"
+                  search
                   :options="example2.options"
                   :filters="example2.filters"
                   :btnLabel="example2.btnLabel"
@@ -581,6 +600,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
   &lt;div&gt;
     &lt;multi-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
+      search
       :options=<span class="red">&quot;options&quot;</span>
       :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
       :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
@@ -646,6 +666,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
               <div class="column col-4">
                 <multi-select
                   v-model="example3.values"
+                  search
                   :options="example3.options"
                   :filters="example3.filters"
                   :reloadInit="example3.reloadInit"
@@ -676,6 +697,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
   &lt;div&gt;
     &lt;multi-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
+      search
       :options=<span class="red">&quot;options&quot;</span>
       :filters=<span class="red">&quot;filters&quot;</span>
       :reloadInit=<span class="red">&quot;reloadInit&quot;</span>
@@ -780,6 +802,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
             <div class="columns">
               <div class="column col-4">
                 <multi-select v-model="example4.values"
+                  search
                   :options="example4.options"
                   :filters="example4.filters"
                   :reloadInit="example4.reloadInit"
@@ -810,6 +833,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
   &lt;div&gt;
     &lt;multi-select</span>
     v-model=<span class="red">&quot;values&quot;</span>
+    search
     :options=<span class="red">&quot;options&quot;</span>
     :filters=<span class="red">&quot;filters&quot;</span>
     :reloadInit=<span class="red">&quot;reloadInit&quot;</span>

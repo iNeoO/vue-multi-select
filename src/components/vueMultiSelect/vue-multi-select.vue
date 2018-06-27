@@ -18,11 +18,12 @@
             {{button.selectAll ? button.nameNotAll : button.nameAll}}
           </button>
       </div>
-      <div class="line" style="position:relative">
+      <div v-if="search" class="line" style="position:relative">
         <input
-          placeholder="Search..."
-          type="text" v-model="searchInput"
-          @input="search()"
+          :placeholder="searchPlaceholder"
+          type="text"
+          v-model="searchInput"
+          @input="searchfn()"
           class="inputFilter">
         <button type="button" class="clearButton" @click="clearSearch()">×
           </button>

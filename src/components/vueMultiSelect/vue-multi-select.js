@@ -29,6 +29,14 @@ export default {
       type: String,
       default: 'multi-select',
     },
+    search: {
+      type: Boolean,
+      default: false,
+    },
+    searchPlaceholder: {
+      type: String,
+      default: 'Search...',
+    },
   },
   data() {
     return {
@@ -187,9 +195,9 @@ export default {
     },
     selectTab(id) {
       this.idSelectedTab = id;
-      this.search();
+      this.searchfn();
     },
-    search() {
+    searchfn() {
       let allHide = true;
       for (let i = 0; i < this.globalModel[this.idSelectedTab][this.list].length;
         i += 1) {
@@ -206,7 +214,7 @@ export default {
     },
     clearSearch() {
       this.searchInput = '';
-      this.search();
+      this.searchfn();
     },
     selectCurrent(option) {
       for (let i = 0; i < this.globalModel[this.idSelectedTab][this.list].length;
