@@ -224,6 +224,9 @@ export default {
 - `npm run build:docs`: Production ready build of your docs site for your library. Put this build online so you can demo your library to the world and provide documentation.
 ```
 
+Testing Supported By<br/>
+<img width="160" src="http://foundation.zurb.com/sites/docs/assets/img/logos/browser-stack.svg" alt="BrowserStack"/>
+
 ## thanks
 
 [Patrice Clément](https://github.com/monsieurp)
