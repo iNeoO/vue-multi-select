@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.6.2</h3>
+            <p>Fix event listener not trigerred on Iphone/ipad</p>
             <h3>3.6.0</h3>
             <p>Set possible to hide search bar and edit placeholder of search</p>
             <h3>3.5.0</h3>
