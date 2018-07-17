@@ -44,6 +44,8 @@ When you create a new PR please make it against the develop branch when adding n
 | labelSelected | String   | 'selected'                                                              | Name attributes for value selected    |
 | labelDisabled | String   | 'disabled'                                                              | Name attributes for value disabled    |
 | groupName     | String   | 'name'                                                                  | Name Attributes for groups to display |
+| renderTemplate     | Function   | (elem => elem[this.labelName])                                   | Function returning text to display element |
+
 
 ### 2. filters to apply to select many options
 ```javascript

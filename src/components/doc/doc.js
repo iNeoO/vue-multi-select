@@ -57,6 +57,9 @@ export default {
           },
         }],
         options: {
+          renderTemplate(elem) {
+            return `number: ${elem.name}`;
+          },
           multi: true,
           groups: true,
         },

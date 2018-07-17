@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.7.0</h3>
+            <p>Apply a function to render elements</p>
             <h3>3.6.2</h3>
             <p>Fix event listener not trigerred on Iphone/ipad</p>
             <h3>3.6.0</h3>
@@ -319,6 +321,12 @@
                   <td>String</td>
                   <td><code>'name'</code></td>
                   <td>Name Attributes for groups to display</td>
+                </tr>
+                <tr>
+                  <td>renderTemplate</td>
+                  <td>Function</td>
+                  <td><code>(elem => elem[this.labelName])</code></td>
+                  <td>Function returning text to display element</td>
                 </tr>
               </tbody>
             </table>
@@ -538,6 +546,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         },
       }],
       options: {
+        renderTemplate(elem) =&gt; `number : ${elem.name}`,
         multi: <span class="red">true</span>,
         groups: <span class="red">true</span>,
       },
@@ -603,7 +612,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     &lt;multi-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
       search
-      :options=<span class="red">&quot;options&quot;</span>
       :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
       :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
   &lt;/div&gt;
@@ -670,7 +678,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                   v-model="example3.values"
                   search
                   :options="example3.options"
-                  :filters="example3.filters"
                   :reloadInit="example3.reloadInit"
                   :selectOptions="example3.selectOptions"
                   :btnLabel="example3.btnLabel"
@@ -701,7 +708,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
       v-model=<span class="red">&quot;values&quot;</span>
       search
       :options=<span class="red">&quot;options&quot;</span>
-      :filters=<span class="red">&quot;filters&quot;</span>
       :reloadInit=<span class="red">&quot;reloadInit&quot;</span>
       :selectOptions=<span class="red">&quot;data&quot;</span>
       :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
@@ -806,7 +812,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 <multi-select v-model="example4.values"
                   search
                   :options="example4.options"
-                  :filters="example4.filters"
                   :reloadInit="example4.reloadInit"
                   :selectOptions="example4.selectOptions"
                   :btnLabel="example4.btnLabel"
@@ -837,7 +842,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     v-model=<span class="red">&quot;values&quot;</span>
     search
     :options=<span class="red">&quot;options&quot;</span>
-    :filters=<span class="red">&quot;filters&quot;</span>
     :reloadInit=<span class="red">&quot;reloadInit&quot;</span>
     :selectOptions=<span class="red">&quot;data&quot;</span>
     :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
