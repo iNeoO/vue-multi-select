@@ -54,7 +54,7 @@
           <span class="right margin-right-10"
             v-if="option[labelSelected]">✓</span>
           <span class="margin-left-20">
-            {{option[labelName]}}
+            {{renderTemplate(option)}}
           </span>
         </li>
       </ul>

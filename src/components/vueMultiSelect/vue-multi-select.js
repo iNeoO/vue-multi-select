@@ -61,6 +61,7 @@ export default {
         this.options.groups : false;
       this.list = this.options.labelList || 'list';
       this.labelName = this.options.labelName || 'name';
+      this.renderTemplate = this.options.renderTemplate || (elem => elem[this.labelName]);
       this.groupName = this.options.groupName || 'name';
       this.labelSelected = this.options.labelSelected || 'selected';
       this.labelDisabled = this.options.labelDisabled || 'disabled';
