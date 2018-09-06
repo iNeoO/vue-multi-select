@@ -99,7 +99,7 @@ export default {
       this.initValues();
     },
     initValues() {
-      this.valueSelected.length = 0;
+      this.valueSelected = [];
       for (let i = 0; i < this.globalModel.length; i += 1) {
         for (let j = 0; j < this.globalModel[i][this.list].length; j += 1) {
           if (typeof this.globalModel[i][this.list][j][this.labelSelected] ===
@@ -159,7 +159,7 @@ export default {
         if (!this.multi) {
           this.filters[0].selectAll = true;
           this.deselctAll();
-          this.valueSelected.length = 0;
+          this.valueSelected = [];
           this.$emit('input', this.valueSelected.slice(0));
           this.$emit(this.eventName, this.valueSelected.slice(0));
           this.externalClick({ path: [] });
