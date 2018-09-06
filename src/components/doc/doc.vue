@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.7.2</h3>
+            <p>Change way to set an array empty</p>
             <h3>3.7.1</h3>
             <p>Fix event unbind</p>
             <h3>3.7.0</h3>
