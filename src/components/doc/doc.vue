@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.8.0</h3>
+            <p>Remove case sensitive in search input</p>
             <h3>3.7.2</h3>
             <p>Change way to set an array empty</p>
             <h3>3.7.1</h3>
@@ -235,7 +237,7 @@
                 <tr>
                   <td>search</td>
                   <td>Boolean</td>
-                  <td>hide/show search bar</td>
+                  <td>hide/show search bar (search isn't case sensitive)</td>
                   <td><code>False</code></td>
                 </tr>
                 <tr  class="active">
