@@ -202,8 +202,9 @@ export default {
       let allHide = true;
       for (let i = 0; i < this.globalModel[this.idSelectedTab][this.list].length;
         i += 1) {
-        if (this.globalModel[this.idSelectedTab][this.list][i][this.labelName].indexOf(
-          this.searchInput) !== -1) {
+        if (~this.globalModel[this.idSelectedTab][this.list][i][this.labelName]
+            .toLowerCase().indexOf(
+          this.searchInput.toLowerCase())) {
           allHide = false;
           this.globalModel[this.idSelectedTab][this.list][i].visible = true;
         } else {
