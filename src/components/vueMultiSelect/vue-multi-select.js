@@ -81,16 +81,16 @@ export default {
       this.init();
     },
     init() {
+      const clone = this.cloneData(this.selectOptions);
       if (!this.groups) {
         if (typeof this.selectOptions[0] === 'string' ||
           typeof this.selectOptions[0] === 'number') {
           this.simpleArray = true;
-          this.globalModel = { [this.list]: this.prepareArray(this.selectOptions) };
+          this.globalModel = { [this.list]: this.prepareArray(clone) };
         } else {
-          this.globalModel = [{ [this.list]: this.selectOptions }];
+          this.globalModel = [{ [this.list]: clone }];
         }
       } else {
-        const clone = this.cloneData(this.selectOptions);
         if (typeof clone[0][this.list][0] === 'string' ||
         typeof clone[0][this.list][0] === 'number') {
           for (let i = 0; i < clone.length; i += 1) {
@@ -315,10 +315,9 @@ export default {
     value: {
       handler(newVal, oldval) {
         if (oldval && newVal && this.valueSelected) {
-          if (this.simpleArray) {
-            if (!compareHelper.compareSimpleArray(newVal, this.valueSelected)) {
-              this.initValues();
-            }
+          if (this.simpleArray &&
+            !compareHelper.compareSimpleArray(newVal, this.valueSelected)) {
+            this.initValues();
           } else if (!compareHelper.compareArrayObject(
             newVal, this.valueSelected, this.labelName)) {
             this.initValues();

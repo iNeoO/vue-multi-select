@@ -79,6 +79,7 @@ export default {
           { name: '15' },
           { name: '18' },
         ],
+        options: {},
         btnLabel: 'A simple vue multi select',
         values: [],
         isActive: 'code',
@@ -189,8 +190,12 @@ export default {
       const list = e.options.labelList || 'list';
       const name = e.options.labelName || 'name';
       for (let i = 0; i < e.selectOptions.length; i += 1) {
-        for (let j = 0; j < e.selectOptions[i][list].length; j += 1) {
-          e.selectOptions[i][list][j][name] = String(Math.floor(Math.random() * 100) + 1);
+        if (e.selectOptions[i][list]) {
+          for (let j = 0; j < e.selectOptions[i][list].length; j += 1) {
+            e.selectOptions[i][list][j][name] = String(Math.floor(Math.random() * 100) + 1);
+          }
+        } else {
+          e.selectOptions[i][name] = String(Math.floor(Math.random() * 100) + 1);
         }
       }
     },
