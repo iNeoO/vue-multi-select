@@ -85,7 +85,6 @@ export default {
       },
       example3: {
         btnLabel: 'A simple vue multi select',
-        reloadInit: false,
         selectOptions: [{
           title: 'part one',
           elements: [
@@ -131,7 +130,6 @@ export default {
       },
       example4: {
         btnLabel: 'A simple vue multi select',
-        reloadInit: false,
         selectOptions: [{
           title: 'part one',
           elements: [
@@ -183,11 +181,9 @@ export default {
         { label: '2' },
         { label: '3' },
       ];
-      this.example3.reloadInit = true;
     },
     reloadFunction4() {
       this.example4.values = ['0', '2'];
-      this.example4.reloadInit = true;
     },
     randomize(e) {
       const list = e.options.labelList || 'list';

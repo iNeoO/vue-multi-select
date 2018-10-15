@@ -27,10 +27,8 @@ When you create a new PR please make it against the develop branch when adding n
 | v-model       | Array       |
 | reloadInit    | Boolean     |
 | btnLabel      | String      |
-| search        | Boolean     |	  
-| searchPlaceholder | String  |	  	  
-| @vueMultiSelectInited | Event triggered when v-model have been manualy updated |
-| @selectionChanged | Event trigerred when v-model change (deprecated) |
+| search        | Boolean     |
+| searchPlaceholder | String  |
 
 ### 1. options (Contains options to set the multi-select)
 
@@ -179,20 +177,14 @@ export default {
       filters: [{
         nameAll: 'select <= 10',
         nameNotAll: 'Deselect <= 10',
-        func: (elem) => {
-          if (elem.name <= 10) {
-            return true;
-          }
-          return false;
+        func(elem) => {
+          return elem.name <= 10)
         },
       }, {
         nameAll: 'Select contains 2',
         nameNotAll: 'Deselect contains 2',
-        func: (elem) => {
-          if (elem.name.indexOf('2') !== -1) {
-            return true;
-          }
-          return false;
+        func(elem) => {
+          return elem.name.indexOf('2') !== -1
         },
       }],
       options: {

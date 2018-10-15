@@ -1,3 +1,5 @@
+import compareHelper from '../../helper/equals';
+
 export default {
   name: 'multi-select',
   props: {
@@ -80,21 +82,23 @@ export default {
     },
     init() {
       if (!this.groups) {
-        const list = {};
-        list[this.list] = this.cloneArray(this.selectOptions);
-        this.globalModel = [
-          list,
-        ];
         if (typeof this.selectOptions[0] === 'string' ||
           typeof this.selectOptions[0] === 'number') {
           this.simpleArray = true;
+          this.globalModel = { [this.list]: this.prepareArray(this.selectOptions) };
+        } else {
+          this.globalModel = [{ [this.list]: this.selectOptions }];
         }
       } else {
-        if (typeof this.selectOptions[0][this.list][0] === 'string' ||
-        typeof this.selectOptions[0][this.list][0] === 'number') {
+        const clone = this.cloneData(this.selectOptions);
+        if (typeof clone[0][this.list][0] === 'string' ||
+        typeof clone[0][this.list][0] === 'number') {
+          for (let i = 0; i < clone.length; i += 1) {
+            clone[i][this.list] = this.prepareArray(clone[i][this.list]);
+          }
           this.simpleArray = true;
         }
-        this.globalModel = this.cloneData(this.selectOptions);
+        this.globalModel = clone;
       }
       this.initValues();
     },
@@ -203,8 +207,8 @@ export default {
       for (let i = 0; i < this.globalModel[this.idSelectedTab][this.list].length;
         i += 1) {
         if (~this.globalModel[this.idSelectedTab][this.list][i][this.labelName]
-            .toLowerCase().indexOf(
-          this.searchInput.toLowerCase())) {
+          .toLowerCase().indexOf(
+            this.searchInput.toLowerCase())) {
           allHide = false;
           this.globalModel[this.idSelectedTab][this.list][i].visible = true;
         } else {
@@ -266,39 +270,21 @@ export default {
         }
       }
     },
-    cloneArray(array) {
-      const clone = [];
-      for (let i = 0; i < array.length; i += 1) {
-        if (!Array.isArray(array[i]) &&
-          typeof array[i] === 'object') {
-          clone[i] = Object.assign({}, array[i]);
-        } else if (typeof array[i] === 'string' ||
-          typeof array[i] === 'number') {
-          const obj = {};
-          obj[this.labelName] = array[i];
-          clone[i] = obj;
-        }
-      }
-      return clone;
+    prepareArray(value) {
+      return value.map(elem => ({ [this.labelName]: elem }));
     },
-    cloneData(data) {
-      const clone = [];
-      for (let i = 0; i < data.length; i += 1) {
-        clone[i] = {};
-        const keys = Object.keys(data[i]);
-        for (let j = 0; j < keys.length; j += 1) {
-          if (!Array.isArray(data[i][keys[j]]) &&
-          typeof data[i][keys[j]] === 'object') {
-            clone[i][keys[j]] = Object.assign({}, data[i][keys[j]]);
-          } if (Array.isArray(data[i][keys[j]]) &&
-          typeof data[i][keys[j]] === 'object') {
-            clone[i][keys[j]] = this.cloneArray(data[i][keys[j]]);
-          } else {
-            clone[i][keys[j]] = data[i][keys[j]];
-          }
+    cloneData(value) {
+      if (Array.isArray(value)) {
+        return value.map(this.cloneData);
+      } else if (value && typeof value === 'object') {
+        const res = {};
+        const keys = Object.keys(value);
+        for (let i = 0; i < keys.length; i += 1) {
+          res[keys[i]] = this.cloneData(value[keys[i]]);
         }
+        return res;
       }
-      return clone;
+      return value;
     },
   },
   computed: {
@@ -325,6 +311,21 @@ export default {
           this.$emit('vueMultiSelectInited');
         }
       },
+    },
+    value: {
+      handler(newVal, oldval) {
+        if (oldval && newVal && this.valueSelected) {
+          if (this.simpleArray) {
+            if (!compareHelper.compareSimpleArray(newVal, this.valueSelected)) {
+              this.initValues();
+            }
+          } else if (!compareHelper.compareArrayObject(
+            newVal, this.valueSelected, this.labelName)) {
+            this.initValues();
+          }
+        }
+      },
+      deep: true,
     },
   },
   directives: {

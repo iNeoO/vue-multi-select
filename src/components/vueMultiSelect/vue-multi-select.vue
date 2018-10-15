@@ -30,6 +30,7 @@
       </div>
     </div>
     <div v-if="groups === true">
+
       <ul class="tab tab-block">
         <li class="tab-item"
           v-for="(tab, index) in globalModel"

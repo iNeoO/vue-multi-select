@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.9.0</h3>
+            <p>Remove reloadInit and for manual reload. Now just update v-model, vue-multi-select will reload automatically</p>
             <h3>3.8.0</h3>
             <p>Remove case sensitive in search input</p>
             <h3>3.7.2</h3>
@@ -246,12 +248,6 @@
                   <td>Change placeholder of searchBar</td>
                   <td><code>'Search...'</code></td>
                 </tr>
-                <tr>
-                  <td>vueMultiSelectInited (event)</td>
-                  <td>Event</td>
-                  <td>Event triggered when v-model have been manualy updated</td>
-                  <td><code>-</code></td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -358,14 +354,14 @@ filters.push({
   nameNotAll: <span class="blue">&#39;Deselect all&#39;</span>,
   <span class="light-grey">/* label when want to deselect all elements
     who answer yes to the function */</span>
-  func: (elem) =&gt; <span class="red bold">true</span>
+  func(elem) =&gt; <span class="red bold">true</span>
 });
 
 <span class="light-grey">// Second exemple to select all elements who contain 2</span>
 filters.push({
   nameAll: <span class="blue">&#39;Select all elements with 2&#39;</span>,
   nameNotAll: <span class="blue">&#39;Deselect all elements with 2&#39;</span>,
-  func: (elem) =&gt; {
+  func(elem) =&gt; {
     <span class="wrap"><span class="red bold">if</span>(elem.name.indexOf(
     <span class="blue">&#39;2&#39;</span>) !== -<span class="blue">1</span>) {</span>
       <span class="red bold">return</span> <span class="red bold">true</span>;
@@ -552,7 +548,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         },
       }],
       options: {
-        renderTemplate(elem) =&gt; `number : ${elem.name}`,
+        renderTemplate(elem) { <span class="blue">return</span> `number : ${elem.name}` },
         multi: <span class="red">true</span>,
         groups: <span class="red">true</span>,
       },
@@ -684,13 +680,11 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                   v-model="example3.values"
                   search
                   :options="example3.options"
-                  :reloadInit="example3.reloadInit"
                   :selectOptions="example3.selectOptions"
-                  :btnLabel="example3.btnLabel"
-                  @vueMultiSelectInited="example3.reloadInit = false"></multi-select>
+                  :btnLabel="example3.btnLabel"></multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
-                <button class="btn btn-primary" @click="reloadFunction3">Manual reload for init without updating data</button>
+                <button class="btn btn-primary" @click="reloadFunction3">Change v-model</button>
               </div>
             </div>
             <ul class="tab tab-block">
@@ -714,13 +708,11 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
       v-model=<span class="red">&quot;values&quot;</span>
       search
       :options=<span class="red">&quot;options&quot;</span>
-      :reloadInit=<span class="red">&quot;reloadInit&quot;</span>
       :selectOptions=<span class="red">&quot;data&quot;</span>
-      :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
-      @vueMultiSelectInited=<span class="red">&quot;reloadInit = false&quot;</span><span class="blue"> /&gt; </span>
+      :btnLabel=<span class="red">&quot;btnLabel&quot;</span><span class="blue"> /&gt;</span>
       <span class="blue">&lt;button</span>
-        @click=<span class="red">&quot;reloadFunction&quot;</span><span class="blue">&gt;</span>
-        Manual reload for init without updating data
+        @click=<span class="red">&quot;reloadFunction&quot;</span>
+        Change v-model
       <span class="blue">&lt;/button&gt;
   &lt;/div&gt;
 &lt;/template&gt;</span>
@@ -739,7 +731,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         { label: <span class="red">&#39;2&#39;</span> },
         { label: <span class="red">&#39;3&#39;</span> },
       ],
-      reloadInit: <span class="red">false</span>,
       data: [{
         title: <span class="red">&#39;part one&#39;</span>,
         elements: [
@@ -789,7 +780,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         { label: <span class="red">&#39;2&#39;</span> },
         { label: <span class="red">&#39;3&#39;</span> },
       ];
-      <span class="blue">this</span>.reloadInit = <span class="red">true</span>;
     },
   },
   components: {
@@ -818,13 +808,11 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 <multi-select v-model="example4.values"
                   search
                   :options="example4.options"
-                  :reloadInit="example4.reloadInit"
                   :selectOptions="example4.selectOptions"
-                  :btnLabel="example4.btnLabel"
-                  @vueMultiSelectInited="example4.reloadInit = false"></multi-select>
+                  :btnLabel="example4.btnLabel"></multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
-                <button class="btn btn-primary" @click="reloadFunction4">Manual relaod for init without updating data</button>
+                <button class="btn btn-primary" @click="reloadFunction4">Change v-model</button>
               </div>
             </div>
             <ul class="tab tab-block">
@@ -848,13 +836,11 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     v-model=<span class="red">&quot;values&quot;</span>
     search
     :options=<span class="red">&quot;options&quot;</span>
-    :reloadInit=<span class="red">&quot;reloadInit&quot;</span>
     :selectOptions=<span class="red">&quot;data&quot;</span>
-    :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
-    @vueMultiSelectInited=<span class="red">&quot;reloadInit = false&quot;</span><span class="blue"> /&gt; </span>
+    :btnLabel=<span class="red">&quot;btnLabel&quot;</span><span class="blue"> /&gt; </span>
     <span class="blue">&lt;button</span>
       @click=<span class="red">&quot;reloadFunction&quot;</span><span class="blue">&gt;</span>
-      Manual reload for init without updating data
+      Change v-model
     <span class="blue">&lt;/button&gt;
   &lt;/div&gt;
 &lt;/template&gt;</span>
@@ -873,7 +859,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         <span class="red">&#39;0&#39;</span>,
         <span class="red">&#39;2&#39;</span>,
       ],
-      reloadInit: <span class="red">false</span>,
       data: [{
         title: <span class="red">&#39;part one&#39;</span>,
         elements: [
@@ -922,7 +907,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         <span class="red">&#39;2&#39;</span>,
         <span class="red">&#39;3&#39;</span>,
       ];
-      <span class="blue">this</span>.reloadInit = <span class="red">true</span>;
     },
   },
   components: {
