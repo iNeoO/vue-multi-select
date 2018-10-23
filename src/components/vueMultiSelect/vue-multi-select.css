@@ -413,6 +413,7 @@
 }
 
 .tab {
+  padding-left: 0;
   align-items: center;
   border-bottom: .05rem solid #e7e9ed;
   display: flex;
@@ -442,7 +443,7 @@
   color: inherit;
   display: block;
   margin: 0 .4rem 0 0;
-  padding: .4rem .2rem .3rem .2rem;
+  padding: .4rem .4rem .3rem .4rem;
   text-decoration: none;
 }
 
