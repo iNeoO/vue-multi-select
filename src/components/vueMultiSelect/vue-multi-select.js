@@ -73,11 +73,6 @@ export default {
             'font-weight': 'bold',
             color: '#5755d9',
           } : ''));
-      this.filters.unshift({
-        nameAll: 'Select all',
-        nameNotAll: 'Deselect all',
-        func: () => true,
-      });
       this.init();
     },
     init() {
@@ -161,7 +156,6 @@ export default {
       }
       if (!option[this.labelSelected]) {
         if (!this.multi) {
-          this.filters[0].selectAll = true;
           this.deselctAll();
           this.valueSelected = [];
           this.$emit('input', this.valueSelected.slice(0));

@@ -37,25 +37,27 @@ export default {
             { name: '39' },
           ],
         }],
-        filters: [{
-          nameAll: 'select <= 10',
-          nameNotAll: 'Deselect <= 10',
-          func: (elem) => {
-            if (elem.name <= 10) {
+        filters: [
+          {
+            nameAll: 'Select all',
+            nameNotAll: 'Deselect all',
+            func() {
               return true;
-            }
-            return false;
+            },
+          }, {
+            nameAll: 'select <= 10',
+            nameNotAll: 'Deselect <= 10',
+            func(elem) {
+              return elem.name <= 10;
+            },
+          }, {
+            nameAll: 'Select contains 2',
+            nameNotAll: 'Deselect contains 2',
+            func(elem) {
+              return elem.name.indexOf('2') !== -1;
+            },
           },
-        }, {
-          nameAll: 'Select contains 2',
-          nameNotAll: 'Deselect contains 2',
-          func: (elem) => {
-            if (elem.name.indexOf('2') !== -1) {
-              return true;
-            }
-            return false;
-          },
-        }],
+        ],
         options: {
           renderTemplate(elem) {
             return `number: ${elem.name}`;
@@ -115,6 +117,13 @@ export default {
             { label: '21' },
           ],
         }],
+        filters: [{
+          nameAll: 'Select all',
+          nameNotAll: 'Deselect all',
+          func() {
+            return true;
+          },
+        }],
         options: {
           multi: true,
           groups: true,
@@ -159,6 +168,13 @@ export default {
             '13',
             '21',
           ],
+        }],
+        filters: [{
+          nameAll: 'Select all',
+          nameNotAll: 'Deselect all',
+          func() {
+            return true;
+          },
         }],
         options: {
           multi: true,
