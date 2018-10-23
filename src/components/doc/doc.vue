@@ -354,20 +354,18 @@ filters.push({
   nameNotAll: <span class="blue">&#39;Deselect all&#39;</span>,
   <span class="light-grey">/* label when want to deselect all elements
     who answer yes to the function */</span>
-  func(elem) =&gt; <span class="red bold">true</span>
+  func(elem) {
+    <span class="red bold"> return true</span>;
+  }
 });
 
 <span class="light-grey">// Second exemple to select all elements who contain 2</span>
 filters.push({
   nameAll: <span class="blue">&#39;Select all elements with 2&#39;</span>,
   nameNotAll: <span class="blue">&#39;Deselect all elements with 2&#39;</span>,
-  func(elem) =&gt; {
-    <span class="wrap"><span class="red bold">if</span>(elem.name.indexOf(
-    <span class="blue">&#39;2&#39;</span>) !== -<span class="blue">1</span>) {</span>
-      <span class="red bold">return</span> <span class="red bold">true</span>;
-    }
-    <span class="red bold">return</span> <span class="red bold">false</span>;
-  }
+  func(elem) {
+    <span class="red bold">return</span> elem.name.indexOf(<span class="blue">&#39;2&#39;</span>) !== -<span class="blue">1</span>;
+  },
 });
             </code></pre>
           </div>
@@ -528,27 +526,26 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         ],
       }],
       filters: [{
+        nameAll: <span class="red">&#39;Select all&#39;</span>,
+        nameNotAll: <span class="red">&#39;Deselect all&#39;</span>,
+        func() {
+          <span class="blue">return true;</span>
+        },
+      }, {
         nameAll: <span class="red">&#39;select &lt;= 10&#39;</span>,
         nameNotAll: <span class="red">&#39;Deselect &lt;= 10&#39;</span>,
-        func: (elem) =&gt; {
-          <span class="blue">if</span> (elem.name &lt;= 10) {
-            <span class="blue">return</span> <span class="blue">true</span>;
-          }
-          <span class="blue">return</span> <span class="blue">false</span>;
+        func(elem) {
+          <span class="blue">return</span> elem.name &lt;= 10;
         },
       }, {
         nameAll: <span class="red">&#39;Select contains 2&#39;</span>,
         nameNotAll: <span class="red">&#39;Deselect contains 2&#39;</span>,
-        func: (elem) =&gt; {
-          <span class="wrap"><span class="blue">if</span>
-          (elem.name.indexOf(<span class="red">&#39;2&#39;</span>) !== -1) {</span>
-            <span class="blue">return</span> <span class="blue">true</span>;
-          }
-          <span class="blue">return</span> <span class="blue">false</span>;
+        func(elem) {
+          <span class="blue">return</span> elem.name.indexOf(<span class="red">&#39;2&#39;</span>) !== -1;
         },
       }],
       options: {
-        renderTemplate(elem) { <span class="blue">return</span> `number : ${elem.name}` },
+        renderTemplate(elem) { <span class="blue">return</span> `number : ${elem.name}`; },
         multi: <span class="red">true</span>,
         groups: <span class="red">true</span>,
       },
@@ -679,6 +676,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 <multi-select
                   v-model="example3.values"
                   search
+                  :filters="example3.filters"
                   :options="example3.options"
                   :selectOptions="example3.selectOptions"
                   :btnLabel="example3.btnLabel"></multi-select>
@@ -707,11 +705,12 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     &lt;multi-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
       search
+      :filters=<span class="red">&quot;filters&quot;</span>
       :options=<span class="red">&quot;options&quot;</span>
       :selectOptions=<span class="red">&quot;data&quot;</span>
       :btnLabel=<span class="red">&quot;btnLabel&quot;</span><span class="blue"> /&gt;</span>
       <span class="blue">&lt;button</span>
-        @click=<span class="red">&quot;reloadFunction&quot;</span>
+        @click=<span class="red">&quot;reloadFunction&quot;<span class="blue"> &gt;</span></span>
         Change v-model
       <span class="blue">&lt;/button&gt;
   &lt;/div&gt;
@@ -760,6 +759,13 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
           { label: <span class="red">&#39;21&#39;</span> },
         ],
       }],
+      filters: [{
+        nameAll: <span class="red">&#39;Select all&#39;</span>,
+        nameNotAll: <span class="red">&#39;Deselect all&#39;</span>,
+        func() {
+          <span class="blue">return true;</span>
+        },
+      }],
       options: {
         multi: <span class="red">true</span>,
         groups: <span class="red">true</span>,
@@ -786,8 +792,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     multiSelect,
   },
 };
-<span class="blue">&lt;/script&gt;</span>
-              </code></pre>
+<span class="blue">&lt;/script&gt;</span></code></pre>
             </div>
             <div v-if="example3.isActive === 'values'">
               <pre class="code grey" data-lang="javascript"><code>
@@ -807,6 +812,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
               <div class="column col-4">
                 <multi-select v-model="example4.values"
                   search
+                  :filters="example4.filters"
                   :options="example4.options"
                   :selectOptions="example4.selectOptions"
                   :btnLabel="example4.btnLabel"></multi-select>
@@ -835,6 +841,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     &lt;multi-select</span>
     v-model=<span class="red">&quot;values&quot;</span>
     search
+    :filters=<span class="red">&quot;filters&quot;</span>
     :options=<span class="red">&quot;options&quot;</span>
     :selectOptions=<span class="red">&quot;data&quot;</span>
     :btnLabel=<span class="red">&quot;btnLabel&quot;</span><span class="blue"> /&gt; </span>
@@ -887,6 +894,13 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
           <span class="red">&#39;13&#39;</span>,
           <span class="red">&#39;21&#39;</span>,
         ],
+      }],
+      filters: [{
+        nameAll: <span class="red">&#39;Select all&#39;</span>,
+        nameNotAll: <span class="red">&#39;Deselect all&#39;</span>,
+        func() {
+          <span class="blue">return true;</span>
+        },
       }],
       options: {
         multi: <span class="red">true</span>,
