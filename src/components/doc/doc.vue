@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.10.0</h3>
+            <p>Remove default select all and update a little some css</p>
             <h3>3.9.1</h3>
             <p>Remove reloadInit and for manual reload. Now just update v-model, vue-multi-select will reload automatically</p>
             <h3>3.8.0</h3>
