@@ -17,6 +17,11 @@
           :key="index">
             {{button.selectAll ? button.nameNotAll : button.nameAll}}
           </button>
+          <button v-if="historyButton && previousSelected.length"
+            @click="historyBack"
+            class="historyButton">
+            {{ historyButtonText }}
+          </button>
       </div>
       <div v-if="search" class="line" style="position:relative">
         <input

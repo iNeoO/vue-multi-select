@@ -39,6 +39,14 @@ export default {
       type: String,
       default: 'Search...',
     },
+    historyButton: {
+      type: Boolean,
+      default: false,
+    },
+    historyButtonText: {
+      type: String,
+      default: '↶',
+    },
   },
   data() {
     return {
@@ -50,6 +58,7 @@ export default {
       idSelectedTab: 0,
       searchInput: '',
       optionsAllHide: false,
+      previousSelected: [],
     };
   },
   created() {
@@ -155,6 +164,7 @@ export default {
         return;
       }
       if (!option[this.labelSelected]) {
+        this.previousSelected.push(this.cloneData(this.valueSelected));
         if (!this.multi) {
           this.deselctAll();
           this.valueSelected = [];
@@ -166,6 +176,7 @@ export default {
         this.$emit('input', this.valueSelected.slice(0));
         this.$emit(this.eventName, this.valueSelected.slice(0));
       } else {
+        this.previousSelected.push(this.cloneData(this.valueSelected));
         this.popOption(option);
         this.$emit('input', this.valueSelected.slice(0));
         this.$emit(this.eventName, this.valueSelected.slice(0));
@@ -217,6 +228,7 @@ export default {
       this.searchfn();
     },
     selectCurrent(option) {
+      this.previousSelected.push(this.cloneData(this.valueSelected));
       for (let i = 0; i < this.globalModel[this.idSelectedTab][this.list].length;
         i += 1) {
         if (this.globalModel[this.idSelectedTab][this.list][i].visible &&
@@ -279,6 +291,11 @@ export default {
         return res;
       }
       return value;
+    },
+    historyBack() {
+      const previousValues = this.previousSelected.pop();
+      this.$emit('input', previousValues);
+      this.$emit(this.eventName, previousValues);
     },
   },
   computed: {
