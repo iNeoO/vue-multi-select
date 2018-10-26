@@ -5,6 +5,9 @@ This component gives you a multi/single select with the power of Vuejs component
 
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
+## What's new in v3.11.0
+Add of an historic mode to rollback element selected
+
 ## Dependencies
 - required: Vuejs >= 2.x
 
@@ -29,6 +32,8 @@ When you create a new PR please make it against the develop branch when adding n
 | btnLabel      | String      |
 | search        | Boolean     |
 | searchPlaceholder | String  |
+| historyButton | Boolean     |
+| historyButtonText | String  |
 
 ### 1. options (Contains options to set the multi-select)
 
@@ -52,18 +57,17 @@ const filters = [];
 filters.push({
   nameAll: 'Select all', // label when want to select all elements who answer yes to the function
   nameNotAll: 'Deselect all', //label when want to deselect all elements who answer yes to the function
-  func: (elem) => true
+  func(elem) {
+    return true;
+  },
 });
 
 // Second exemple to select all elements who contain 2
 filters.push({
   nameAll: 'Select all elements with 2',
   nameNotAll: 'Deselect all elements with 2',
-  func: (elem) => {
-    if (elem.name.indexOf('2') !== -1) {
-      return true;
-    }
-    return false;
+  func(elem) {
+    return elem.name.indexOf('2') !== -1;
   }
 });
 ```
@@ -129,6 +133,7 @@ data = [{
       :filters="filters"
       :btnLabel="btnLabel"
       search
+      historyButton
       :searchPlaceholder="Search"
       :selectOptions="data" />
   </div>

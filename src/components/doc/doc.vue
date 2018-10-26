@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.11.0</h3>
+            <p>Set up an historic mode</p>
             <h3>3.10.0</h3>
             <p>Remove default select all and update a little some css</p>
             <h3>3.9.1</h3>
@@ -249,6 +251,18 @@
                   <td>String</td>
                   <td>Change placeholder of searchBar</td>
                   <td><code>'Search...'</code></td>
+                </tr>
+                <tr  class="active">
+                  <td>historyButton</td>
+                  <td>Boolean</td>
+                  <td>Display the button to use previous values selected</td>
+                  <td><code>false</code></td>
+                </tr>
+                <tr  class="active">
+                  <td>historyButtonText</td>
+                  <td>String</td>
+                  <td>Label for previous button</td>
+                  <td><code>↶</code></td>
                 </tr>
               </tbody>
             </table>
@@ -454,6 +468,7 @@ filters.push({
               <div class="column col-4">
                 <multi-select v-model="example1.values"
                   :options="example1.options"
+                  historyButton
                   :filters="example1.filters"
                   :btnLabel="example1.btnLabel"
                   search
@@ -480,6 +495,7 @@ filters.push({
     &lt;multi-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
       search
+      historyButton
       :options=<span class="red">&quot;options&quot;</span>
       :filters=<span class="red">&quot;filters&quot;</span>
       :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
@@ -581,6 +597,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 <multi-select
                   v-model="example2.values"
                   search
+                  historyButton
                   :options="example2.options"
                   :filters="example2.filters"
                   :btnLabel="example2.btnLabel"
@@ -613,6 +630,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     &lt;multi-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
       search
+      historyButton
       :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
       :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
   &lt;/div&gt;
@@ -678,6 +696,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 <multi-select
                   v-model="example3.values"
                   search
+                  historyButton
                   :filters="example3.filters"
                   :options="example3.options"
                   :selectOptions="example3.selectOptions"
@@ -707,6 +726,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     &lt;multi-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
       search
+      historyButton
       :filters=<span class="red">&quot;filters&quot;</span>
       :options=<span class="red">&quot;options&quot;</span>
       :selectOptions=<span class="red">&quot;data&quot;</span>
@@ -814,6 +834,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
               <div class="column col-4">
                 <multi-select v-model="example4.values"
                   search
+                  historyButton
                   :filters="example4.filters"
                   :options="example4.options"
                   :selectOptions="example4.selectOptions"
@@ -843,6 +864,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     &lt;multi-select</span>
     v-model=<span class="red">&quot;values&quot;</span>
     search
+    historyButton
     :filters=<span class="red">&quot;filters&quot;</span>
     :options=<span class="red">&quot;options&quot;</span>
     :selectOptions=<span class="red">&quot;data&quot;</span>
