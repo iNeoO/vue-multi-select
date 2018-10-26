@@ -143,6 +143,10 @@
 
 /* helper buttons (select all, none, reset); */
 
+.select .helperButton:not( .reset) {
+  margin-right: 4px;
+}
+
 .select .helperButton {
   display: inline;
   text-align: center;
@@ -154,16 +158,24 @@
   color: #666;
   background-color: #ffffff;
   line-height: 1.6;
-  margin: 0px 0px 8px 0px;
+  margin: 0 0 8px 0;
 }
 
-.select .helperButton.reset {
+.select .historyButton {
   float: right;
+  display: inline;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  height: 26px;
+  font-size: 13px;
+  border-radius: 2px;
+  color: #666;
+  background-color: #ffffff;
+  line-height: 1.6;
 }
 
-.select .helperButton:not( .reset) {
-  margin-right: 4px;
-}
+
 
 .right {
   float: right;
@@ -216,7 +228,7 @@
   box-sizing: border-box;
   /* Opera/IE 8+ */
   color: #888;
-  margin: 0px 0px 8px 0px;
+  margin: 0 0 8px 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 }
@@ -225,7 +237,8 @@
 /* helper elements on hover & focus */
 
 .select .clearButton:hover,
-.select .helperButton:hover {
+.select .helperButton:hover,
+.select .historyButton:hover {
   border: 1px solid #ccc;
   color: #999;
   background-color: #f1f1f1;
@@ -233,7 +246,8 @@
 
 .select .clearButton:focus,
 .select .helperButton:focus,
-.select .inputFilter:focus {
+.select .inputFilter:focus,
+.select .historyButton:focus {
   border: 1px solid #999 !important;
   outline: 0;
   -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, .065), 0 0 5px rgba(102, 175, 233, .6) !important;
