@@ -51,6 +51,7 @@ export default {
   data() {
     return {
       valueSelected: [],
+      simpleArray: false,
       multiSelect: null,
       groups: null,
       isOpen: false,
@@ -90,7 +91,7 @@ export default {
         if (typeof this.selectOptions[0] === 'string' ||
           typeof this.selectOptions[0] === 'number') {
           this.simpleArray = true;
-          this.globalModel = { [this.list]: this.prepareArray(clone) };
+          this.globalModel = [{ [this.list]: this.prepareArray(clone) }];
         } else {
           this.globalModel = [{ [this.list]: clone }];
         }
@@ -303,6 +304,9 @@ export default {
       if (this.multi) {
         return `${this.btnLabel} (${this.valueSelected.length})`;
       } else if (this.valueSelected.length) {
+        if (this.simpleArray) {
+          return this.valueSelected[this.valueSelected.length - 1];
+        }
         return this.valueSelected[this.valueSelected.length - 1][this.labelName];
       }
       return this.btnLabel;
