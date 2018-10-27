@@ -139,53 +139,14 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.11.1</h3>
+            <p>Fix button for simple array</p>
             <h3>3.11.0</h3>
             <p>Set up an historic mode</p>
             <h3>3.10.0</h3>
             <p>Remove default select all and update a little some css</p>
             <h3>3.9.1</h3>
             <p>Remove reloadInit and for manual reload. Now just update v-model, vue-multi-select will reload automatically</p>
-            <h3>3.8.0</h3>
-            <p>Remove case sensitive in search input</p>
-            <h3>3.7.2</h3>
-            <p>Change way to set an array empty</p>
-            <h3>3.7.1</h3>
-            <p>Fix event unbind</p>
-            <h3>3.7.0</h3>
-            <p>Apply a function to render elements</p>
-            <h3>3.6.2</h3>
-            <p>Fix event listener not trigerred on Iphone/ipad</p>
-            <h3>3.6.0</h3>
-            <p>Set possible to hide search bar and edit placeholder of search</p>
-            <h3>3.5.0</h3>
-            <p>Set buttonLabel as prop, to be able to dynamically change it</p>
-            <p>When single select, display the value selected</p>
-            <h3>3.4.0</h3>
-            <p><b>selectionChanged is now deprecated</b>, if you want to trigger event when value change use a watch</p>
-            <p>Set possible to use v-model to directly get the value (instead of use a function to update the value)</p>
-            <p>It's now possible to trigger an init if you want to manualy update the v-model</p>
-            <h3>3.3.2</h3>
-            <p>Fix scroll-y issue (thx to <a target="_blank" href="https://github.com/davidkassa">davidkassa</a>)</p>
-            <h3>3.3.1</h3>
-            <p>Fix button filter when init vue-multi-select with all selected</p>
-            <h3>3.3.0</h3>
-            <p>Add the possibility to disable some select options</p>
-            <h3>3.2.2</h3>
-            <p>Fix styles errors in firefox</p>
-            <h3>3.2.1</h3>
-            <p>Fix error with event trigerred multiple times when clicking on button select-all/...</p>
-            <h3>3.2.0</h3>
-            <p>Set possible to have an array of string or numbers (see a multiple select with array) </p>
-            <p>Remove dependencies lodash for clone object</p>
-            <h3>3.1.0</h3>
-            <p>Set groups and multi in options to false as Default
-            It's now possible to only have an array to selects elems when groups is set to false</p>
-            <h3>3.0.0</h3>
-            <p>Big update about way to build and dev the component</p>
-            <h3>2.0.1</h3>
-            <p>Big update on the doc. She is now more complete</p>
-            <h3>2.0.0</h3>
-            <p>Use of events to be more respectfull of vuejs data binding</p>
           </div>
         </div>
         <div id="general" class="container">

@@ -5,8 +5,8 @@ This component gives you a multi/single select with the power of Vuejs component
 
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
-## What's new in v3.11.0
-Add of an historic mode to rollback element selected
+## What's new in v3.11.1
+Fix button for simple array
 
 ## Dependencies
 - required: Vuejs >= 2.x
