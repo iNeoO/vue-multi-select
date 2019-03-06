@@ -59,8 +59,7 @@
           :style="cssSelected(option)">
           <span class="right margin-right-10"
             v-if="option[labelSelected]">✓</span>
-          <span class="margin-left-20">
-            {{renderTemplate(option)}}
+          <span class="margin-left-20" v-html="renderTemplate(option)">
           </span>
         </li>
       </ul>
