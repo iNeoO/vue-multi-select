@@ -44,11 +44,14 @@ When you create a new PR please make it against the develop branch when adding n
 | multi         | Boolean  | false                                                                   | Set single or multiple selection      |
 | labelList     | String   | 'list'                                                                  | Name Attributes for list              |
 | labelName     | String   | 'name'                                                                  | Name Attributes for value to display  |
+| labelValue    | String   | labelName                                                               | Name Attributes for value to comparaison between them  |
+| labelHtml     | String   | ''                                                                      | Name Attributes for value to display html and not have html balise checked in search* |
 | labelSelected | String   | 'selected'                                                              | Name attributes for value selected    |
 | labelDisabled | String   | 'disabled'                                                              | Name attributes for value disabled    |
 | groupName     | String   | 'name'                                                                  | Name Attributes for groups to display |
 | renderTemplate     | Function   | (elem => elem[this.labelName])                                   | Function returning text to display element |
 
+\*if you use html balise and don't want to have them find in the search use labelHtml, search will just check the property labelName but v-html the labelHtml.
 
 ### 2. filters to apply to select many options
 ```javascript
@@ -182,14 +185,14 @@ export default {
       filters: [{
         nameAll: 'select <= 10',
         nameNotAll: 'Deselect <= 10',
-        func(elem) => {
-          return elem.name <= 10)
+        func(elem) {
+          return elem.name <= 10;
         },
       }, {
         nameAll: 'Select contains 2',
         nameNotAll: 'Deselect contains 2',
-        func(elem) => {
-          return elem.name.indexOf('2') !== -1
+        func(elem) {
+          return elem.name.indexOf('2') !== -1;
         },
       }],
       options: {
