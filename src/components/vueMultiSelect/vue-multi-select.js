@@ -73,7 +73,10 @@ export default {
         this.options.groups : false;
       this.list = this.options.labelList || 'list';
       this.labelName = this.options.labelName || 'name';
-      this.renderTemplate = this.options.renderTemplate || (elem => elem[this.labelName]);
+      this.labelValue = this.options.labelValue || this.labelName;
+      this.labelHtml = this.options.labelHtml || '';
+      this.renderTemplate = this.options.renderTemplate ||
+        (elem => (elem[this.labelHtml] ? elem[this.labelHtml] : elem[this.labelName]));
       this.groupName = this.options.groupName || 'name';
       this.labelSelected = this.options.labelSelected || 'selected';
       this.labelDisabled = this.options.labelDisabled || 'disabled';
@@ -120,13 +123,13 @@ export default {
           }
           for (let k = 0; k < this.value.length; k += 1) {
             if (this.simpleArray &&
-              this.globalModel[i][this.list][j][this.labelName] === this.value[k]) {
+              this.globalModel[i][this.list][j][this.labelValue] === this.value[k]) {
               this.globalModel[i][this.list][j][this.labelSelected] = true;
               this.valueSelected.push(this.globalModel[i][
-                this.list][j][this.labelName]);
+                this.list][j][this.labelValue]);
             } else if (!this.simpleArray &&
-              this.globalModel[i][this.list][j][this.labelName] ===
-              this.value[k][this.labelName]) {
+              this.globalModel[i][this.list][j][this.labelValue] ===
+              this.value[k][this.labelValue]) {
               this.globalModel[i][this.list][j][this.labelSelected] = true;
               const opt = Object.assign({}, this.globalModel[i][this.list][j]);
               delete opt[this.labelSelected];
@@ -187,7 +190,7 @@ export default {
     },
     pushOption(option) {
       if (this.simpleArray) {
-        this.valueSelected.push(option[this.labelName]);
+        this.valueSelected.push(option[this.labelValue]);
       } else {
         const opt = Object.assign({}, option);
         delete opt[this.labelSelected];
@@ -197,8 +200,8 @@ export default {
     },
     popOption(opt) {
       for (let i = 0; i < this.valueSelected.length; i += 1) {
-        if (this.valueSelected[i][this.labelName] === opt[this.labelName] ||
-          (this.simpleArray && this.valueSelected[i] === opt[this.labelName])) {
+        if (this.valueSelected[i][this.labelValue] === opt[this.labelValue] ||
+          (this.simpleArray && this.valueSelected[i] === opt[this.labelValue])) {
           this.valueSelected.splice(i, 1);
           return;
         }
@@ -278,7 +281,7 @@ export default {
       }
     },
     prepareArray(value) {
-      return value.map(elem => ({ [this.labelName]: elem }));
+      return value.map(elem => ({ [this.labelValue]: elem }));
     },
     cloneData(value) {
       if (Array.isArray(value)) {
@@ -307,7 +310,7 @@ export default {
         if (this.simpleArray) {
           return this.valueSelected[this.valueSelected.length - 1];
         }
-        return this.valueSelected[this.valueSelected.length - 1][this.labelName];
+        return this.valueSelected[this.valueSelected.length - 1][this.labelValue];
       }
       return this.btnLabel;
     },
