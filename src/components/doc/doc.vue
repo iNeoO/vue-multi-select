@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.12.1</h3>
+            Small change about way to render name
             <h3>3.12.0</h3>
             Use v-html to render options
             <h3>3.11.1</h3>
