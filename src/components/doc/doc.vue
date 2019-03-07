@@ -215,7 +215,7 @@
                   <td>Change placeholder of searchBar</td>
                   <td><code>'Search...'</code></td>
                 </tr>
-                <tr  class="active">
+                <tr>
                   <td>historyButton</td>
                   <td>Boolean</td>
                   <td>Display the button to use previous values selected</td>
@@ -273,13 +273,13 @@
                   <td><code>false</code></td>
                   <td>Set single or multiple selection</td>
                 </tr>
-                <tr>
+                <tr class="active">
                   <td>labelList</td>
                   <td>String</td>
                   <td><code>'list'</code></td>
                   <td>Name Attributes for list</td>
                 </tr>
-                <tr class="active">
+                <tr>
                   <td>labelName</td>
                   <td>String</td>
                   <td><code>'name'</code></td>
@@ -291,19 +291,13 @@
                   <td><code>labelName</code></td>
                   <td>Attributes for value to compare them</td>
                 </tr>
-                <tr class="active">
-                  <td>labelHtml</td>
-                  <td>String</td>
-                  <td><code>'name'</code></td>
-                  <td>Name Attributes for value to display to display them (You should use labelHtml if you want to use html balise and avoid searchFn on it)</td>
-                </tr>
                 <tr>
                   <td>labelSelected</td>
                   <td>String</td>
                   <td><code>'selected'</code></td>
                   <td>Name Attributes for value to display</td>
                 </tr>
-                <tr>
+                <tr class="active">
                   <td>labelDisabled</td>
                   <td>String</td>
                   <td><code>'disabled'</code></td>
@@ -315,11 +309,11 @@
                   <td><code>'name'</code></td>
                   <td>Name Attributes for groups to display</td>
                 </tr>
-                <tr>
+                <tr class="active">
                   <td>renderTemplate</td>
                   <td>Function</td>
                   <td><code>(elem => elem[this.labelName])</code></td>
-                  <td>Function returning text to display element</td>
+                  <td>Function returning text to display, text is displayed with v-html</td>
                 </tr>
               </tbody>
             </table>
@@ -538,7 +532,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         },
       }],
       options: {
-        renderTemplate(elem) { <span class="blue">return</span> `number : ${elem.name}`; },
+        renderTemplate(elem) { <span class="blue">return</span> `&lt;u&gt;${elem.name}&lt;/u&gt;`; },
         multi: <span class="red">true</span>,
         groups: <span class="red">true</span>,
       },
@@ -730,30 +724,30 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
       data: [{
         title: <span class="red">&#39;part one&#39;</span>,
         elements: [
-          { label: <span class="red">&#39;0&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;0&lt;/u&gt;&lt;/i&gt;&#39;</span>, disabled: <span class="red">true</span> },
-          { label: <span class="red">&#39;2&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;2&lt;/u&gt;&lt;/i&gt;&#39;</span> },
-          { label: <span class="red">&#39;3&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;3&lt;/u&gt;&lt;/i&gt;&#39;</span> },
-          { label: <span class="red">&#39;8&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;8&lt;/u&gt;&lt;/i&gt;&#39;</span> },
-          { label: <span class="red">&#39;9&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;9&lt;/u&gt;&lt;/i&gt;&#39;</span> },
-          { label: <span class="red">&#39;11&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;1&lt;/u&gt;&lt;/i&gt;1&#39;</span> },
-          { label: <span class="red">&#39;13&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;1&lt;/u&gt;&lt;/i&gt;3&#39;</span> },
-          { label: <span class="red">&#39;14&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;1&lt;/u&gt;&lt;/i&gt;4&#39;</span> },
-          { label: <span class="red">&#39;15&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;1&lt;/u&gt;&lt;/i&gt;5&#39;</span> },
-          { label: <span class="red">&#39;18&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;1&lt;/u&gt;&lt;/i&gt;8&#39;</span> },
+          { label: <span class="red">&#39;0&#39;</span>, disabled: <span class="red">true</span> },
+          { label: <span class="red">&#39;2&#39;</span> },
+          { label: <span class="red">&#39;3&#39;</span> },
+          { label: <span class="red">&#39;8&#39;</span> },
+          { label: <span class="red">&#39;9&#39;</span> },
+          { label: <span class="red">&#39;11&#39;</span> },
+          { label: <span class="red">&#39;13&#39;</span> },
+          { label: <span class="red">&#39;14&#39;</span> },
+          { label: <span class="red">&#39;15&#39;</span> },
+          { label: <span class="red">&#39;18&#39;</span> },
         ],
       }, {
         title: <span class="red">&#39;part two&#39;</span>,
         elements: [
-          { label: <span class="red">&#39;23&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;23&lt;/u&gt;&lt;/i&gt;&#39;</span> },
-          { label: <span class="red">&#39;25&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;25&lt;/u&gt;&lt;/i&gt;&#39;</span> },
-          { label: <span class="red">&#39;31&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;31&lt;/u&gt;&lt;/i&gt;&#39;</span> },
-          { label: <span class="red">&#39;42&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;42&lt;/u&gt;&lt;/i&gt;&#39;</span> },
-          { label: <span class="red">&#39;56&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;56&lt;/u&gt;&lt;/i&gt;&#39;</span> },
-          { label: <span class="red">&#39;76&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;76&lt;/u&gt;&lt;/i&gt;&#39;</span> },
-          { label: <span class="red">&#39;82&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;82&lt;/u&gt;&lt;/i&gt;&#39;</span> },
-          { label: <span class="red">&#39;42&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;42&lt;/u&gt;&lt;/i&gt;&#39;</span> },
-          { label: <span class="red">&#39;13&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;13&lt;/u&gt;&lt;/i&gt;&#39;</span> },
-          { label: <span class="red">&#39;21&#39;</span>, labelHtml: <span class="red">&#39;&lt;i&gt;&lt;u&gt;21&lt;/u&gt;&lt;/i&gt;&#39;</span> },
+          { label: <span class="red">&#39;23&#39;</span> },
+          { label: <span class="red">&#39;25&#39;</span> },
+          { label: <span class="red">&#39;31&#39;</span> },
+          { label: <span class="red">&#39;42&#39;</span> },
+          { label: <span class="red">&#39;56&#39;</span> },
+          { label: <span class="red">&#39;76&#39;</span> },
+          { label: <span class="red">&#39;82&#39;</span> },
+          { label: <span class="red">&#39;42&#39;</span> },
+          { label: <span class="red">&#39;13&#39;</span> },
+          { label: <span class="red">&#39;21&#39;</span> },
         ],
       }],
       filters: [{
@@ -767,7 +761,6 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
         multi: <span class="red">true</span>,
         groups: <span class="red">true</span>,
         labelName: <span class="red">&#39;label&#39;</span>,
-        labelHtml: <span class="red">&#39;labelHtml&#39;</span>,
         labelList: <span class="red">&#39;elements&#39;</span>,
         groupName: <span class="red">&#39;title&#39;</span>,
         <span class="wrap">cssSelected: option =&gt;

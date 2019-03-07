@@ -45,7 +45,6 @@ When you create a new PR please make it against the develop branch when adding n
 | labelList     | String   | 'list'                                                                  | Name Attributes for list              |
 | labelName     | String   | 'name'                                                                  | Name Attributes for value to display  |
 | labelValue    | String   | labelName                                                               | Name Attributes for value to comparaison between them  |
-| labelHtml     | String   | ''                                                                      | Name Attributes for value to display html and not have html balise checked in search* |
 | labelSelected | String   | 'selected'                                                              | Name attributes for value selected    |
 | labelDisabled | String   | 'disabled'                                                              | Name attributes for value disabled    |
 | groupName     | String   | 'name'                                                                  | Name Attributes for groups to display |
