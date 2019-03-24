@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.13.0</h3>
+            Set position custom
             <h3>3.12.1</h3>
             Small change about way to render name
             <h3>3.12.0</h3>
@@ -228,6 +230,12 @@
                   <td>String</td>
                   <td>Label for previous button</td>
                   <td><code>↶</code></td>
+                </tr>
+                <tr>
+                  <td>position</td>
+                  <td>String</td>
+                  <td>Where to display options, top/bottom-left/right</td>
+                  <td><code>'top-bottom'</code></td>
                 </tr>
               </tbody>
             </table>
@@ -808,6 +816,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                   historyButton
                   :filters="example4.filters"
                   :options="example4.options"
+                  :position="example4.position"
                   :selectOptions="example4.selectOptions"
                   :btnLabel="example4.btnLabel"></multi-select>
               </div>
@@ -837,6 +846,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     search
     historyButton
     :filters=<span class="red">&quot;filters&quot;</span>
+    :position=<span class="red">&quot;position&quot;</span>
     :options=<span class="red">&quot;options&quot;</span>
     :selectOptions=<span class="red">&quot;data&quot;</span>
     :btnLabel=<span class="red">&quot;btnLabel&quot;</span><span class="blue"> /&gt; </span>
@@ -897,6 +907,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
           <span class="blue">return true;</span>
         },
       }],
+      position: <span class="red">&#39;top-right&#39;</span>,
       options: {
         multi: <span class="red">true</span>,
         groups: <span class="red">true</span>,

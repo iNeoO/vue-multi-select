@@ -31,9 +31,11 @@ When you create a new PR please make it against the develop branch when adding n
 | reloadInit    | Boolean     |
 | btnLabel      | String      |
 | search        | Boolean     |
+| position      | String      |
 | searchPlaceholder | String  |
 | historyButton | Boolean     |
 | historyButtonText | String  |
+(NB. position is a string ex: 'top-left', 'top-right', default is 'bottom-left')
 
 ### 1. options (Contains options to set the multi-select)
 

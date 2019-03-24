@@ -1,12 +1,16 @@
 <template>
 <div class="select">
-  <button type="button" class="btn-select" @click="toggleCheckboxes">
-      <div class="buttonLabel">
-          {{getBtnLabel}}
-          <span class="caret"></span>
-      </div>
-    </button>
-  <div class="checkboxLayer" :class="{'show': isOpen}" v-click-outside="externalClick">
+  <button ref="buttonClick" type="button" class="btn-select" @click="toggleCheckboxes">
+    <div class="buttonLabel">
+      {{getBtnLabel}}
+      <span class="caret"></span>
+    </div>
+  </button>
+  <div
+    class="checkboxLayer"
+    :class="{'show': isOpen}"
+    v-click-outside="externalClick"
+    :style="getPosition">
     <div class="helperContainer">
       <div class="line">
         <button

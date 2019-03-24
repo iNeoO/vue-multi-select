@@ -185,6 +185,7 @@ export default {
           groupName: 'title',
           cssSelected: option => (option.selected ? { 'background-color': '#5764c6' } : ''),
         },
+        position: 'top-right',
         values: ['0', '2'],
         isActive: 'code',
       },

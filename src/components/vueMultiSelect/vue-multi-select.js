@@ -47,6 +47,10 @@ export default {
       type: String,
       default: '↶',
     },
+    position: {
+      type: String,
+      default: 'bottom-left',
+    },
   },
   data() {
     return {
@@ -312,6 +316,20 @@ export default {
         return this.valueSelected[this.valueSelected.length - 1][this.labelValue];
       }
       return this.btnLabel;
+    },
+    getPosition() {
+      if (this.multiSelect) {
+        const btnHeight = this.multiSelect.offsetHeight;
+        const positions = this.position.split('-');
+        const style = {
+          [positions[1]]: 0,
+        };
+        if (positions[0] === 'top') {
+          style.bottom = `${btnHeight}px`;
+        }
+        return style;
+      }
+      return {};
     },
   },
   watch: {

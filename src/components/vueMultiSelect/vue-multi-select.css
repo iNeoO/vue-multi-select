@@ -16,7 +16,8 @@
 
 .select {
   display: inline-block;
-  text-align:left
+  text-align:left;
+  position: relative;
 }
 
 .select .vertical {
