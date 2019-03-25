@@ -5,8 +5,8 @@ This component gives you a multi/single select with the power of Vuejs component
 
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
-## What's new in v3.11.1
-Fix button for simple array
+## What's new in v3.13.1
+Add a props position to set a custop positions of options
 
 ## Dependencies
 - required: Vuejs >= 2.x
@@ -15,7 +15,7 @@ Fix button for simple array
 1. Clone the repo or `npm install vue-multi-select --save`
 2. Include the file in your app
   `import vueMultiSelect from 'vue-multi-select';`
-  `import 'vue-multi-select/dist/lib/vueMultiSelect.css'`
+  `import 'vue-multi-select/dist/lib/vue-multi-select.min.css'`
 
 ## Contributing
 Issues and PR's are much appreciated.
