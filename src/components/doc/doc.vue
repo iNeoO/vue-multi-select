@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.13.1</h3>
+            Fix doc about css import
             <h3>3.13.0</h3>
             Set position custom
             <h3>3.12.1</h3>
