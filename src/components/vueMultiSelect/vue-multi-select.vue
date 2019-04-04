@@ -1,6 +1,11 @@
 <template>
 <div class="select">
-  <button ref="buttonClick" type="button" class="btn-select" @click="toggleCheckboxes">
+  <button
+    ref="buttonClick"
+    type="button"
+    class="btn-select"
+    :disabled="disabled"
+    @click="toggleCheckboxes">
     <div class="buttonLabel">
       {{getBtnLabel}}
       <span class="caret"></span>

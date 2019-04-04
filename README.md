@@ -5,8 +5,8 @@ This component gives you a multi/single select with the power of Vuejs component
 
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
-## What's new in v3.13.1
-Add a props position to set a custop positions of options
+## What's new in v3.14.0
+Add a props disabled to set disable multiSelect button
 
 ## Dependencies
 - required: Vuejs >= 2.x
@@ -35,6 +35,8 @@ When you create a new PR please make it against the develop branch when adding n
 | searchPlaceholder | String  |
 | historyButton | Boolean     |
 | historyButtonText | String  |
+| disabled      | Boolean     |
+
 (NB. position is a string ex: 'top-left', 'top-right', default is 'bottom-left')
 
 ### 1. options (Contains options to set the multi-select)

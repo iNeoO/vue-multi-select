@@ -51,6 +51,10 @@ export default {
       type: String,
       default: 'bottom-left',
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
