@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.14.0</h3>
+            Set possible to disable multiSelect
             <h3>3.13.1</h3>
             Fix doc about css import
             <h3>3.13.0</h3>
@@ -238,6 +240,12 @@
                   <td>String</td>
                   <td>Where to display options, top/bottom-left/right</td>
                   <td><code>'top-bottom'</code></td>
+                </tr>
+                <tr  class="active">
+                  <td>disabled</td>
+                  <td>Boolean</td>
+                  <td>Disable button</td>
+                  <td><code>False</code></td>
                 </tr>
               </tbody>
             </table>

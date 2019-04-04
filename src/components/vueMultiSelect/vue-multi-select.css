@@ -87,6 +87,10 @@
   background-color: #f7f7f7;
 }
 
+.select>button:disabled {
+  background-color: #f7f7f7;
+}
+
 
 /* button: clicked */
 
