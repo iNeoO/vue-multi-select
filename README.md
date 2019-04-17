@@ -5,8 +5,8 @@ This component gives you a multi/single select with the power of Vuejs component
 
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
-## What's new in v3.14.0
-Add a props disabled to set disable multiSelect button
+## What's new in v3.14.1
+Fix event triggered 2 times in single select
 
 ## Dependencies
 - required: Vuejs >= 2.x

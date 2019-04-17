@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.14.1</h3>
+            Fix event triggered 2 times in single select
             <h3>3.14.0</h3>
             Set possible to disable multiSelect
             <h3>3.13.1</h3>
