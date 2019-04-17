@@ -179,8 +179,6 @@ export default {
         if (!this.multi) {
           this.deselctAll();
           this.valueSelected = [];
-          this.$emit('input', this.valueSelected.slice(0));
-          this.$emit(this.eventName, this.valueSelected.slice(0));
           this.externalClick({ path: [] });
         }
         this.pushOption(option);
