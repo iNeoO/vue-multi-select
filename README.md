@@ -29,7 +29,7 @@ When you create a new PR please make it against the develop branch when adding n
 | selectOptions | Array       |
 | v-model       | Array       |
 | reloadInit    | Boolean     |
-| btnLabel      | String      |
+| btnLabel      | Function    |
 | search        | Boolean     |
 | position      | String      |
 | searchPlaceholder | String  |
@@ -153,7 +153,7 @@ export default {
   data() {
     return {
       search: 'Search things',
-      btnLabel: 'A simple vue multi select',
+      btnLabel: values => `A simple vue multi select (${values.length})`,
       name: 'first group',
       values: [],
       data: [{
