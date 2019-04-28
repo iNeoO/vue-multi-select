@@ -28,8 +28,8 @@ export default {
       default: () => ([]),
     },
     btnLabel: {
-      type: String,
-      default: 'multi-select',
+      type: Function,
+      default: () => ('multi-select'),
     },
     search: {
       type: Boolean,
@@ -309,15 +309,7 @@ export default {
   },
   computed: {
     getBtnLabel() {
-      if (this.multi) {
-        return `${this.btnLabel} (${this.valueSelected.length})`;
-      } else if (this.valueSelected.length) {
-        if (this.simpleArray) {
-          return this.valueSelected[this.valueSelected.length - 1];
-        }
-        return this.valueSelected[this.valueSelected.length - 1][this.labelValue];
-      }
-      return this.btnLabel;
+      return this.btnLabel(this.valueSelected);
     },
     getPosition() {
       if (this.multiSelect) {

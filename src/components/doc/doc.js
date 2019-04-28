@@ -7,7 +7,7 @@ export default {
     return {
       string: 'string',
       example1: {
-        btnLabel: 'A simple vue multi select',
+        btnLabel: values => `A simple vue multi select (${values.length})`,
         selectOptions: [{
           name: 'first group',
           list: [
@@ -83,12 +83,10 @@ export default {
         ],
         options: {
         },
-        btnLabel: 'A simple vue multi select',
         values: [],
         isActive: 'code',
       },
       example3: {
-        btnLabel: 'A simple vue multi select',
         selectOptions: [{
           title: 'part one',
           elements: [
@@ -141,7 +139,6 @@ export default {
         isActive: 'code',
       },
       example4: {
-        btnLabel: 'A simple vue multi select',
         selectOptions: [{
           title: 'part one',
           elements: [
