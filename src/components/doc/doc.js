@@ -69,6 +69,7 @@ export default {
         isActive: 'code',
       },
       example2: {
+        btnLabel: values => (values.length > 0 ? values[0].name : 'Select...'),
         selectOptions: [
           { name: '0' },
           { name: '2' },

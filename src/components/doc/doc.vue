@@ -589,6 +589,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
               <div class="column col-4">
                 <multi-select
                   v-model="example2.values"
+                  :btnLabel="example2.btnLabel"
                   search
                   historyButton
                   :options="example2.options"
@@ -621,6 +622,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
   &lt;div&gt;
     &lt;multi-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
+      :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
       search
       historyButton
       :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
@@ -635,6 +637,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
 <span class="blue">export</span> <span class="blue">default</span> {
   data() {
     return {
+      btnLabel: values <span class="blue">=></span>values<span class="blue">.length</span > <span class="red">0</span> ? values[<span class="red">0</span>].<span class="blue">name</span> : <span class="red">'Select ...'</span>,
       name: <span class="red">&#39;first group&#39;</span>,
       values: [],
       data: [
