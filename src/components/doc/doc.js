@@ -191,6 +191,12 @@ export default {
   },
   components: { multiSelect },
   methods: {
+    open() {
+      console.log('open');
+    },
+    close() {
+      console.log('close');
+    },
     setActive(e, label) {
       e.isActive = label;
     },

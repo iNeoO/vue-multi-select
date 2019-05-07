@@ -195,3 +195,7 @@
 .bold {
   font-weight: bold;
 }
+
+.table {
+  margin-bottom: 20px;
+}
