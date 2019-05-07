@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>3.16.0</h3>
+            Add open/close events
             <h3>3.15.0</h3>
             Use a function to render btnLabel
             <h3>3.14.1</h3>
