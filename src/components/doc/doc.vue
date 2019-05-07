@@ -173,7 +173,7 @@
                 &lt;multi-select>&lt;/multi-select>
               </code>
             </p>
-            <p>Props for vue-multi-select :</p>
+            <h4>Props for vue-multi-select :</h4>
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
@@ -250,6 +250,33 @@
                   <td>Boolean</td>
                   <td>Disable button</td>
                   <td><code>False</code></td>
+                </tr>
+              </tbody>
+            </table>
+            <h4>Events for vue-multi-select :</h4>
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>params</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="active">
+                  <td>selectionChanged</td>
+                  <td>selected values</td>
+                  <td>triggered when an option is selected (the name can be changed with props eventName)</td>
+                </tr>
+                <tr>
+                  <td>open</td>
+                  <td>-</td>
+                  <td>triggered when the vue-multi-select open</td>
+                </tr>
+                <tr class="active">
+                  <td>close</td>
+                  <td>-</td>
+                  <td>triggered when the vue-multi-select close</td>
                 </tr>
               </tbody>
             </table>
@@ -465,6 +492,8 @@ filters.push({
                   :filters="example1.filters"
                   :btnLabel="example1.btnLabel"
                   search
+                  @open="open"
+                  @close="close"
                   :selectOptions="example1.selectOptions"></multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
@@ -492,6 +521,8 @@ filters.push({
       :options=<span class="red">&quot;options&quot;</span>
       :filters=<span class="red">&quot;filters&quot;</span>
       :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
+      @open=<span class="red">&quot;open&quot;</span>
+      @close=<span class="red">&quot;close&quot;</span>
       :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
   &lt;/div&gt;
 &lt;/template&gt;</span>
@@ -563,6 +594,12 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     };
   },
   methods: {
+    open() {
+      console.log(<span class="red">'open'</span>);
+    },
+    close() {
+      console.log(<span class="red">'close'</span>);
+    },
   },
   components: {
     multiSelect,

@@ -156,6 +156,7 @@ export default {
         this.multiSelect = this.multiSelect.parentNode;
       }
       this.isOpen = !this.isOpen;
+      this.openStatus(this.isOpen);
     },
     externalClick(event) {
       if (this.isOpen) {
@@ -167,6 +168,7 @@ export default {
           return;
         }
         this.isOpen = false;
+        this.openStatus(this.isOpen);
       }
     },
     /* eslint no-param-reassign: ["error", { "props": false }] */
@@ -305,6 +307,10 @@ export default {
       const previousValues = this.previousSelected.pop();
       this.$emit('input', previousValues);
       this.$emit(this.eventName, previousValues);
+    },
+    openStatus(status) {
+      const event = status ? 'open' : 'close';
+      this.$emit(event);
     },
   },
   computed: {

@@ -31,6 +31,7 @@ When you create a new PR please make it against the develop branch when adding n
 | reloadInit    | Boolean     |
 | btnLabel      | Function    |
 | search        | Boolean     |
+| eventName     | String      |
 | position      | String      |
 | searchPlaceholder | String  |
 | historyButton | Boolean     |
@@ -38,6 +39,14 @@ When you create a new PR please make it against the develop branch when adding n
 | disabled      | Boolean     |
 
 (NB. position is a string ex: 'top-left', 'top-right', default is 'bottom-left')
+
+| Events        | params      |
+| ------------- | ----------- |
+| selectionChanged | values selected |
+| open          | -           |
+| close          | -           |
+
+(NB. selectionChanged naming can be change with eventName)
 
 ### 1. options (Contains options to set the multi-select)
 
