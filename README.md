@@ -5,8 +5,8 @@ This component gives you a multi/single select with the power of Vuejs component
 
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
-## What's new in v3.16.0
-Add open/close events
+## What's new in v4.0.0
+Use vue-cli to bundle
 
 ## Dependencies
 - required: Vuejs >= 2.x
