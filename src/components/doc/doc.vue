@@ -125,11 +125,11 @@
             <p>Clone the repo
               <a href="https://github.com/IneoO/vue-multi-select">github</a> or
               <code>npm install vue-multi-select --save</code></p>
-            <p>Include the file in your app import multiSelect from</p>
+            <p>Include the file in your app import vueMultiSelect from</p>
             <p>
               <code>
-                import multiSelect from 'vue-multi-select';<br>
-                import 'vue-multi-select/dist/lib/vue-multi-select.min.css';
+                import vueMultiSelect from 'vue-multi-select';<br>
+                import 'vue-multi-select/dist/lib/vue-multi-select.css';
               </code>
             </p>
           </div>
@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>4.0.0</h3>
+            Use vue-cli to bundle
             <h3>3.16.0</h3>
             Add open/close events
             <h3>3.15.0</h3>
@@ -146,7 +148,7 @@
             <h3>3.14.1</h3>
             Fix event triggered 2 times in single select
             <h3>3.14.0</h3>
-            Set possible to disable multiSelect
+            Set possible to disable vueMultiSelect
             <h3>3.13.1</h3>
             Fix doc about css import
             <h3>3.13.0</h3>
@@ -195,7 +197,7 @@
                 <tr>
                   <td>filters</td>
                   <td>Array</td>
-                  <td>Permit to add some filters in the multiSelect's input</td>
+                  <td>Permit to add some filters in the vueMultiSelect's input</td>
                   <td><code>[]</code></td>
                 </tr>
                 <tr class="active">
@@ -488,7 +490,7 @@ filters.push({
             <p>When a value is unselect, he is splice fron the Array</p>
             <div class="columns">
               <div class="column col-4">
-                <multi-select v-model="example1.values"
+                <vue-multi-select v-model="example1.values"
                   :options="example1.options"
                   historyButton
                   :filters="example1.filters"
@@ -496,7 +498,7 @@ filters.push({
                   search
                   @open="open"
                   @close="close"
-                  :selectOptions="example1.selectOptions"></multi-select>
+                  :selectOptions="example1.selectOptions"></vue-multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
                 <button class="btn btn-primary" @click="randomize(example1)">Reset Data</button>
@@ -516,7 +518,7 @@ filters.push({
               <pre class="code grey"
               data-lang="javascript"><code><span class="blue">&lt;template&gt;
   &lt;div&gt;
-    &lt;multi-select</span>
+    &lt;vue-multi-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
       search
       historyButton
@@ -530,9 +532,9 @@ filters.push({
 &lt;/template&gt;</span>
 
 <span class="blue">&lt;script&gt;
-import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
+import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
 <span class="blue">import</span><span class="red wrap">
-&#39;vue-multi-select/dist/lib/vue-multi-select.min.css&#39;</span>;
+&#39;vue-multi-select/dist/lib/vue-multi-select.css&#39;</span>;
 
 <span class="blue">export</span> <span class="blue">default</span> {
   data() {
@@ -604,7 +606,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     },
   },
   components: {
-    multiSelect,
+    vueMultiSelect,
   },
 };
 <span class="blue">&lt;/script&gt;</span>
@@ -626,7 +628,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
           <div class="docs-note">
             <div class="columns">
               <div class="column col-4">
-                <multi-select
+                <vue-multi-select
                   v-model="example2.values"
                   :btnLabel="example2.btnLabel"
                   search
@@ -634,7 +636,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                   :options="example2.options"
                   :filters="example2.filters"
                   :selectOptions="example2.selectOptions">
-                </multi-select>
+                </vue-multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
                 <button class="btn btn-primary"
@@ -659,7 +661,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 data-lang="javascript">
                 <code><span class="blue">&lt;template&gt;
   &lt;div&gt;
-    &lt;multi-select</span>
+    &lt;vue-multi-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
       :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
       search
@@ -669,9 +671,9 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
 &lt;/template&gt;</span>
 
 <span class="blue">&lt;script&gt;
-import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
+import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
 <span class="blue">import</span><span class="red wrap">
-&#39;vue-multi-select/dist/lib/vue-multi-select.min.css&#39;</span>;
+&#39;vue-multi-select/dist/lib/vue-multi-select.css&#39;</span>;
 
 <span class="blue">export</span> <span class="blue">default</span> {
   data() {
@@ -696,7 +698,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
   methods: {
   },
   components: {
-    multiSelect,
+    vueMultiSelect,
   },
 };
 <span class="blue">&lt;/script&gt;</span>
@@ -754,7 +756,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 data-lang="javascript">
                 <code><span class="blue">&lt;template&gt;
   &lt;div&gt;
-    &lt;multi-select</span>
+    &lt;vueMulti-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
       search
       historyButton
@@ -769,9 +771,9 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
 &lt;/template&gt;</span>
 
 <span class="blue">&lt;script&gt;
-import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
+import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
 <span class="blue">import</span><span class="red wrap">
-&#39;vue-multi-select/dist/lib/vue-multi-select.min.css&#39;</span>;
+&#39;vue-multi-select/dist/lib/vue-multi-select.css&#39;</span>;
 
 <span class="blue">export</span> <span class="blue">default</span> {
   data() {
@@ -840,7 +842,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     },
   },
   components: {
-    multiSelect,
+    vueMultiSelect,
   },
 };
 <span class="blue">&lt;/script&gt;</span></code></pre>
@@ -861,13 +863,13 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
             <p>list of data can be an array</p>
             <div class="columns">
               <div class="column col-4">
-                <multi-select v-model="example4.values"
+                <vue-multi-select v-model="example4.values"
                   search
                   historyButton
                   :filters="example4.filters"
                   :options="example4.options"
                   :position="example4.position"
-                  :selectOptions="example4.selectOptions"></multi-select>
+                  :selectOptions="example4.selectOptions"></vue-multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
                 <button class="btn btn-primary" @click="reloadFunction4">Change v-model</button>
@@ -890,7 +892,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
                 data-lang="javascript">
                 <code><span class="blue">&lt;template&gt;
   &lt;div&gt;
-    &lt;multi-select</span>
+    &lt;vue-multi-select</span>
     v-model=<span class="red">&quot;values&quot;</span>
     search
     historyButton
@@ -906,9 +908,9 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
 &lt;/template&gt;</span>
 
 <span class="blue">&lt;script&gt;
-import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
+import</span> vue-multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;</span>;
 <span class="blue">import</span><span class="red wrap">
-&#39;vue-multi-select/dist/lib/vue-multi-select.min.css&#39;</span>;
+&#39;vue-multi-select/dist/lib/vue-multi-select.css&#39;</span>;
 
 <span class="blue">export</span> <span class="blue">default</span> {
   data() {
@@ -977,7 +979,7 @@ import</span> multiSelect from <span class="red wrap">&#39;vue-multi-select&#39;
     },
   },
   components: {
-    multiSelect,
+    vueMultiSelect,
   },
 };
 <span class="blue">&lt;/script&gt;</span>

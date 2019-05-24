@@ -155,8 +155,8 @@ data = [{
 </template>
 
 <script>
-import multiSelect from 'vue-multi-select';
-import 'vue-multi-select/dist/lib/vue-multi-select.min.css';
+import vueMultiSelect from 'vue-multi-select';
+import 'vue-multi-select/dist/lib/vue-multi-select.css';
 
 export default {
   data() {
@@ -216,7 +216,7 @@ export default {
   methods: {
   },
   components: {
-    multiSelect,
+    vueMultiSelect,
   },
 };
 </script>
@@ -225,17 +225,14 @@ export default {
 ## Build Setup
 
 ``` bash
-- `npm run dev`: Shortcut to run both dev:lib and dev:docs in parallel using.
+- `npm run dev`: Shortcut to run dev
 
-- `npm run dev:lib`: Runs webpack watch mode on your library so file changes are built and re-written to disk automatically.
+- `npm run doc`: Shortcut to run dev-doc
 
-- `npm run dev:docs`: Runs both the development server for your docs/demo site.
-
-- `npm run build`: Shortcut to run both build:lib and build:docs.
+- `npm run build:doc`: Shortcut to build doc.
 
 - `npm run build:lib`: Production ready build of your library as an ES6 module (via UMD), ready to import into another project via npm.
 
-- `npm run build:docs`: Production ready build of your docs site for your library. Put this build online so you can demo your library to the world and provide documentation.
 ```
 
 Testing Supported By<br/>

@@ -1,8 +1,12 @@
-import multiSelect from '../../../dist/lib/vue-multi-select.min';
-import '../../../dist/lib/vue-multi-select.min.css';
+import 'spectre.css/dist/spectre.min.css';
+import 'spectre.css/dist/spectre-icons.min.css';
+import 'spectre.css/dist/spectre-exp.min.css';
+
+import vueMultiSelect from '@/components/vueMultiSelect/vue-multi-select.vue';
 
 export default {
   name: 'doc',
+  components: { vueMultiSelect },
   data() {
     return {
       string: 'string',
@@ -189,7 +193,6 @@ export default {
       },
     };
   },
-  components: { multiSelect },
   methods: {
     open() {
       console.log('open');

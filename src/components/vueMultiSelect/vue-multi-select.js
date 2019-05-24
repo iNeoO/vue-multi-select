@@ -75,10 +75,10 @@ export default {
   },
   methods: {
     setConfig() {
-      this.multi = typeof (this.options.multi) !== 'undefined' ?
-        this.options.multi : false;
-      this.groups = typeof (this.options.groups) !== 'undefined' ?
-        this.options.groups : false;
+      this.multi = typeof (this.options.multi) !== 'undefined'
+        ? this.options.multi : false;
+      this.groups = typeof (this.options.groups) !== 'undefined'
+        ? this.options.groups : false;
       this.list = this.options.labelList || 'list';
       this.labelName = this.options.labelName || 'name';
       this.labelValue = this.options.labelValue || this.labelName;
@@ -88,8 +88,8 @@ export default {
       this.labelSelected = this.options.labelSelected || 'selected';
       this.labelDisabled = this.options.labelDisabled || 'disabled';
       this.cssSelected = this.options.cssSelected || (
-        option => (option[this.labelSelected] ?
-          {
+        option => (option[this.labelSelected]
+          ? {
             'font-weight': 'bold',
             color: '#5755d9',
           } : ''));
@@ -98,16 +98,16 @@ export default {
     init() {
       const clone = this.cloneData(this.selectOptions);
       if (!this.groups) {
-        if (typeof this.selectOptions[0] === 'string' ||
-          typeof this.selectOptions[0] === 'number') {
+        if (typeof this.selectOptions[0] === 'string'
+          || typeof this.selectOptions[0] === 'number') {
           this.simpleArray = true;
           this.globalModel = [{ [this.list]: this.prepareArray(clone) }];
         } else {
           this.globalModel = [{ [this.list]: clone }];
         }
       } else {
-        if (typeof clone[0][this.list][0] === 'string' ||
-        typeof clone[0][this.list][0] === 'number') {
+        if (typeof clone[0][this.list][0] === 'string'
+        || typeof clone[0][this.list][0] === 'number') {
           for (let i = 0; i < clone.length; i += 1) {
             clone[i][this.list] = this.prepareArray(clone[i][this.list]);
           }
@@ -121,22 +121,22 @@ export default {
       this.valueSelected = [];
       for (let i = 0; i < this.globalModel.length; i += 1) {
         for (let j = 0; j < this.globalModel[i][this.list].length; j += 1) {
-          if (typeof this.globalModel[i][this.list][j][this.labelSelected] ===
-            'boolean') {
+          if (typeof this.globalModel[i][this.list][j][this.labelSelected]
+            === 'boolean') {
             this.globalModel[i][this.list][j][this.labelSelected] = false;
           } else {
             this.$set(this.globalModel[i][this.list][j], this.labelSelected, false);
             this.$set(this.globalModel[i][this.list][j], 'visible', true);
           }
           for (let k = 0; k < this.value.length; k += 1) {
-            if (this.simpleArray &&
-              this.globalModel[i][this.list][j][this.labelValue] === this.value[k]) {
+            if (this.simpleArray
+              && this.globalModel[i][this.list][j][this.labelValue] === this.value[k]) {
               this.globalModel[i][this.list][j][this.labelSelected] = true;
               this.valueSelected.push(this.globalModel[i][
                 this.list][j][this.labelValue]);
-            } else if (!this.simpleArray &&
-              this.globalModel[i][this.list][j][this.labelValue] ===
-              this.value[k][this.labelValue]) {
+            } else if (!this.simpleArray
+              && this.globalModel[i][this.list][j][this.labelValue]
+              === this.value[k][this.labelValue]) {
               this.globalModel[i][this.list][j][this.labelSelected] = true;
               const opt = Object.assign({}, this.globalModel[i][this.list][j]);
               delete opt[this.labelSelected];
@@ -207,8 +207,8 @@ export default {
     },
     popOption(opt) {
       for (let i = 0; i < this.valueSelected.length; i += 1) {
-        if (this.valueSelected[i][this.labelValue] === opt[this.labelValue] ||
-          (this.simpleArray && this.valueSelected[i] === opt[this.labelValue])) {
+        if (this.valueSelected[i][this.labelValue] === opt[this.labelValue]
+          || (this.simpleArray && this.valueSelected[i] === opt[this.labelValue])) {
           this.valueSelected.splice(i, 1);
           return;
         }
@@ -224,7 +224,8 @@ export default {
         i += 1) {
         if (~this.globalModel[this.idSelectedTab][this.list][i][this.labelName]
           .toLowerCase().indexOf(
-            this.searchInput.toLowerCase())) {
+            this.searchInput.toLowerCase(),
+          )) {
           allHide = false;
           this.globalModel[this.idSelectedTab][this.list][i].visible = true;
         } else {
@@ -242,9 +243,9 @@ export default {
       this.previousSelected.push(this.cloneData(this.valueSelected));
       for (let i = 0; i < this.globalModel[this.idSelectedTab][this.list].length;
         i += 1) {
-        if (this.globalModel[this.idSelectedTab][this.list][i].visible &&
-          !this.globalModel[this.idSelectedTab][this.list][i][this.labelDisabled] &&
-          option.func(this.globalModel[this.idSelectedTab][this.list][i])) {
+        if (this.globalModel[this.idSelectedTab][this.list][i].visible
+          && !this.globalModel[this.idSelectedTab][this.list][i][this.labelDisabled]
+          && option.func(this.globalModel[this.idSelectedTab][this.list][i])) {
           if (!option.selectAll) {
             if (!this.globalModel[this.idSelectedTab][this.list][i][this.labelSelected]) {
               this.globalModel[this.idSelectedTab][this.list][i][this.labelSelected] = true;
@@ -266,11 +267,12 @@ export default {
         let allSelected = true;
         for (let j = 0; j < this.globalModel[this.idSelectedTab][this.list].length;
           j += 1) {
-          if (this.globalModel[this.idSelectedTab][this.list][j].visible &&
-            this.filters[i].func(
-              this.globalModel[this.idSelectedTab][this.list][j]) &&
-              !this.globalModel[this.idSelectedTab][this.list][j][this.labelDisabled] &&
-              !this.globalModel[this.idSelectedTab][this.list][j][this.labelSelected]) {
+          if (this.globalModel[this.idSelectedTab][this.list][j].visible
+            && this.filters[i].func(
+              this.globalModel[this.idSelectedTab][this.list][j],
+            )
+              && !this.globalModel[this.idSelectedTab][this.list][j][this.labelDisabled]
+              && !this.globalModel[this.idSelectedTab][this.list][j][this.labelSelected]) {
             allSelected = false;
             break;
           }
@@ -293,7 +295,7 @@ export default {
     cloneData(value) {
       if (Array.isArray(value)) {
         return value.map(this.cloneData);
-      } else if (value && typeof value === 'object') {
+      } if (value && typeof value === 'object') {
         const res = {};
         const keys = Object.keys(value);
         for (let i = 0; i < keys.length; i += 1) {
@@ -350,11 +352,12 @@ export default {
     value: {
       handler(newVal, oldval) {
         if (oldval && newVal && this.valueSelected) {
-          if (this.simpleArray &&
-            !compareHelper.compareSimpleArray(newVal, this.valueSelected)) {
+          if (this.simpleArray
+            && !compareHelper.compareSimpleArray(newVal, this.valueSelected)) {
             this.initValues();
           } else if (!compareHelper.compareArrayObject(
-            newVal, this.valueSelected, this.labelName)) {
+            newVal, this.valueSelected, this.labelName,
+          )) {
             this.initValues();
           }
         }
@@ -365,7 +368,7 @@ export default {
   directives: {
     'click-outside': {
       bind(el, binding) {
-        const bubble = binding.modifiers.bubble;
+        const { bubble } = binding.modifiers;
         const ua = navigator.userAgent;
         const event = (ua.match(/iPad|iPhone/i)) ? 'touchstart' : 'click';
         const handler = (e) => {
