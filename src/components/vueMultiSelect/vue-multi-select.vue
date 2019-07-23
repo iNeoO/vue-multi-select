@@ -7,7 +7,7 @@
     :disabled="disabled"
     @click="toggleCheckboxes">
     <div class="buttonLabel">
-      {{getBtnLabel}}
+      <span v-html="getBtnLabel"></span>
       <span class="caret"></span>
     </div>
   </button>
@@ -19,10 +19,9 @@
     <div class="helperContainer">
       <div class="line">
         <button
-          v-if="!!filters && multi"
           type="button" class="helperButton"
           @click="selectCurrent(button)"
-          v-for="(button, index) in filters"
+          v-for="(button, index) in getButtonList"
           :key="index">
             {{button.selectAll ? button.nameNotAll : button.nameAll}}
           </button>

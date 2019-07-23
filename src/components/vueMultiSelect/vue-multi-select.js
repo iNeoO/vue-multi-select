@@ -333,6 +333,9 @@ export default {
       }
       return {};
     },
+    getButtonList() {
+      return !!this.filters && this.multi && this.filters;
+    },
   },
   watch: {
     selectOptions: {
