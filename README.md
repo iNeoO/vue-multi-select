@@ -5,8 +5,9 @@ This component gives you a multi/single select with the power of Vuejs component
 
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
-## What's new in v4.1.0
+## What's new in v4.1.1
 Use v-html to display button
+Fix build
 
 ## Dependencies
 - required: Vuejs >= 2.x

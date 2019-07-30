@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>4.1.1</h3>
+            Build lib
             <h3>4.1.0</h3>
             Use v-html to display button
             <h3>4.0.0</h3>
