@@ -731,7 +731,7 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
                 (it's possible to change the key with <code>options.labelDisabled</code>)</p>
             <div class="columns">
               <div class="column col-4">
-                <multi-select
+                <vue-multi-select
                   v-model="example3.values"
                   search
                   historyButton
