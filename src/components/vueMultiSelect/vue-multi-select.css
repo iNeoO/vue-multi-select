@@ -66,7 +66,7 @@
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
-  min-height: 31px !important;
+  min-height: 31px;
   padding: 1px 8px 1px 8px;
   position: relative;
   text-align: center;
@@ -114,7 +114,7 @@
   display: inline-block;
   width: 0;
   height: 0;
-  margin: 0px 0px 1px 12px !important;
+  margin: 0px 0px 1px 12px;
   vertical-align: middle;
   border-top: 4px solid #333;
   border-right: 4px solid transparent;
@@ -135,7 +135,7 @@
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   min-width: 278px;
-  display: none !important;
+  display: none;
 }
 
 
@@ -253,10 +253,10 @@
 .select .helperButton:focus,
 .select .inputFilter:focus,
 .select .historyButton:focus {
-  border: 1px solid #999 !important;
+  border: 1px solid #999;
   outline: 0;
-  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, .065), 0 0 5px rgba(102, 175, 233, .6) !important;
-  box-shadow: inset 0 0 1px rgba(0, 0, 0, .065), 0 0 5px rgba(102, 175, 233, .6) !important;
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, .065), 0 0 5px rgba(102, 175, 233, .6);
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, .065), 0 0 5px rgba(102, 175, 233, .6);
 }
 
 
@@ -279,7 +279,7 @@
 /* ! to show / hide the checkbox layer above */
 
 .select .show {
-  display: block !important;
+  display: block;
 }
 
 
@@ -396,7 +396,7 @@
 /* hide the original HTML checkbox away */
 
 .select .checkbox {
-  color: #ddd !important;
+  color: #ddd;
   position: absolute;
   left: -9999px;
   cursor: pointer;
@@ -408,8 +408,8 @@
 .select .disabled,
 .select .disabled:hover,
 .select .disabled label input:hover~span {
-  color: #c4c4c4 !important;
-  cursor: not-allowed !important;
+  color: #c4c4c4;
+  cursor: not-allowed;
 }
 
 

@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>4.2.0</h3>
+            Add btnClass popoverClass as props
             <h3>4.1.1</h3>
             Build lib
             <h3>4.1.0</h3>
@@ -312,6 +314,18 @@
                   <td>Function</td>
                   <td><code>() => ('multi-select')</code></td>
                   <td>Label on the button</td>
+                </tr>
+                <tr>
+                  <td>btnClass</td>
+                  <td>String</td>
+                  <td>''</code></td>
+                  <td>css class who apply on the button</td>
+                </tr>
+                <tr>
+                  <td>popoverClass</td>
+                  <td>String</td>
+                  <td>''</code></td>
+                  <td>css class who apply on the popover</td>
                 </tr>
                 <tr>
                   <td>cssSelected</td>

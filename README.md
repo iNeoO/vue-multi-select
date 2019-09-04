@@ -31,6 +31,8 @@ When you create a new PR please make it against the develop branch when adding n
 | v-model       | Array       |
 | reloadInit    | Boolean     |
 | btnLabel      | Function    |
+| btnClass      | String      |
+| popoverClass  | String      |
 | search        | Boolean     |
 | eventName     | String      |
 | position      | String      |

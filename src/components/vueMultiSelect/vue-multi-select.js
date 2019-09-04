@@ -27,6 +27,14 @@ export default {
       type: Array,
       default: () => ([]),
     },
+    btnClass: {
+      type: String,
+      default: '',
+    },
+    popoverClass: {
+      type: String,
+      default: '',
+    },
     btnLabel: {
       type: Function,
       default: () => ('multi-select'),
