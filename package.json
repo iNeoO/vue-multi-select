@@ -1,6 +1,6 @@
 {
   "name": "vue-multi-select",
-  "version": "4.1.1",
+  "version": "4.2.0",
   "description": "A multi/single select component made in vue",
   "author": "Valère Pique <pique.valere@gmx.fr>",
   "keywords": [
