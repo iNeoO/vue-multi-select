@@ -3,7 +3,7 @@
   <button
     ref="buttonClick"
     type="button"
-    class="btn-select"
+    :class="`btn-select ${btnClass}`"
     :disabled="disabled"
     @click="toggleCheckboxes">
     <div class="buttonLabel">
@@ -13,7 +13,7 @@
   </button>
   <div
     class="checkboxLayer"
-    :class="{'show': isOpen}"
+    :class="`${isOpen ? 'show' : ''} ${popoverClass}`"
     v-click-outside="externalClick"
     :style="getPosition">
     <div class="helperContainer">
