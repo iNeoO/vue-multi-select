@@ -63,6 +63,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    disabledUnSelect: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -195,6 +199,9 @@ export default {
         this.$emit('input', this.valueSelected.slice(0));
         this.$emit(this.eventName, this.valueSelected.slice(0));
       } else {
+        if (!this.multi && this.disabledUnSelect) {
+          return;
+        }
         this.previousSelected.push(this.cloneData(this.valueSelected));
         this.popOption(option);
         this.$emit('input', this.valueSelected.slice(0));
