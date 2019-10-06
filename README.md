@@ -39,6 +39,7 @@ When you create a new PR please make it against the develop branch when adding n
 | historyButton | Boolean     |
 | historyButtonText | String  |
 | disabled      | Boolean     |
+| disabledUnSelect | Boolean     |
 
 (NB. position is a string ex: 'top-left', 'top-right', default is 'bottom-left')
 

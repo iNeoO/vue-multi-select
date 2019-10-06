@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>4.3.0</h3>
+            Add disabledUnSelect popoverClass as props
             <h3>4.2.0</h3>
             Add btnClass popoverClass as props
             <h3>4.1.1</h3>
@@ -260,6 +262,12 @@
                   <td>Boolean</td>
                   <td>Disable button</td>
                   <td><code>False</code></td>
+                </tr>
+                <tr>
+                  <td>disabledUnSelect</td>
+                  <td>Boolean</td>
+                  <td>To disable the possibility to unselect an option (only in singleSelect)</td>
+                  <td><code>false</code></td>
                 </tr>
               </tbody>
             </table>
