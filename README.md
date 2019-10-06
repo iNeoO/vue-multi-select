@@ -5,8 +5,8 @@ This component gives you a multi/single select with the power of Vuejs component
 
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
-## What's new in v4.2.0
-Add cssClass prop for popopver and btn
+## What's new in v4.3.0
+To disable the possibility to unselect an option (only in singleSelect)
 
 ## Dependencies
 - required: Vuejs >= 2.x

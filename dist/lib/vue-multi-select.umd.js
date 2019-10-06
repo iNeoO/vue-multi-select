@@ -1627,7 +1627,7 @@ module.exports = function (key) {
 /***/ "584a":
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.6.8' };
+var core = module.exports = { version: '2.6.9' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -2129,7 +2129,7 @@ module.exports = function (it, tag, stat) {
 /***/ "8378":
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.6.8' };
+var core = module.exports = { version: '2.6.9' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -3081,7 +3081,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"57b4065f-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vueMultiSelect/vue-multi-select.vue?vue&type=template&id=bce24cde&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0b3e2b02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vueMultiSelect/vue-multi-select.vue?vue&type=template&id=bce24cde&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"select"},[_c('button',{ref:"buttonClick",class:("btn-select " + _vm.btnClass),attrs:{"type":"button","disabled":_vm.disabled},on:{"click":_vm.toggleCheckboxes}},[_c('div',{staticClass:"buttonLabel"},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.getBtnLabel)}}),_c('span',{staticClass:"caret"})])]),_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.externalClick),expression:"externalClick"}],staticClass:"checkboxLayer",class:((_vm.isOpen ? 'show' : '') + " " + _vm.popoverClass),style:(_vm.getPosition)},[_c('div',{staticClass:"helperContainer"},[_c('div',{staticClass:"line"},[_vm._l((_vm.getButtonList),function(button,index){return _c('button',{key:index,staticClass:"helperButton",attrs:{"type":"button"},on:{"click":function($event){return _vm.selectCurrent(button)}}},[_vm._v("\n            "+_vm._s(button.selectAll ? button.nameNotAll : button.nameAll)+"\n          ")])}),(_vm.historyButton && _vm.previousSelected.length)?_c('button',{staticClass:"historyButton",on:{"click":_vm.historyBack}},[_vm._v("\n            "+_vm._s(_vm.historyButtonText)+"\n          ")]):_vm._e()],2),(_vm.search)?_c('div',{staticClass:"line",staticStyle:{"position":"relative"}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.searchInput),expression:"searchInput"}],staticClass:"inputFilter",attrs:{"placeholder":_vm.searchPlaceholder,"type":"text"},domProps:{"value":(_vm.searchInput)},on:{"input":[function($event){if($event.target.composing){ return; }_vm.searchInput=$event.target.value},function($event){return _vm.searchfn()}]}}),_c('button',{staticClass:"clearButton",attrs:{"type":"button"},on:{"click":function($event){return _vm.clearSearch()}}},[_vm._v("×\n          ")])]):_vm._e()]),(_vm.groups === true)?_c('div',[_c('ul',{staticClass:"tab tab-block"},_vm._l((_vm.globalModel),function(tab,index){return _c('li',{directives:[{name:"show",rawName:"v-show",value:(tab[_vm.list].length),expression:"tab[list].length"}],key:index,staticClass:"tab-item",class:{active : _vm.idSelectedTab == index},on:{"click":function($event){return _vm.selectTab(index)}}},[_c('span',{staticClass:"pointer"},[_vm._v(_vm._s(tab[_vm.groupName]))])])}),0)]):_vm._e(),_c('div',{staticClass:"checkBoxContainer"},[_vm._l((_vm.globalModel),function(tab,index){return _c('ul',{directives:[{name:"show",rawName:"v-show",value:(_vm.idSelectedTab == index),expression:"idSelectedTab == index"}],key:index,staticClass:"selectList"},_vm._l((tab[_vm.list]),function(option,indexOptions){return (option.visible)?_c('li',{key:indexOptions,class:[option[_vm.labelDisabled] ? 'disabled' : '', 'selectItem'],style:(_vm.cssSelected(option)),on:{"click":function($event){return _vm.selectOption(option)}}},[(option[_vm.labelSelected])?_c('span',{staticClass:"right margin-right-10"},[_vm._v("✓")]):_vm._e(),_c('span',{staticClass:"margin-left-20",domProps:{"innerHTML":_vm._s(_vm.renderTemplate(option))}})]):_vm._e()}),0)}),(!_vm.valueSelected  || _vm.optionsAllHide)?_c('div',{staticClass:"empty-tab"},[_vm._v("No data")]):_vm._e()],2)])])}
 var staticRenderFns = []
 
@@ -3149,7 +3149,7 @@ function _defineProperty(obj, key, value) {
 }
 // CONCATENATED MODULE: ./src/helper/equals.js
 /* harmony default export */ var equals = ({
-  compareArrayObject(value1, value2, key) {
+  compareArrayObject: function compareArrayObject(value1, value2, key) {
     if (value1.length !== value2.length) return false;
 
     for (var i = 0; i < value1.length; i += 1) {
@@ -3160,8 +3160,7 @@ function _defineProperty(obj, key, value) {
 
     return true;
   },
-
-  compareSimpleArray(value1, value2) {
+  compareSimpleArray: function compareSimpleArray(value1, value2) {
     if (value1.length !== value2.length) return false;
 
     for (var i = 0; i < value1.length; i += 1) {
@@ -3172,7 +3171,6 @@ function _defineProperty(obj, key, value) {
 
     return true;
   }
-
 });
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/eslint-loader??ref--13-0!./src/components/vueMultiSelect/vue-multi-select.js?vue&type=script&lang=js&
 
@@ -3252,6 +3250,10 @@ function _defineProperty(obj, key, value) {
       default: 'bottom-left'
     },
     disabled: {
+      type: Boolean,
+      default: false
+    },
+    disabledUnSelect: {
       type: Boolean,
       default: false
     }
@@ -3403,6 +3405,10 @@ function _defineProperty(obj, key, value) {
         this.$emit('input', this.valueSelected.slice(0));
         this.$emit(this.eventName, this.valueSelected.slice(0));
       } else {
+        if (!this.multi && this.disabledUnSelect) {
+          return;
+        }
+
         this.previousSelected.push(this.cloneData(this.valueSelected));
         this.popOption(option);
         this.$emit('input', this.valueSelected.slice(0));

@@ -326,13 +326,13 @@
                 <tr>
                   <td>btnClass</td>
                   <td>String</td>
-                  <td>''</code></td>
+                  <td><code>''</code></td>
                   <td>css class who apply on the button</td>
                 </tr>
                 <tr>
                   <td>popoverClass</td>
                   <td>String</td>
-                  <td>''</code></td>
+                  <td><code>''</code></td>
                   <td>css class who apply on the popover</td>
                 </tr>
                 <tr>
