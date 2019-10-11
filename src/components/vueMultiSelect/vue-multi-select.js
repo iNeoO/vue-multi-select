@@ -94,8 +94,6 @@ export default {
       this.list = this.options.labelList || 'list';
       this.labelName = this.options.labelName || 'name';
       this.labelValue = this.options.labelValue || this.labelName;
-      this.renderTemplate = this.options.renderTemplate || (
-        elem => elem[this.labelName]);
       this.groupName = this.options.groupName || 'name';
       this.labelSelected = this.options.labelSelected || 'selected';
       this.labelDisabled = this.options.labelDisabled || 'disabled';

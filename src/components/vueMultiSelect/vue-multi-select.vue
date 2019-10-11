@@ -65,10 +65,10 @@
           v-if="option.visible"
           @click="selectOption(option)"
           :style="cssSelected(option)">
-          <span class="right margin-right-10"
-            v-if="option[labelSelected]">✓</span>
-          <span class="margin-left-20" v-html="renderTemplate(option)">
-          </span>
+          <slot name="option" v-bind:option="option">
+            <span class="right margin-right-10" v-if="option[labelSelected]">✓</span>
+            <span class="margin-left-20">{{option.name}}</span>
+          </slot>
         </li>
       </ul>
       <div v-if="!valueSelected  || optionsAllHide" class="empty-tab">No data</div>

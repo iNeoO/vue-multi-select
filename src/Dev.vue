@@ -8,7 +8,12 @@
       search
       historyButton
       :searchPlaceholder="search"
-      :selectOptions="data" />
+      :selectOptions="data">
+      <template v-slot:option="{option}">
+        <input type="checkbox" :checked="option.selected"></input>
+        <span>{{option.name}}</span>
+      </template>
+    </multi-select>
   </div>
 </template>
 
