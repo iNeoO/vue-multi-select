@@ -67,7 +67,7 @@
           :style="cssSelected(option)">
           <slot name="option" v-bind:option="option">
             <span class="right margin-right-10" v-if="option[labelSelected]">✓</span>
-            <span class="margin-left-20">{{option.name}}</span>
+            <span class="margin-left-20">{{option[labelName]}}</span>
           </slot>
         </li>
       </ul>

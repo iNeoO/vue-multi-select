@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>4.4.1</h3>
+            Fix labelName for default slot
             <h3>4.4.0</h3>
             Set possible to use slot-scope for options. renderTemplate is no more Supported
             <h3>4.3.0</h3>

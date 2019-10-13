@@ -5,7 +5,8 @@ This component gives you a multi/single select with the power of Vuejs component
 
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
-## What's new in v4.4.0
+## What's new in v4.4.1
+Fix labelName for default slot
 Set possible to use slot-scope, thx to [landofcash](https://github.com/landofcash) renderTemplate is no more Supported
 
 ## Dependencies
