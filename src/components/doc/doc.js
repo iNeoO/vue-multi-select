@@ -63,9 +63,6 @@ export default {
           },
         ],
         options: {
-          renderTemplate(elem) {
-            return `<u>${elem.name}</u>`;
-          },
           multi: true,
           groups: true,
         },

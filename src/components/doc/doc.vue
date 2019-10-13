@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>4.4.0</h3>
+            Set possible to use slot-scope for options. renderTemplate is no more Supported
             <h3>4.3.0</h3>
             Add disabledUnSelect popoverClass as props
             <h3>4.2.0</h3>
@@ -390,12 +392,6 @@
                   <td><code>'name'</code></td>
                   <td>Name Attributes for groups to display</td>
                 </tr>
-                <tr class="active">
-                  <td>renderTemplate</td>
-                  <td>Function</td>
-                  <td><code>(elem => elem[this.labelName])</code></td>
-                  <td>Function returning text to display, text is displayed with v-html</td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -509,14 +505,15 @@ filters.push({
         <div id="a_simple_multiselect" class="container">
           <h3 class="s-title">
             <a href="#a_simple_multiselect" class="anchor" aria-hidden="true">#</a>
-            A simple vue-multi-select
+            A simple vue-multi-select with slot-scope
           </h3>
           <div class="docs-note">
             <p>values selected. Each value selected is push in this Array.</p>
             <p>When a value is unselect, he is splice fron the Array</p>
             <div class="columns">
               <div class="column col-4">
-                <vue-multi-select v-model="example1.values"
+                <vue-multi-select
+                  v-model="example1.values"
                   :options="example1.options"
                   historyButton
                   :filters="example1.filters"
@@ -524,7 +521,12 @@ filters.push({
                   search
                   @open="open"
                   @close="close"
-                  :selectOptions="example1.selectOptions"></vue-multi-select>
+                  :selectOptions="example1.selectOptions">
+                  <template v-slot:option="{option}">
+                    <input type="checkbox" :checked="option.selected"/>
+                    <span>{{option.name}}</span>
+                  </template>
+                </vue-multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
                 <button class="btn btn-primary" @click="randomize(example1)">Reset Data</button>
@@ -553,7 +555,12 @@ filters.push({
       :btnLabel=<span class="red">&quot;btnLabel&quot;</span>
       @open=<span class="red">&quot;open&quot;</span>
       @close=<span class="red">&quot;close&quot;</span>
-      :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue"> /&gt;
+      :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue">&gt;
+      &lt;template</span> v-slot:option=<span class="red">&quot;{option}&quot;</span>>
+        <span class="blue">&lt;input</span> type=<span class="red">&quot;checkbox&quot;</span> :checked=<span class="red">&quot;option.selected&quot;</span><span class="blue">/></span>
+        <span class="blue">&lt;span></span>{{<span class="red">option.name</span>}}<span class="blue">&lt;/span></span>
+      <span class="blue">&lt;/template>
+    &lt;/vue-multi-select&gt;
   &lt;/div&gt;
 &lt;/template&gt;</span>
 
@@ -617,7 +624,6 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
         },
       }],
       options: {
-        renderTemplate(elem) { <span class="blue">return</span> `&lt;u&gt;${elem.name}&lt;/u&gt;`; },
         multi: <span class="red">true</span>,
         groups: <span class="red">true</span>,
       },
@@ -782,13 +788,13 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
                 data-lang="javascript">
                 <code><span class="blue">&lt;template&gt;
   &lt;div&gt;
-    &lt;vueMulti-select</span>
+    &lt;vue-multi-select</span>
       v-model=<span class="red">&quot;values&quot;</span>
       search
       historyButton
       :filters=<span class="red">&quot;filters&quot;</span>
       :options=<span class="red">&quot;options&quot;</span>
-      :selectOptions=<span class="red">&quot;data&quot;</span>
+      :selectOptions=<span class="red">&quot;data&quot;</span><span class="blue">/&gt;</span>
       <span class="blue">&lt;button</span>
         @click=<span class="red">&quot;reloadFunction&quot;<span class="blue"> &gt;</span></span>
         Change v-model

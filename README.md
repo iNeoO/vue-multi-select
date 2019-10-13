@@ -5,8 +5,8 @@ This component gives you a multi/single select with the power of Vuejs component
 
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
-## What's new in v4.3.0
-To disable the possibility to unselect an option (only in singleSelect)
+## What's new in v4.4.0
+Set possible to use slot-scope, thx to [landofcash](https://github.com/landofcash) renderTemplate is no more Supported
 
 ## Dependencies
 - required: Vuejs >= 2.x
@@ -64,7 +64,6 @@ When you create a new PR please make it against the develop branch when adding n
 | labelSelected | String   | 'selected'                                                              | Name attributes for value selected    |
 | labelDisabled | String   | 'disabled'                                                              | Name attributes for value disabled    |
 | groupName     | String   | 'name'                                                                  | Name Attributes for groups to display |
-| renderTemplate     | Function   | (elem => elem[this.labelName])                                   | Function returning text to display element |
 
 \*if you use html balise and don't want to have them find in the search use labelHtml, search will just check the property labelName but v-html the labelHtml.
 
@@ -223,6 +222,30 @@ export default {
   },
 };
 </script>
+```
+
+It's possible to use slot-scope to custom option
+
+```html
+<template>
+  <div>
+    <vue-multi-select
+      v-model="values"
+      search
+      historyButton
+      :options="options"
+      :filters="filters"
+      :btnLabel="btnLabel"
+      @open="open"
+      @close="close"
+      :selectOptions="data">
+      <template v-slot:option="{option}">
+        <input type="checkbox" :checked="option.selected"/>
+        <span>{{option.name}}</span>
+      </template>
+    </vue-multi-select>
+  </div>
+</template>
 ```
 
 ## Build Setup

@@ -10,7 +10,7 @@
       :searchPlaceholder="search"
       :selectOptions="data">
       <template v-slot:option="{option}">
-        <input type="checkbox" :checked="option.selected"></input>
+        <input type="checkbox" :checked="option.selected" />
         <span>{{option.name}}</span>
       </template>
     </multi-select>
