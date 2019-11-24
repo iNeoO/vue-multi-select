@@ -191,6 +191,9 @@ export default {
     };
   },
   methods: {
+    openManually() {
+      this.$refs.multiSelect.openMultiSelect();
+    },
     open() {
       console.log('open');
     },

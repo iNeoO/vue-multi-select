@@ -5,9 +5,8 @@ This component gives you a multi/single select with the power of Vuejs component
 
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
-## What's new in v4.4.1
-Fix labelName for default slot
-Set possible to use slot-scope, thx to [landofcash](https://github.com/landofcash) renderTemplate is no more Supported
+## What's new in v4.5.0
+Set possible to open manually
 
 ## Dependencies
 - required: Vuejs >= 2.x
@@ -141,7 +140,24 @@ data = [{
 [ {name: 'choice 1'}, {name: 'choice 11'}] // In the case we selected choice 1 and choice 11
 ```
 
-### 5. Examples
+### 5. Manual open/close
+you can access to openMultiSelect()/closeMultiSelect() by ref to manualy open/close the mutliSelect
+```html
+<template>
+  <mult-select ref="multiSelect" />
+</template>
+
+<script>
+export default {
+  mounted() {
+    this.refs.multiSelect.openMultiSelect();
+  },
+};
+</script>
+```
+
+
+### 6. Examples
 ```html
 <template>
   <div>

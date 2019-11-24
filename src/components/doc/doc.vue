@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>4.5.0</h3>
+            Set possible to open manually
             <h3>4.4.1</h3>
             Fix labelName for default slot
             <h3>4.4.0</h3>
@@ -515,6 +517,7 @@ filters.push({
             <div class="columns">
               <div class="column col-4">
                 <vue-multi-select
+                  ref="multiSelect"
                   v-model="example1.values"
                   :options="example1.options"
                   historyButton
@@ -531,6 +534,7 @@ filters.push({
                 </vue-multi-select>
               </div>
               <div class="column col-4 col-ml-auto">
+                <button class="btn btn-primary" style="margin-right:10px;" type="button" @click="openManually">Open manually</button>
                 <button class="btn btn-primary" @click="randomize(example1)">Reset Data</button>
               </div>
             </div>
@@ -549,6 +553,7 @@ filters.push({
               data-lang="javascript"><code><span class="blue">&lt;template&gt;
   &lt;div&gt;
     &lt;vue-multi-select</span>
+      ref=<span class="red">&quot;multiSelect&quot;</span>
       v-model=<span class="red">&quot;values&quot;</span>
       search
       historyButton
@@ -563,6 +568,10 @@ filters.push({
         <span class="blue">&lt;span></span>{{<span class="red">option.name</span>}}<span class="blue">&lt;/span></span>
       <span class="blue">&lt;/template>
     &lt;/vue-multi-select&gt;
+    <span class="blue">&lt;button</span>
+      @click=<span class="red">&quot;openManually&quot;</span><span class="blue">&gt;</span>
+      Open manually
+    <span class="blue">&lt;/button&gt;</span>
   &lt;/div&gt;
 &lt;/template&gt;</span>
 
@@ -632,6 +641,9 @@ import</span> vueMultiSelect from <span class="red wrap">&#39;vue-multi-select&#
     };
   },
   methods: {
+    openManually() {
+      this.$refs.multiSelect.openMultiSelect();
+    },
     open() {
       console.log(<span class="red">'open'</span>);
     },

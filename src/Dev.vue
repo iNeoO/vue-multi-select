@@ -1,6 +1,7 @@
 <template>
   <div>
     <multi-select
+      ref="multi"
       v-model="values"
       :options="options"
       :filters="filters"
@@ -14,6 +15,7 @@
         <span>{{option.name}}</span>
       </template>
     </multi-select>
+    <button type="button" @click="open">Open</button>
   </div>
 </template>
 
@@ -76,6 +78,9 @@ export default {
     };
   },
   methods: {
+    open() {
+      this.$refs.multi.openMultiSelect();
+    },
   },
   components: {
     multiSelect,
