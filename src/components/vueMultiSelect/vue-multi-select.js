@@ -86,6 +86,16 @@ export default {
     this.setConfig();
   },
   methods: {
+    openMultiSelect() {
+      this.manualClick = true;
+      this.isOpen = true;
+      this.openStatus(this.isOpen);
+    },
+    closeMultiSelect() {
+      this.manualClick = true;
+      this.isOpen = false;
+      this.openStatus(this.isOpen);
+    },
     setConfig() {
       this.multi = typeof (this.options.multi) !== 'undefined'
         ? this.options.multi : false;
@@ -169,7 +179,7 @@ export default {
       this.openStatus(this.isOpen);
     },
     externalClick(event) {
-      if (this.isOpen) {
+      if (this.isOpen && !this.manualClick) {
         let elem = event.target;
         if (!!elem && elem.className === 'buttonLabel') {
           elem = elem.parentNode;
@@ -180,6 +190,7 @@ export default {
         this.isOpen = false;
         this.openStatus(this.isOpen);
       }
+      this.manualClick = false;
     },
     /* eslint no-param-reassign: ["error", { "props": false }] */
     selectOption(option) {
