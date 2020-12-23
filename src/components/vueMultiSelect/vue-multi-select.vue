@@ -34,6 +34,7 @@
       <div v-if="search" class="line" style="position:relative">
         <input
           :placeholder="searchPlaceholder"
+          :emptyTabText="emptyTabText"
           type="text"
           v-model="searchInput"
           @input="searchfn()"
@@ -71,7 +72,7 @@
           </slot>
         </li>
       </ul>
-      <div v-if="!valueSelected  || optionsAllHide" class="empty-tab">No data</div>
+      <div v-if="!valueSelected  || optionsAllHide" class="empty-tab">{{ emptyTabText }}</div>
     </div>
   </div>
 </div>

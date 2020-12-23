@@ -67,6 +67,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    emptyTabText: {
+      type: String,
+      default: 'No Data',
+    },
   },
   data() {
     return {

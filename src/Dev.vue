@@ -9,6 +9,7 @@
       search
       historyButton
       :searchPlaceholder="search"
+      :emptyTabText="emptyTabText"
       :selectOptions="data">
       <template v-slot:option="{option}">
         <input type="checkbox" :checked="option.selected" />
@@ -26,6 +27,7 @@ export default {
   data() {
     return {
       search: 'Search things',
+      emptyTabText: 'No Data...',
       btnLabel: values => `A simple vue multi select (${values.length})`,
       name: 'first group',
       values: [],
