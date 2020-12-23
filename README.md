@@ -5,8 +5,8 @@ This component gives you a multi/single select with the power of Vuejs component
 
 [https://github.com/IneoO/vue-multi-select](https://github.com/IneoO/vue-multi-select)
 
-## What's new in v4.5.0
-Set possible to open manually
+## What's new in v4.6.0
+Set a props for label when empty data
 
 ## Dependencies
 - required: Vuejs >= 2.x
@@ -40,6 +40,7 @@ When you create a new PR please make it against the develop branch when adding n
 | historyButtonText | String  |
 | disabled      | Boolean     |
 | disabledUnSelect | Boolean     |
+| emptyTabText  | String      |
 
 (NB. position is a string ex: 'top-left', 'top-right', default is 'bottom-left')
 

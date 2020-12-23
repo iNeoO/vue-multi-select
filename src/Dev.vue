@@ -28,7 +28,7 @@ export default {
     return {
       search: 'Search things',
       emptyTabText: 'No Data...',
-      btnLabel: values => `A simple vue multi select (${values.length})`,
+      btnLabel: (values) => `A simple vue multi select (${values.length})`,
       name: 'first group',
       values: [],
       data: [{

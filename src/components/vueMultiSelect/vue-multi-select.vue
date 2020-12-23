@@ -63,7 +63,7 @@
         <li v-for="(option, indexOptions) in tab[list]"
           :key="indexOptions"
           :class="[option[labelDisabled] ? 'disabled' : '', 'selectItem']"
-          v-if="option.visible"
+          v-show="option.visible"
           @click="selectOption(option)"
           :style="cssSelected(option)">
           <slot name="option" v-bind:option="option">

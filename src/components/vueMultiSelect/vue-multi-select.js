@@ -112,7 +112,7 @@ export default {
       this.labelSelected = this.options.labelSelected || 'selected';
       this.labelDisabled = this.options.labelDisabled || 'disabled';
       this.cssSelected = this.options.cssSelected || (
-        option => (option[this.labelSelected]
+        (option) => (option[this.labelSelected]
           ? {
             'font-weight': 'bold',
             color: '#5755d9',
@@ -162,7 +162,7 @@ export default {
               && this.globalModel[i][this.list][j][this.labelValue]
               === this.value[k][this.labelValue]) {
               this.globalModel[i][this.list][j][this.labelSelected] = true;
-              const opt = Object.assign({}, this.globalModel[i][this.list][j]);
+              const opt = { ...this.globalModel[i][this.list][j] };
               delete opt[this.labelSelected];
               delete opt.visible;
               this.valueSelected.push(opt);
@@ -227,7 +227,7 @@ export default {
       if (this.simpleArray) {
         this.valueSelected.push(option[this.labelValue]);
       } else {
-        const opt = Object.assign({}, option);
+        const opt = { ...option };
         delete opt[this.labelSelected];
         delete opt.visible;
         this.valueSelected.push(opt);
@@ -318,7 +318,7 @@ export default {
       }
     },
     prepareArray(value) {
-      return value.map(elem => ({ [this.labelValue]: elem }));
+      return value.map((elem) => ({ [this.labelValue]: elem }));
     },
     cloneData(value) {
       if (Array.isArray(value)) {

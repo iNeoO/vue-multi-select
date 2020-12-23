@@ -139,6 +139,8 @@
             <a href="#whatsnew" class="anchor" aria-hidden="true">#</a>What's new
           </h3>
           <div class="docs-note">
+            <h3>4.6.0</h3>
+            Set a props for label when empty data
             <h3>4.5.0</h3>
             Set possible to open manually
             <h3>4.4.1</h3>
@@ -255,7 +257,7 @@
                   <td>historyButtonText</td>
                   <td>String</td>
                   <td>Label for previous button</td>
-                  <td><code>↶</code></td>
+                  <td><code>'↶''</code></td>
                 </tr>
                 <tr>
                   <td>position</td>
@@ -274,6 +276,12 @@
                   <td>Boolean</td>
                   <td>To disable the possibility to unselect an option (only in singleSelect)</td>
                   <td><code>false</code></td>
+                </tr>
+                <tr  class="active">
+                  <td>emptyTabText</td>
+                  <td>String</td>
+                  <td>Label when empty tab</td>
+                  <td><code>'No data'</code></td>
                 </tr>
               </tbody>
             </table>

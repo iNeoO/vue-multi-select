@@ -1,5 +1,8 @@
+// eslint-disable-next-line
 import 'spectre.css/dist/spectre.min.css';
+// eslint-disable-next-line
 import 'spectre.css/dist/spectre-icons.min.css';
+// eslint-disable-next-line
 import 'spectre.css/dist/spectre-exp.min.css';
 
 import vueMultiSelect from '@/components/vueMultiSelect/vue-multi-select.vue';
@@ -11,7 +14,7 @@ export default {
     return {
       string: 'string',
       example1: {
-        btnLabel: values => `A simple vue multi select (${values.length})`,
+        btnLabel: (values) => `A simple vue multi select (${values.length})`,
         selectOptions: [{
           name: 'first group',
           list: [
@@ -70,7 +73,7 @@ export default {
         isActive: 'code',
       },
       example2: {
-        btnLabel: values => (values.length > 0 ? values[0].name : 'Select...'),
+        btnLabel: (values) => (values.length > 0 ? values[0].name : 'Select...'),
         selectOptions: [
           { name: '0' },
           { name: '2' },
@@ -132,7 +135,7 @@ export default {
           labelList: 'elements',
           groupName: 'title',
           labelHtml: 'labelHtml',
-          cssSelected: option => (option.selected ? { 'background-color': '#5764c6' } : ''),
+          cssSelected: (option) => (option.selected ? { 'background-color': '#5764c6' } : ''),
         },
         values: [
           { label: '2' },
@@ -182,7 +185,7 @@ export default {
           groups: true,
           labelList: 'elements',
           groupName: 'title',
-          cssSelected: option => (option.selected ? { 'background-color': '#5764c6' } : ''),
+          cssSelected: (option) => (option.selected ? { 'background-color': '#5764c6' } : ''),
         },
         position: 'top-right',
         values: ['0', '2'],
@@ -195,9 +198,11 @@ export default {
       this.$refs.multiSelect.openMultiSelect();
     },
     open() {
+      // eslint-disable-next-line
       console.log('open');
     },
     close() {
+      // eslint-disable-next-line
       console.log('close');
     },
     setActive(e, label) {
